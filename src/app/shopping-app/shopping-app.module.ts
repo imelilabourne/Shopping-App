@@ -5,12 +5,18 @@ import { AppRoutingModule, routingComponents } from './shopping-app-routing.modu
 import { BaseComponent } from './containers/base.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { SellerComponent } from './seller/seller.component';
+import { BuyerNavbarComponent } from './buyer/components/navbar/buyer-navbar.component';
+import { BuyerHomepage } from './buyer/containers/buyer-homepage.component';
+import { BuyerHeaderComponent } from './buyer/components/header/buyer-header.component';
 
 @NgModule({
   declarations: [
     BaseComponent,
     BuyerComponent,
     SellerComponent,
+    BuyerNavbarComponent,
+    BuyerHomepage,
+    BuyerHeaderComponent,
     routingComponents
   ],
   imports: [

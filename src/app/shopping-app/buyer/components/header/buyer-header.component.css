@@ -1,0 +1,12 @@
+img{
+    object-fit:scale-down;
+}
+.carousel-inner{
+   padding: 10px 60px;
+}
+
+@media screen and (max-width: 700px) {
+    .carousel-inner{
+        display: none;
+    }
+  }
