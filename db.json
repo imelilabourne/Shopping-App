@@ -1,0 +1,14 @@
+{
+    "Product": [
+        {
+        "id": 2,
+        "ProductName": "Nike Court Air Zoom",
+        "ProductDeatils":"Colour Shown: Dark Atomic Teal/Beyond Pink/White",
+        "ProductPrice":"8000",
+        "ProductQuantity":5,
+        "Status": "Limited Stocks"
+       
+        }
+    ]
+
+}
