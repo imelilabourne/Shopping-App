@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-2">Seller Dashboard</h1>
+      <a class="btn btn-info pull-right"  role="button">Back</a>
+  </div>
+
+<div class="main">
+    <form class ="myform"> 
+      <div class ="container">
+
+    <div class="form-group">
+      <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
+            <input type="text" class="form-control" name="pname" placeholder="Product Name"
+            [(ngModel)]="productObj.ProductName" ngModel >
+        </div>
+        
+    </div>
+
+<div class="form-group">
+<div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window"></i></span>
+    <input type="text" class="form-control" name="pdetails" placeholder="Product Details"
+    [(ngModel)]="productObj.ProductDeatils" ngModel >
+</div>
+
+</div> 
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-ruble"></i></span>
+<input type="number" class="form-control" name="pprice" placeholder="Product Price" 
+[(ngModel)]="productObj.ProductPrice" ngModel>
+</div>
+</div> 
+
+<div class="form-group">
+<div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
+    <input type="number" class="form-control" name="pquantity" placeholder="Product Quantity"
+    [(ngModel)]="productObj.ProductQuantity" ngModel >
+</div>
+</div> 
+
+<div class="form-group">
+<div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-stats"></i></span>
+  <input type="text" class="form-control" name="pstatus" placeholder="Product Status" 
+  [(ngModel)]="productObj.Status" ngModel>
+</div>
+</div>
+
+    <div>
+    <button (click)= onUpdate() type="submit" class="btn btn-success pull-right" >Update Product</button>
+  </div>
+
+  </div> <!--container--->
+  </form>
+  </div> <!--main--->

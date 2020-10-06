@@ -1,14 +1,44 @@
 {
-    "Product": [
-        {
-        "id": 2,
-        "ProductName": "Nike Court Air Zoom",
-        "ProductDeatils":"Colour Shown: Dark Atomic Teal/Beyond Pink/White",
-        "ProductPrice":"8000",
-        "ProductQuantity":5,
-        "Status": "Limited Stocks"
-       
-        }
-    ]
-
+  "Product": [
+    {
+      "id": 2,
+      "ProductName": "Nike Court Air Zoom",
+      "ProductDeatils": "Colour Shown: Dark Atomic Teal/Beyond Pink/White",
+      "ProductPrice": "8000",
+      "ProductQuantity": 5,
+      "Status": "Limited Stocks"
+    },
+    {
+      "ProductName": "sdasd",
+      "ProductDeatils": "asdasd",
+      "ProductPrice": 32,
+      "ProductQuantity": 234,
+      "Status": "dfsdf",
+      "id": 6
+    },
+    {
+      "ProductName": "sdf",
+      "ProductDeatils": "sdfsd",
+      "ProductPrice": 3423,
+      "ProductQuantity": 32423,
+      "Status": "dsfsdf",
+      "id": 7
+    },
+    {
+      "ProductName": "fdgdfg",
+      "ProductDeatils": "dfgdf",
+      "ProductPrice": 566,
+      "ProductQuantity": 645,
+      "Status": "dfgdfg",
+      "id": 8
+    },
+    {
+      "ProductName": "sdfsdf",
+      "ProductDeatils": "sdfsd",
+      "ProductPrice": 234234,
+      "ProductQuantity": 34324234,
+      "Status": "fsdfsd",
+      "id": 9
+    }
+  ]
 }

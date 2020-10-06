@@ -1,3 +1,110 @@
-<p>
-  seller-dashboard works!
-</p>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-2">Seller Dashboard</h1>
+      <a class="btn btn-success pull-right"  role="button" data-toggle="modal" data-target="#myModal">Add New Product</a>
+  </div>
+
+
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Product Name</th>
+      <th>Product Price</th>
+      <th>Product Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let list of upproducts">
+        <td>{{list.id}}</td>
+        <td><img src="{{list.product_img}}" class="img-thumbnail" style="height:100px;" /></td>
+        <td>{{list.ProductName}}</td>
+        <td>{{list.ProductPrice | currency: 'PHP' }}</td>
+        <td>{{list.ProductQuantity}}
+          <!----<button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
+          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>---->
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm" [routerLink]="['/updateproduct',list.id]">Update Product</button> &nbsp;
+          <button class="btn btn-danger btn-sm" (click)="onDelete(list.id)">Delete Product</button>
+        </td>
+      </tr>
+  </tbody>
+ <!----<tfoot>
+    <tr>
+      <td>Total Price</td>
+      <td colspan="6" class="text-right">{{total | currency: 'PHP' }}</td>
+    </tr>
+  </tfoot>----> 
+</table>
+</div>
+<!---<app-productdetails [list] = "selectedProduct"></app-productdetails>--->
+
+<div class="container"><!-- Container -->
+  <div class="modal fade" id="myModal" role="dialog">  <!-- Modal -->
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New Product</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container"><!-- Modal container-->
+            <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
+                      <input type="text" class="form-control" name="pname" placeholder="Product Name" formControlName="ProductName">
+                  </div>
+                  <span *ngIf = "!ProductName.valid && ProductName.touched" class="error-block"> Please Input Product Name</span>
+              </div>
+
+        <div class="form-group">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window"></i></span>
+              <input type="text" class="form-control" name="pdetails" placeholder="Product Details" formControlName="ProductDeatils" >
+          </div>
+          <span *ngIf = "!ProductDeatils.valid && ProductDeatils.touched" class="error-block"> Please Input Product Details</span>
+    </div> 
+    <div class="form-group">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-ruble"></i></span>
+          <input type="number" class="form-control" name="pprice" placeholder="Product Price" formControlName="ProductPrice" >
+      </div>
+      <span *ngIf = "!ProductPrice.valid && ProductPrice.touched" class="error-block"> Please Input Price</span>
+  </div> 
+
+        <div class="form-group">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
+              <input type="number" class="form-control" name="pquantity" placeholder="Product Quantity" formControlName="ProductQuantity" >
+          </div>
+          <span *ngIf = "!ProductQuantity.valid && ProductQuantity.touched" class="error-block"> Please Input Quantity</span>
+      </div> 
+
+      <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-stats"></i></span>
+            <input type="text" class="form-control" name="pstatus" placeholder="Product Status" formControlName="Status" >
+        </div>
+        <span *ngIf = "!Status.valid && Status.touched" class="error-block"> Please Input Status</span>
+    </div> 
+    <button [disabled]='!newProductForm.valid' type="submit" class="btn btn-success">Add Product</button>
+          </form>
+        </div><!-- Modal container-->
+        </div><!-- Modal Body-->
+        <div class="modal-footer">
+         
+        
+         <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> <!-- Modal --> 
+</div><!-- Container -->
