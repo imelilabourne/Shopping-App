@@ -1,0 +1,20 @@
+img{
+    max-width: 260px;
+    height: 100%;
+}
+
+.img-wrapper{
+    height: 300px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-wrapper{
+    width: 260px;
+    text-align: center;
+}
+
+strong > p{
+    margin-top: 20px;
+}

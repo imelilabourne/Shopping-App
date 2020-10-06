@@ -30,6 +30,7 @@ import { Component } from '@angular/core';
     <span class="sr-only">Next</span>
   </a>
 </div>
+
     `
 })
 
