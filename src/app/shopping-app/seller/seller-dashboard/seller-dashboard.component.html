@@ -21,17 +21,14 @@
       <tr *ngFor="let list of upproducts">
         <td>{{list.id}}</td>
         <td><img src="{{list.product_img}}" class="img-thumbnail" style="height:100px;" /></td>
-        <!-- <td>{{list.ProductName}}</td>
+        <td>{{list.ProductName}}</td>
         <td>{{list.ProductPrice | currency: 'PHP' }}</td>
-<<<<<<< Updated upstream
-        <td>{{list.ProductQuantity}} -->
-          <!----<button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>---->
-=======
         <td>{{list.ProductQuantity}}
          <button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
           <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>
->>>>>>> Stashed changes
+        <td>{{list.ProductQuantity}}
+         <button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
+          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>
         </td>
         <td>
           <button class="btn btn-primary btn-sm" (click)="onEdit(list.id)">Update Product</button> &nbsp;
