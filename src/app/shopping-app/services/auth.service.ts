@@ -17,10 +17,15 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json' })
   } 
-  
-createProduct(product){
+
+  // HttpClient API method => Add Product
+  createProduct(product){
     return this.http.post<Products>(this.apiURL + '/product/', product)
   }
+
+  getProduct(id:number): Observable<Products> {
+    return this.http.get<Products>(this.apiURL + '/product/' + id)
+  } 
 
  // HttpClient API method => Get Product
   getProductlist(): Observable<Products[]> {

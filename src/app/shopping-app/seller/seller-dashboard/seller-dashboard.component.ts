@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import { Http, Response,Headers } from '@angular/http';
 import {ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+declare var $;
 
 //services
 import {AuthService} from '../../services/auth.service'
@@ -20,17 +21,33 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./seller-dashboard.component.css']
 })
 export class SellerDashboardComponent implements OnInit {
+  @ViewChild('dataTable') table;
+  dataTable: any= {};
+  dtOptions: DataTables.Settings = {};
 
   newProductForm:FormGroup;
   products: Products[];
   upproducts: Products[] = [];
+
   constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: HttpClient,private fb: FormBuilder) { }
    
 
 
-  ngOnInit() {
-    this. newProduct();
+
+  ngOnInit(): void {
     this.displayProductList();
+    this. newProduct();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+      processing: true
+    };
+
+   // this.dataTable = $(this.table.nativeElement);
+    //this.dataTable.DataTable();
+  
   }
 
   newProduct(){
@@ -81,7 +98,8 @@ export class SellerDashboardComponent implements OnInit {
       error=> console.error('Error',error)
     )
     this.newProductForm.reset();
-    this.router.navigate(['seller']);
+    this.router.navigate(['seller'])
+    this.displayProductList();
 
     }
 
@@ -90,5 +108,10 @@ export class SellerDashboardComponent implements OnInit {
       console.log('delete', id);    
       this.dataservice.deleteProduct(id).subscribe();
       this.displayProductList();
+    }
+
+    onEdit(prodId : number){
+     
+      this.router.navigate(['/updateproduct',prodId])
     }
 }// End of Class

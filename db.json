@@ -9,14 +9,15 @@
       "Status": "Limited Stocks"
     },
     {
-      "ProductName": "sdasd",
-      "ProductDeatils": "asdasd",
-      "ProductPrice": 32,
-      "ProductQuantity": 234,
-      "Status": "dfsdf",
-      "id": 6
+      "ProductName": "Bag",
+      "ProductDeatils": "Red Nike",
+      "ProductPrice": 1000,
+      "ProductQuantity": 100,
+      "Status": "In Stock",
+      "id": 3
     },
     {
+<<<<<<< Updated upstream
       "ProductName": "sdf",
       "ProductDeatils": "sdfsd",
       "ProductPrice": 3423,
@@ -39,6 +40,14 @@
       "ProductQuantity": 242,
       "Status": "21422",
       "id": 10
+=======
+      "ProductName": "BenchPerfume",
+      "ProductDeatils": "Packl",
+      "ProductPrice": 100,
+      "ProductQuantity": 250,
+      "Status": "In Stock",
+      "id": 4
+>>>>>>> Stashed changes
     }
   ]
 }
