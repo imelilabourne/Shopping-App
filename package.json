@@ -21,10 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
-<<<<<<< Updated upstream
-=======
     "angular-datatables": "^9.0.2",
->>>>>>> Stashed changes
     "bootstrap": "^4.5.2",
     "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.22",

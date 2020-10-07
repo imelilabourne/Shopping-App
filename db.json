@@ -17,7 +17,6 @@
       "id": 3
     },
     {
-<<<<<<< Updated upstream
       "ProductName": "sdf",
       "ProductDeatils": "sdfsd",
       "ProductPrice": 3423,
@@ -32,22 +31,6 @@
       "ProductQuantity": 645,
       "Status": "dfgdfg",
       "id": 8
-    },
-    {
-      "ProductName": "f",
-      "ProductDeatils": "safsafsaf",
-      "ProductPrice": 2424214,
-      "ProductQuantity": 242,
-      "Status": "21422",
-      "id": 10
-=======
-      "ProductName": "BenchPerfume",
-      "ProductDeatils": "Packl",
-      "ProductPrice": 100,
-      "ProductQuantity": 250,
-      "Status": "In Stock",
-      "id": 4
->>>>>>> Stashed changes
     }
   ]
 }

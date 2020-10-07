@@ -52,11 +52,6 @@
   "cart": [
     {
       "product": {
-<<<<<<< Updated upstream
-        "id": 2,
-        "productId": 2,
-        "name": "IYSL Beauty",
-=======
         "id": 5,
         "name": "Fenty Beauty",
         "description": "This is the product 1 description",
@@ -69,36 +64,21 @@
       "product": {
         "id": 5,
         "name": "Fenty Beauty",
->>>>>>> Stashed changes
         "description": "This is the product 1 description",
         "price": 1000,
         "imageUrl": "../../../assets/product2.jpg"
       },
-<<<<<<< Updated upstream
-      "id": 1
-    },
-    {
-      "product": {
-        "id": 1,
-        "productId": 1,
-        "name": "Nike Airforce 270",
-=======
       "id": 13
     },
     {
       "product": {
         "id": 5,
         "name": "Fenty Beauty",
->>>>>>> Stashed changes
         "description": "This is the product 1 description",
         "price": 1000,
         "imageUrl": "../../../assets/product2.jpg"
       },
-<<<<<<< Updated upstream
-      "id": 2
-=======
       "id": 14
->>>>>>> Stashed changes
     }
   ],
   "wishlist": [
