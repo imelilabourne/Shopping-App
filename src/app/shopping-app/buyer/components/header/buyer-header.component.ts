@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner" role="listbox" style=" width:100%; height:400px !important;">
+  <div class="carousel-inner" role="listbox" >
     <div class="carousel-item active">
       <img class="d-block w-100" src="../../../assets/carousel4.jpg" alt="First slide">
     </div>

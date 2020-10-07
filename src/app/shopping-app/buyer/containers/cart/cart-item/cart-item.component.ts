@@ -7,15 +7,27 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     template:  `
     <div>
         <div class="row">
-            <div class="col-md-9">
-                <p>{{ cartItem.productName }}</p>
+            <div class="col-md-1">
+                <p>{{ cartItem.id }}</p>
             </div>
             
-            <div class="col-md-3">
+            <div class="col-md-7" >
+                <p class="">{{ cartItem.productName }}</p>
+            </div>
+
+            <div class="col-md-1">
+                <p>{{ cartItem.qty }}</p>
+            </div>
+
+            <div class="col-md-2">
+                <p>{{ cartItem.price * cartItem.qty | currency: 'Php '}}</p>
+            </div>
+
+            <div class="col-md-1">
                 <button (click)="removeCart(cartItem)" class="btn"><i class="fa fa-trash"></i></button>
             </div>
+
         </div>
-        <p>Item: {{ cartItem.productId }} x {{ cartItem.qty }} = {{ cartItem.price * cartItem.qty | currency: 'Php '}}</p>
         
     </div>
     `

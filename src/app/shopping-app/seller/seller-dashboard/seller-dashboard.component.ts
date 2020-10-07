@@ -12,6 +12,7 @@ import {AuthService} from '../../services/auth.service'
 //interface
 import {Products} from '../model/Products'
 import {product} from '../model/product'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-seller-dashboard',
@@ -23,7 +24,7 @@ export class SellerDashboardComponent implements OnInit {
   newProductForm:FormGroup;
   products: Products[];
   upproducts: Products[] = [];
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http,private fb: FormBuilder) { }
+  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: HttpClient,private fb: FormBuilder) { }
    
 
 

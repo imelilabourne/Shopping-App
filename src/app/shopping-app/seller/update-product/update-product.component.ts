@@ -10,6 +10,7 @@ import {AuthService} from '../../services/auth.service'
 //interface
 import {Products} from '../model/Products'
 import {product} from '../model/product'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-product',
@@ -29,7 +30,7 @@ export class UpdateProductComponent implements OnInit {
 
 
   private headers = new Headers ({'Content-Type': 'application/json'});
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http) { }
+  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: HttpClient) { }
 
   onUpdate(prods){
     this.productObj= {

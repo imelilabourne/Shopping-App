@@ -1,13 +1,35 @@
 img{
-    max-width: 260px;
+    max-width: 250px;
     height: 100%;
 }
+.addtoCart{
+    background-color:rgb(43, 43, 42);
+    width: 100%;
+    border: none;
+    color: rgb(211, 202, 194);
+    height: 40px;
+}
+
+.addtoCart:hover{
+    background-color:  rgb(207, 205, 205);
+    color: black;
+}
+
+i{
+    margin-top: 5px;
+}
+
 
 .img-wrapper{
+    width: 100%;
     height: 300px;
     display: grid;
     align-items: center;
     justify-content: center;
+    /* background-color:  rgb(207, 205, 205); */
+    border: solid 1px rgb(212, 210, 210);
+    box-sizing: border-box;
+    padding: 20px 20px 0 20px;
 }
 
 .item-wrapper{
@@ -18,3 +40,13 @@ img{
 strong > p{
     margin-top: 20px;
 }
+
+.fa-heart{
+    color: palevioletred;
+    cursor: pointer;
+}
+
+.heart2{
+    color:black;
+}
+

@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 1,
+      "productId": 1,
       "name": "Nike Airforce 270",
       "description": "This is the product 1 description",
       "price": 4200,
@@ -9,13 +10,15 @@
     },
     {
       "id": 2,
-      "name": "YSL Beauty",
+      "productId": 2,
+      "name": "IYSL Beauty",
       "description": "This is the product 1 description",
       "price": 2993,
       "imageUrl": "../../../assets/product2.jpg"
     },
     {
       "id": 3,
+      "productId": 3,
       "name": "The Ordinary",
       "description": "This is the product 1 description",
       "price": 599,
@@ -23,6 +26,7 @@
     },
     {
       "id": 4,
+      "productId": 4,
       "name": "Insta Wide",
       "description": "This is the product 1 description",
       "price": 1200,
@@ -30,6 +34,7 @@
     },
     {
       "id": 5,
+      "productId": 5,
       "name": "Fenty Beauty",
       "description": "This is the product 1 description",
       "price": 1000,
@@ -37,6 +42,7 @@
     },
     {
       "id": 6,
+      "productId": 6,
       "name": "Mac",
       "description": "This is the product 1 description",
       "price": 6200,
@@ -46,34 +52,44 @@
   "cart": [
     {
       "product": {
-        "id": 1,
-        "name": "Nike Airforce 270",
-        "description": "This is the product 1 description",
-        "price": 4200,
-        "imageUrl": "../../../assets/shoes1.jpg"
-      },
-      "id": 5
-    },
-    {
-      "product": {
         "id": 2,
-        "name": "YSL Beauty",
+        "productId": 2,
+        "name": "IYSL Beauty",
         "description": "This is the product 1 description",
         "price": 2993,
         "imageUrl": "../../../assets/product2.jpg"
       },
-      "id": 6
+      "id": 1
     },
     {
       "product": {
         "id": 1,
+        "productId": 1,
         "name": "Nike Airforce 270",
         "description": "This is the product 1 description",
         "price": 4200,
         "imageUrl": "../../../assets/shoes1.jpg"
       },
-      "id": 7
+      "id": 2
     }
   ],
-  "wishlist": []
+  "wishlist": [
+    {
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "username" : "user1",
+      "password" : "123" 
+    },
+    {
+      "username" : "user2",
+      "password" : "123" 
+    },
+    {
+      "username" : "user3",
+      "password" : "123" 
+    }
+  ]
 }

@@ -1,16 +1,29 @@
-img{
+/* img{
     max-width: 260px;
-}
+} */
 
 .product{
-    /* border: solid 2px rgb(206, 203, 203); */
-    margin: 20px 40px;
-    display: grid;
+    position: relative;
     justify-content: center;
-    padding: 0;
+    display: grid;
 }
+
 
 p{
     text-align: center;
 }
 
+.search{
+    position: absolute;
+    right: 76px;
+    top: 400px;
+}
+
+.main-products{
+    margin: 60px 0;
+    padding: 40px 0;
+}
+
+.clear{
+    margin-top: 22px
+}
