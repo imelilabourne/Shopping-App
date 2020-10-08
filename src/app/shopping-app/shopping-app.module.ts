@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // to use ngModel
 import { DataTablesModule} from 'angular-datatables';
 
@@ -22,6 +21,9 @@ import {AuthService} from './services/auth.service';
 import { UpdateProductComponent } from './seller/update-product/update-product.component'
 import { BuyerLoginComponent } from './containers/login/buyer-login.component';
 import { ExportFileComponent } from './seller/export-file/export-file.component'
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import { ExportFileComponent } from './seller/export-file/export-file.component'
     SellerDashboardComponent,
     UpdateProductComponent,
     routingComponents,
-    ExportFileComponent
-  
+    ExportFileComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -48,9 +51,9 @@ import { ExportFileComponent } from './seller/export-file/export-file.component'
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+
 
   ],
   providers: [

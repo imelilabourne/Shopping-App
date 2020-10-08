@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'buyer-navbar',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
     template: `
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Shopping App</a>
+        <a class="navbar-brand" href="#"><img src="../../../assets/icon.png" class="icon">Shopoo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,7 +18,7 @@ import { Component } from '@angular/core';
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" routerLink="/cart">Cart</a>
+                <a class="nav-link" href="#" routerLink="/cart">Cart <i class="fa fa-shopping-cart"></i></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,7 +35,8 @@ import { Component } from '@angular/core';
             </ul>
             <form class="form-inline my-2 my-lg-0">
             
-            <button class="btn btn-info" routerLink="/login" (click) = "login()">Login</button>
+            <button *ngIf="user === null" class="btn btn-info" routerLink="/login" (click) = "login()">Login</button>
+            <button *ngIf="user !== null" class="btn btn-info" (click) = "logout()">Logout</button>
             </form>
         </div>
         </nav>
@@ -44,7 +46,14 @@ import { Component } from '@angular/core';
 
 export class BuyerNavbarComponent { 
 
+    constructor(private router: Router){}
+    user = localStorage.getItem('user');
     login(){
         
+    }
+
+    ngOnInit(){}
+    logout(){
+        localStorage.clear();
     }
 }

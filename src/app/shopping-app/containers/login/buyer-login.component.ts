@@ -9,11 +9,11 @@ import { UsersService } from '../../services/users.service';
     template:  `
     <div>
         <form [formGroup] = "form" (ngSubmit)="submit()">
-            <p>Welcome to Shotee</p>
+            <p>Welcome to Shopoo</p>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" formControlName="user">
                 <input type="password" class="form-control" placeholder="Password" formControlName="pass">
-                <button class="btn btn-info" type="submit">Login</button> 
+                <button class="btn btn-block" type="submit">Login</button> 
             </div>
         </form>
     </div>
@@ -36,6 +36,7 @@ export class BuyerLoginComponent{
                 users.map(item => {
                     if(this.form.get('user').value === item.username && this.form.get('pass').value === item.password){
                         this.router.navigateByUrl('/shop');
+                        localStorage.setItem('user', this.form.get('user').value);
                     }
                 })
             })

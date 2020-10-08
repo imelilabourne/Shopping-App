@@ -1,0 +1,24 @@
+.form{
+    width: 500px;
+    margin: auto;
+}
+
+form{
+    
+    padding: 100px;
+}
+
+input{
+    margin-bottom: 20px;
+}
+
+button{
+    margin-bottom: 20px;
+}
+
+.loginBtn, .btn{
+    background-color: rgb(75, 148, 124);
+    border: none;
+    color: white;
+    border-radius: 2px;
+}

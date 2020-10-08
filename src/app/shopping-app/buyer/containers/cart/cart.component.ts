@@ -19,9 +19,10 @@ import { MessengerService } from 'src/app/shopping-app/services/messenger.servic
                     <p class="cart-list" *ngFor="let cart of cartItems">
                         <cart-item (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item>
                     </p>
-                    <p>Grand Total: {{grandTotal | currency: 'Php '}} </p>
+                    <p class="float-right">Grand Total: {{grandTotal | currency: 'Php '}} </p>
                 </div>
-        
+                <br><br>
+                <button class="btn btn-secondary float-right" routerLink="/success">Place Order</button>
         </div>
 
         

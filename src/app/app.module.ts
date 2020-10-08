@@ -5,18 +5,20 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './shopping-app/shopping-app-routing.module';
 import { ShopingAppModule } from './shopping-app/shopping-app.module';
+import { SortPipe } from './shopping-app/pipes/sort.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ShopingAppModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

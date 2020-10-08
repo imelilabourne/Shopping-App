@@ -1,3 +1,13 @@
 button{
     margin: 0 6px;
 }
+
+nav{
+    z-index: 1;
+}
+
+.icon{
+    width: 28px;
+    margin-right: 10px;
+    margin-top: -4px;
+}

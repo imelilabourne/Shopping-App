@@ -19,6 +19,13 @@ p{
     top: 400px;
 }
 
+@media screen and (max-width: 700px){
+    .search{
+        top: 80px;
+        z-index: 0;
+    }
+}
+
 .main-products{
     margin: 60px 0;
     padding: 40px 0;
@@ -26,4 +33,16 @@ p{
 
 .clear{
     margin-top: 22px
+}
+
+.sort{
+    margin-right: 20px;
+}
+
+select{
+    height: 38px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(101, 173, 170);
+    border: solid 1px rgb(127, 183, 201);
+    border-radius: 4px;
 }
