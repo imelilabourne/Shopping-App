@@ -1,10 +1,13 @@
 
+
+
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-2">Seller Dashboard</h1>
       <a class="btn btn-success pull-right"  role="button" data-toggle="modal" data-target="#myModal">Add New Product</a>
   </div>
 
+<<<<<<< Updated upstream
 
  - <table class="table table-bordered">
   <thead>
@@ -52,8 +55,15 @@
 </div>
 <!-- <app-productdetails [list] = "selectedProduct"></app-productdetails>- -->
 
+=======
+  <div class ="export">
+    <button class="btn btn-info pull-right" (click)="exportexcel()">Export to Excel</button>
+  </div>
+>>>>>>> Stashed changes
 <div class="container">
-  <table class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+ 
+  <table id="dataTable" class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"  > 
+    
     <thead>
       <tr>
         <th>ID</th>
@@ -71,11 +81,9 @@
         <td>{{list.ProductName}}</td>
         <td>{{list.ProductPrice | currency: 'PHP' }}</td>
         <td>{{list.ProductQuantity}}
-          <!----<button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>---->
         </td>
         <td>
-          <button class="btn btn-primary btn-sm" (click)="onEdit(list.id)">Update Product</button> &nbsp;
+          <button class="btn btn-primary btn-sm" [routerLink]="['/updateproduct',list.id]">Update Product</button> &nbsp;
           <button class="btn btn-danger btn-sm" (click)="onDelete(list.id)">Delete Product</button>
         </td>
       </tr>

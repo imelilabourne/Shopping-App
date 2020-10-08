@@ -51,9 +51,15 @@ import { SortPipe } from './pipes/sort.pipe';
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
+<<<<<<< Updated upstream
     AppRoutingModule,
     DataTablesModule,
 
+=======
+    HttpModule,
+    AppRoutingModule,    
+    DataTablesModule
+>>>>>>> Stashed changes
 
   ],
   providers: [

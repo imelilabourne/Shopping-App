@@ -20,72 +20,48 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit {
-  newProductForm:FormGroup;
+  
   id: number;
-  prods: any={};
+  data:object={};
+  product=[];
+  productObj={
+    "ProductName": "",
+    "ProductDeatils":"",
+    "ProductPrice":0,
+    "ProductQuantity":0,
+    "Status":""
+  }
 
   private headers = new Headers ({'Content-Type': 'application/json'});
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: HttpClient,private fb: FormBuilder) { }
- 
+  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http ,private fb: FormBuilder) { }
 
+  onUpdate(product){
+   
+    const url = `${"http://localhost:9999/product"}/${this.id}`;
+    this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
+    .then(()=>{
+    this.router.navigate(['/seller'])
+    });
+  }
 
   ngOnInit() {
-    this.newProduct();
-
-    this.route.paramMap.subscribe(params => {
-      const pId = +params.get('id');
-      if (pId) {
-        this. getProdItem(pId);
+    this.route.params.subscribe(params =>{
+      this.id = +params['id'];
+    });
+    this.http.get("http://localhost:9999/product").subscribe(
+      (res: Response)=>{
+        this.product= res.json();
+        for (var i = 0; i< this.product.length;i++){
+          if(parseInt(this.product[i].id)===this.id){
+            this.productObj=this.product[i];
+            break;
+          }
+        }
       }
-    });
-  
-  
+    )
+    
   }
 
-  getProdItem(id: number) {
-    this.dataservice.getProduct(id)
-      .subscribe(
-        (productitem: Products) => this.editProdItem(productitem),
-        (err: any) => console.log(err)
-      );
-  }
 
-  editProdItem(productitem: Products) {
-    this.newProductForm.patchValue({
-      ProductName :productitem.productname,
-      ProductDeatils :productitem.productdetails,
-      ProductPrice : productitem.productprice,
-      ProductQuantity :productitem.productquantity,
-      Status : productitem.status
-    });
-  }
-  
-
-
-  newProduct(){
-    this.newProductForm = this.fb.group({
-      ProductName : ['',[Validators.required]],
-      ProductDeatils :['',[Validators.required]],
-      ProductPrice : ['',[Validators.required]],
-      ProductQuantity :['',[Validators.required]],
-      Status : ['',[Validators.required]]
-    });
-  }
-
-  get ProductName(){
-    return this.newProductForm.get('ProductName') as FormControl;
-  }
-  get ProductDeatils(){
-    return this.newProductForm.get('ProductDeatils') as FormControl;
-  }
-  get ProductPrice(){
-    return this.newProductForm.get('ProductPrice') as FormControl;
-  }
-  get ProductQuantity(){
-    return this.newProductForm.get('ProductQuantity') as FormControl;
-  }
-  get Status(){
-    return this.newProductForm.get('Status') as FormControl;
-  }
 
 }//end of class

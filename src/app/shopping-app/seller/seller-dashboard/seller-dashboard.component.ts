@@ -1,19 +1,20 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import { Http, Response,Headers } from '@angular/http';
 import {ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as XLSX from 'xlsx';
 
 declare var $;
+//declare const $;
 
 //services
 import {AuthService} from '../../services/auth.service'
 
 //interface
 import {Products} from '../model/Products'
-import {product} from '../model/product'
-import { HttpClient } from '@angular/common/http';
+//import {product} from '../model/product'
+//import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-seller-dashboard',
@@ -21,33 +22,43 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./seller-dashboard.component.css']
 })
 export class SellerDashboardComponent implements OnInit {
-  @ViewChild('dataTable') table;
-  dataTable: any= {};
+  @ViewChild('dataTable') table: ElementRef;
+  dataTable: any;
   dtOptions: DataTables.Settings = {};
+  
 
   newProductForm:FormGroup;
   products: Products[];
   upproducts: Products[] = [];
 
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: HttpClient,private fb: FormBuilder) { }
+  title = 'angular-app';
+  fileName= 'ExcelSheet.xlsx';
+
+  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http,private fb: FormBuilder) { }
    
 
-
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.displayProductList();
     this. newProduct();
 
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25],
-      processing: true
+       pageLength: 5,
+       lengthMenu : [5, 10, 25],
+       processing: true
     };
+    this.dataTable = $(this.table.nativeElement);
+    this.dataTable.DataTable(); 
 
-   // this.dataTable = $(this.table.nativeElement);
-    //this.dataTable.DataTable();
-  
+    //$(function () {
+    //  $('#example').DataTable( {
+     ////   dom: 'Bfrtip',
+     //   buttons: [
+      //      'copy', 'csv', 'excel', 'print'
+     //   ]
+  //  } );
+ //   });
+
   }
 
   newProduct(){
@@ -60,6 +71,19 @@ export class SellerDashboardComponent implements OnInit {
     });
   }
 
+  exportexcel(): void{
+    /* pass here the table id */
+    let element = document.getElementById('dataTable');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
+  }
 
   get ProductName(){
     return this.newProductForm.get('ProductName') as FormControl;
@@ -115,3 +139,7 @@ export class SellerDashboardComponent implements OnInit {
       this.router.navigate(['/updateproduct',prodId])
     }
 }// End of Class
+
+  
+
+ 
