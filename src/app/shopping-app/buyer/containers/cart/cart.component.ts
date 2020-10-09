@@ -15,17 +15,34 @@ import { MessengerService } from 'src/app/shopping-app/services/messenger.servic
         <div *ngIf="cartItems.length > 0" class="cartpopup">
             <!-- <button class="btn btn-outline-primary">X</button> -->
             <h5 class="list-group-item">My Cart</h5>
-                <div class="container">
-                    <p class="cart-list" *ngFor="let cart of cartItems">
-                        <cart-item (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item>
+                <div class="">
+                <!-- <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Product Total</th>
+                        <th scope="col">Act</th>
+                        </tr>
+                    </thead>
+                    <tbody> -->
+                    <tr *ngFor="let cart of cartItems">
+                    <p class="cart-list" >
+              
+                        <cart-item (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
                     </p>
+                    </tr>
+ 
+                    <!-- </tbody>
+                    </table> -->
                     <p class="float-right">Grand Total: {{grandTotal | currency: 'Php '}} </p>
+                  
                 </div>
                 <br><br>
-                <button class="btn btn-secondary float-right" routerLink="/success">Place Order</button>
+                <button class="float-right" routerLink="/success">Place Order</button>
         </div>
-
-        
         
     </div>
     `
@@ -38,8 +55,10 @@ export class CartComponent{
     grandTotal: number = 0;
        
     ngOnInit(){
+        this.getUserCartItems();
         this.handleSub();
-        this.loadCartItems()
+        // this.loadCartItems();
+        this.accumulatedPrice()
     }
 
     constructor(private messengerService: MessengerService, private cartService: CartService){}
@@ -48,23 +67,49 @@ export class CartComponent{
         this.messengerService.getMsg()
             .subscribe((data:Product) => {
                 // this.addtoCart(data);
-                this.loadCartItems();
+                // this.loadCartItems();
+                this.getUserCartItems();
+
                 this.accumulatedPrice();
+                
             })
     }
 
-    loadCartItems(){
-        this.cartService.getCartItems().subscribe((item: CartItem[]) =>{
-            this.cartItems = item;
-        })
+    getUserCartItems(){
+        const user = localStorage.getItem('user');
+        this.cartService.getCartItems()
+        .subscribe(data => {
+            data.map(item => {
+               if(item.customerName === user){
+                   return this.cartItems = data.filter(each => user === each.customerName );
+               }
+
+                // if(user === 'user1'){
+                //     this.cartItems = item.customerName;
+                // }
+                
+            })
+            
+        });
+        // if(user === )
     }
+
+    // loadCartItems(){
+    //     this.cartService.getCartItems().subscribe((item: CartItem[]) =>{
+    //         this.cartItems = item;
+    //     })
+    // }
 
 
     accumulatedPrice(){
-        this.grandTotal = 0;
+        this.cartService.getCartItems()
+        .subscribe(data => {
+            data.map((dat)=> {
+                if(dat.customerName === localStorage.getItem('user')){
+                    this.grandTotal += dat.qty * dat.price;
+                }
 
-        this.cartItems.forEach(item => {
-            this.grandTotal += (item.price * item.qty)
+            })
         })
 
     }
@@ -73,7 +118,7 @@ export class CartComponent{
 
         
         this.cartItems = this.cartItems.filter(item =>{ 
-            // item != event
+            // item != event    
             if(item.qty > 1){
                 return item.qty--;
             }
@@ -82,6 +127,16 @@ export class CartComponent{
             }
         });
 
-        this.cartService.removeProduct(event).subscribe((data) => console.log("successful" + data));
+        this.cartService.removeProduct(event).subscribe(() => {
+            this.accumulatedPrice();
+            // this.cartItems.filter(item =>{
+            //     if(event.qty > 1){
+            //         return event--;
+            //     }
+            //     else{
+            //         return item != event;
+            //     }
+            // })
+        });
     }
 }

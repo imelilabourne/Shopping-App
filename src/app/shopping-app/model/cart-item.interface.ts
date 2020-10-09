@@ -5,11 +5,13 @@ export class CartItem{
     productName: string; 
     qty: number;
     price: number;  
+    customerName: string;
 
-    constructor(id: number, product: Product, qty=1){
+    constructor(id: number, product: Product,customerName: string, qty:number ){
         this.id = id; 
         this.productName = product.name; 
         this.qty = qty;
         this.price = product.price; 
+        this.customerName = customerName
     }
 }

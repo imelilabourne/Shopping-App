@@ -17,19 +17,23 @@ export class CartService {
     return this.http.get<CartItem[]>(cartUrl)
     .pipe(map((result: any[]) => {
       let cartItem: CartItem[] = [];
-
       for(let item of result){
         let bool: boolean = false;
-        for(let i in cartItem){
-            if (cartItem[i].productName === item.product.name){
-                cartItem[i].qty++;
-                bool = true;
-                break;
-            }
-        }
+
+
+
+        console.log(item.product.id);
+        // for(let i in cartItem){
+        //   console.log(i);
+        //     if (cartItem[i].id === item.product.productId){
+        //         cartItem[i].qty++;
+        //         bool = true;
+        //         break;
+        //     }
+        // }
 
         if(!bool){
-         cartItem.push(new CartItem(item.id, item.product));
+         cartItem.push(new CartItem(item.id, item.product, item.customerName,item.qty));
         }  
 
       }
@@ -37,12 +41,13 @@ export class CartService {
       return cartItem;
     }));
   }
+  
 
-  addProductToCart(product:Product): Observable<any>{
-    return this.http.post(cartUrl, {product});
+  addProductToCart(product:Product, customerName: string, qty: number): Observable<any>{
+    return this.http.post(cartUrl, {product , customerName, qty});
   }
 
   removeProduct(product:Product):Observable<Product>{
-    return this.http.delete<Product>(cartUrl + "/" + product.id);
+    return this.http.delete<Product>(cartUrl + "/" + product.id)
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/shopping-app/services/product.service';
 
 @Component({
     selector: 'buyer-navbar',
@@ -46,14 +47,18 @@ import { Router } from '@angular/router';
 
 export class BuyerNavbarComponent { 
 
-    constructor(private router: Router){}
+    constructor(private router: Router, private productService: ProductService){}
     user = localStorage.getItem('user');
     login(){
         
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+
+    }
+    
     logout(){
         localStorage.clear();
+        this.router.navigateByUrl('shop')
     }
 }

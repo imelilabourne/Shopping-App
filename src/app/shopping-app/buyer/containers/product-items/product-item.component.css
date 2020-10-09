@@ -3,7 +3,21 @@ img{
     position: absolute;
     z-index: 0;
     max-height: 300px;
+
 }
+
+img:hover{
+    transform: scale(1.3);
+}
+
+.desc{
+    position: absolute;
+    background-color: rgb(216, 213, 177);
+    width: 260px;
+    z-index: 1;
+}
+
+
 .addtoCart{
     background-color:rgb(43, 43, 42);
     width: 100%;
@@ -48,8 +62,9 @@ strong > p{
 }
 
 .heart2{
-    color:black;
+    color: rgb(196, 194, 194);
 }
+
 
 .alert-success{
     height: 40px;
