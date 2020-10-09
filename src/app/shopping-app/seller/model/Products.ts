@@ -5,4 +5,6 @@ export interface Products {
     productprice : number;
     productquantity : number;
     status: string;
+    image:string;
+    imgSrc: string;
 }

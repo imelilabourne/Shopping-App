@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // to use ngModel
 import { DataTablesModule} from 'angular-datatables';
+import { HttpModule } from '@angular/http';
 
 
 import { AppRoutingModule, routingComponents } from './shopping-app-routing.module';
@@ -51,6 +52,10 @@ import { SortPipe } from './pipes/sort.pipe';
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
+<<<<<<< Updated upstream
+=======
+    HttpModule,
+>>>>>>> Stashed changes
     AppRoutingModule,    
     DataTablesModule
 

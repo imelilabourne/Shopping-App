@@ -1,12 +1,10 @@
-
-
-
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-2">Seller Dashboard</h1>
       <a class="btn btn-success pull-right"  role="button" data-toggle="modal" data-target="#myModal">Add New Product</a>
   </div>
 
+<<<<<<< Updated upstream
 
  - <table class="table table-bordered">
   <thead>
@@ -54,6 +52,8 @@
 </div>
 <!-- <app-productdetails [list] = "selectedProduct"></app-productdetails>- -->
 
+=======
+>>>>>>> Stashed changes
   <div class ="export">
     <button class="btn btn-info pull-right" (click)="exportexcel()">Export to Excel</button>
   </div>
@@ -74,7 +74,7 @@
     <tbody>
       <tr *ngFor="let list of upproducts">
         <td>{{list.id}}</td>
-        <td><img src="{{list.product_img}}" class="img-thumbnail" style="height:100px;" /></td>
+        <td><img src="{{list.Image}}" class="img-thumbnail" style="height:100px;" /></td>
         <td>{{list.ProductName}}</td>
         <td>{{list.ProductPrice | currency: 'PHP' }}</td>
         <td>{{list.ProductQuantity}}
@@ -114,7 +114,7 @@
                   </div>
                   <span *ngIf = "!ProductName.valid && ProductName.touched" class="error-block"> Please Input Product Name</span>
               </div>
-
+              <input type="hidden" formControlName="imgSrc" >
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -149,7 +149,6 @@
           </div>
           <span *ngIf = "!ProductQuantity.valid && ProductQuantity.touched" class="error-block"> Please Input Quantity</span>
       </div> 
-
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -161,13 +160,23 @@
         </div>
         <span *ngIf = "!Status.valid && Status.touched" class="error-block"> Please Input Status</span>
     </div> 
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+              <i class="fa fa-tag"></i>
+          </div>
+          </div>
+         <!--- <img [src]="url" height="200"> <br/>-->
+          <input type="file" class="form-control" name="image" (change)="onSelectFile($event)" formControlName="Image" >
+      </div>
+      <span *ngIf = "!Image.valid && Image.touched" class="error-block"> Please Select File</span>
+  </div> 
     <button [disabled]='!newProductForm.valid' type="submit" class="btn btn-success">Add Product</button>
           </form>
         </div><!-- Modal container-->
         </div><!-- Modal Body-->
-        <div class="modal-footer">
-         
-        
+        <div class="modal-footer">        
          <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
         </div>
       </div>

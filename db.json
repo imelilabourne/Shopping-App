@@ -1,20 +1,23 @@
 {
   "Product": [
     {
-      "id": 2,
-      "ProductName": "Nike Court Air Zoom2",
-      "ProductDeatils": "Colour Shown: Dark Atomic Teal/Beyond Pink/White",
-      "ProductPrice": 10000,
-      "ProductQuantity": 23,
-      "Status": "Limited Stocks"
+      "ProductName": "Bag",
+      "ProductDeatils": "Gucci",
+      "ProductPrice": 12345,
+      "ProductQuantity": 10,
+      "Status": "Limited",
+      "Image": "../../../../assets/product3.jpg",
+      "id": 6
     },
     {
-      "ProductName": "Iphone SE",
-      "ProductDeatils": "64GB",
-      "ProductPrice": 11199,
-      "ProductQuantity": 100,
-      "Status": "In Stock",
-      "id": 4
+      "ProductName": "dfdsf",
+      "ProductDeatils": "dsfdsf",
+      "ProductPrice": 534534,
+      "ProductQuantity": 345345,
+      "Status": "dfsdfds",
+      "Image": "C:\\fakepath\\download (2).jpg",
+      "imgSrc": null,
+      "id": 7
     }
   ]
 }
