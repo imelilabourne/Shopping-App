@@ -1,23 +1,22 @@
 {
   "Product": [
     {
-      "ProductName": "Bag",
-      "ProductDeatils": "Gucci",
-      "ProductPrice": 12345,
-      "ProductQuantity": 10,
-      "Status": "Limited",
-      "Image": "../../../../assets/product3.jpg",
-      "id": 6
+      "ProductName": "safsf",
+      "ProductDeatils": "fsafsa",
+      "ProductPrice": 214,
+      "ProductQuantity": 4,
+      "Status": "frgrgr",
+      "Image": "../../../../assets/shoes1.jpg",
+      "id": 1
     },
     {
-      "ProductName": "dfdsf",
-      "ProductDeatils": "dsfdsf",
-      "ProductPrice": 534534,
-      "ProductQuantity": 345345,
-      "Status": "dfsdfds",
-      "Image": "C:\\fakepath\\download (2).jpg",
-      "imgSrc": null,
-      "id": 7
+      "ProductName": "dsgsdg",
+      "ProductDeatils": "dsgdsgds",
+      "ProductPrice": 353,
+      "ProductQuantity": 325325,
+      "Status": "gdfsd",
+      "Image": "../../../../assets/product4.jpg",
+      "id": 2
     }
   ]
 }

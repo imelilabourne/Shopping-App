@@ -36,6 +36,7 @@ export class SellerDashboardComponent implements OnInit {
   products: Products[];
   upproducts: Products[] = [];
 
+  selectedfile: File = null;
 
   title = 'angular-app';
   fileName= 'ExcelSheet.xlsx';
@@ -46,7 +47,7 @@ export class SellerDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.displayProductList();
-    this. newProduct();
+    this.newProduct();
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -80,8 +81,7 @@ export class SellerDashboardComponent implements OnInit {
       ProductQuantity :[null,[Validators.required]],
       Status : [null,[Validators.required]],
      // Image : [null,[Validators.required]]
-     Image :[''],
-     imgSrc:this.url
+     Image :'',
     });
   }
 
@@ -135,16 +135,22 @@ export class SellerDashboardComponent implements OnInit {
   }
  
   onSelectFile(event) { // called each time file input changes
-    if (event.target.files && event.target.files[0]) {
+
+    console.log(event.target.files[0].name);
+
+    this.selectedfile = <File>event.target.files[0];
+
+    // console.log(this.selectedfile)
+    // if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
+      // console.log(event.target.files, event.target.files[0])
       reader.readAsDataURL(event.target.files[0]);
             reader.onload = () => {
               this.url = reader.result; 
-              //console.log(this.url)
             };
        
-      }
+      // }
     }
 //readUrl(event:any) {
  // if (event.target.files && event.target.files[0]) {
@@ -157,8 +163,9 @@ export class SellerDashboardComponent implements OnInit {
 //}
 
   onSubmit(){
-    console.log(this.newProductForm.value);
-    this.dataservice.createProduct(this.newProductForm.value)
+    this.dataservice.createProduct({
+      ...this.newProductForm.value, Image : `../../../../assets/${this.selectedfile.name}`
+    })
     .subscribe(
        response => alert('Inserted Successful'),    
       error=> console.error('Error',error)
@@ -166,7 +173,7 @@ export class SellerDashboardComponent implements OnInit {
     this.newProductForm.reset();
     this.router.navigate(['seller'])
     this.displayProductList();
-    //console.log("url",this.url);
+    // console.log("url",this.url);
     
     }
 

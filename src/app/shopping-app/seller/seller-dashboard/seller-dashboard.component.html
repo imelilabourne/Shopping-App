@@ -4,56 +4,6 @@
       <a class="btn btn-success pull-right"  role="button" data-toggle="modal" data-target="#myModal">Add New Product</a>
   </div>
 
-<<<<<<< Updated upstream
-
- - <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Image</th>
-      <th>Product Name</th>
-      <th>Product Price</th>
-      <th>Product Quantity</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let list of upproducts">
-        <td>{{list.id}}</td>
-        <td><img src="{{list.product_img}}" class="img-thumbnail" style="height:100px;" /></td>
-        <td>{{list.ProductName}}</td>
-        <td>{{list.ProductPrice | currency: 'PHP' }}</td>
-        <td>{{list.ProductQuantity}}
-          --<button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>--
-        <td>{{list.ProductQuantity}}
-         <button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>
-        <td>{{list.ProductQuantity}}
-         <button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>
-        <td>{{list.ProductQuantity}}
-         <button class="btn btn-success btn-xs plus" (click)="add(list.id)"><i class="glyphicon glyphicon-plus"></i></button>
-          <button class="btn btn-danger btn-xs minus" (click)="del(list.id)"><i class="glyphicon glyphicon-minus"></i></button>
-        </td>
-        <td>
-          <button class="btn btn-primary btn-sm" (click)="onEdit(list.id)">Update Product</button> &nbsp;
-          <button class="btn btn-danger btn-sm" (click)="onDelete(list.id)">Delete Product</button>
-        </td>
-      </tr>
-  </tbody>
- <tfoot>
-    <tr>
-      <td>Total Price</td>
-      <td colspan="6" class="text-right">{{total | currency: 'PHP' }}</td>
-    </tr>
-  </tfoot>
-</table>
-</div>
-<!-- <app-productdetails [list] = "selectedProduct"></app-productdetails>- -->
-
-=======
->>>>>>> Stashed changes
   <div class ="export">
     <button class="btn btn-info pull-right" (click)="exportexcel()">Export to Excel</button>
   </div>
