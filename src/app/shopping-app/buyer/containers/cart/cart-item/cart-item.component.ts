@@ -6,10 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: [`cart-item.component.css`],
     template:  `
 
-
-
-
-    <div>
+    <div class="container">
         <div class="row">
             <div class="col-md-1">
                 <p>{{ cartItem.id }}</p>

@@ -15,7 +15,9 @@ export class FilterPipe implements PipeTransform {
     }
 
     products.map(item => {
-        if(item[propName] === searchString){
+
+
+        if(item[propName].toLowerCase().match(searchString.toLowerCase())){
         resultArray.push(item);
         }
 

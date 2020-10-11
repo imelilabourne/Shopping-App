@@ -24,6 +24,7 @@ import { BuyerLoginComponent } from './containers/login/buyer-login.component';
 import { ExportFileComponent } from './seller/export-file/export-file.component'
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { BuyerFooter } from './buyer/components/footer/buyer-footer.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SortPipe } from './pipes/sort.pipe';
     BuyerLoginComponent,
     SellerDashboardComponent,
     UpdateProductComponent,
+    BuyerFooter,
     routingComponents,
     ExportFileComponent,
     FilterPipe,

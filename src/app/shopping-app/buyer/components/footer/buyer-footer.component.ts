@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+
+@Component({
+    selector:  'buyer-footer',
+    styleUrls: ['buyer-footer.component.css'],
+    template: `
+    <div class="bg-dark footer">
+   <div class="container">
+        <footer>
+            <div class="row p-5">
+                <div class="col-md-6">
+                    <h1>Shopoo</h1>
+                    <div>
+                    As Asia’s Online Fashion Destination, we create endless style possibilities through an ever-expanding range of products form the most coveted international and local brands, putting you at the centre of it all. With Shapoo, You Own Now.
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <p>CUSTOMER SERVICE</p>
+                    <p>FAQ</p>
+                    <p>Size Guide</p>
+                    <p>Exchanges & Returns</p>
+                </div>
+                <div class="col-md-2">
+                    <p>ABOUT US</p> 
+                    <p>Who We Are</p>
+                    <p>Contact Us</p>
+                      <div class="icons">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+    </div>
+    `
+})
+
+export class BuyerFooter{}

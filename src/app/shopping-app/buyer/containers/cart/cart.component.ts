@@ -9,39 +9,50 @@ import { MessengerService } from 'src/app/shopping-app/services/messenger.servic
     styleUrls: [`cart.component.css`],
     template: `
     <buyer-navbar></buyer-navbar>
-    <div class="container">
+    <div class="container main">
         <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty</div>
         <br>
-        <div *ngIf="cartItems.length > 0" class="cartpopup">
+        <div *ngIf="cartItems.length > 0" >
             <!-- <button class="btn btn-outline-primary">X</button> -->
-            <h5 class="list-group-item">My Cart</h5>
-                <div class="">
-                <!-- <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Product Total</th>
-                        <th scope="col">Act</th>
-                        </tr>
-                    </thead>
-                    <tbody> -->
-                    <tr *ngFor="let cart of cartItems">
-                    <p class="cart-list" >
-              
-                        <cart-item (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
-                    </p>
-                    </tr>
- 
-                    <!-- </tbody>
-                    </table> -->
-                    <p class="float-right">Grand Total: {{grandTotal | currency: 'Php '}} </p>
-                  
+            <h5 class="list-group-item list-group-item-success" >My Cart</h5>
+            <div class="cartpopup">
+                <div class="container">
+                    <div class="row" >
+                        <div class="col-md-1">
+                            <p class="head">ID</p>
+                        </div>
+                        
+                        <div class="col-md-3" >
+                            <p class="head" >Product Name</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p class="head">Quantity</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p class="head">Unit Price</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p class="head">Total</p>
+                        </div>
+
+                        <div class="col-md-1" >
+                            <p class="head">Action</p>
+                        </div>
+                    </div>
                 </div>
-                <br><br>
+                
+                <cart-item *ngFor="let cart of cartItems;" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
+            </div>
+                
+                <div class="float-right alert alert-success">Grand Total: {{grandTotal | currency: 'Php '}}</div>
+                
+                <br><br><br>
+                <div>
                 <button class="float-right" routerLink="/success">Place Order</button>
+                 </div>
         </div>
         
     </div>
@@ -86,12 +97,9 @@ export class CartComponent{
 
                 // if(user === 'user1'){
                 //     this.cartItems = item.customerName;
-                // }
-                
+                // }  
             })
-            
         });
-        // if(user === )
     }
 
     // loadCartItems(){

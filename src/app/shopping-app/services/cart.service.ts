@@ -20,17 +20,14 @@ export class CartService {
       for(let item of result){
         let bool: boolean = false;
 
-
-
-        console.log(item.product.id);
-        // for(let i in cartItem){
-        //   console.log(i);
-        //     if (cartItem[i].id === item.product.productId){
-        //         cartItem[i].qty++;
-        //         bool = true;
-        //         break;
-        //     }
-        // }
+        for(let i; i < cartItem.length; i++){
+          // console.log(i);
+            if (cartItem[i].productName === item.product.name){
+                cartItem[i].qty++;
+                bool = true;
+                break;
+            }
+        }
 
         if(!bool){
          cartItem.push(new CartItem(item.id, item.product, item.customerName,item.qty));
@@ -48,6 +45,11 @@ export class CartService {
   }
 
   removeProduct(product:Product):Observable<Product>{
-    return this.http.delete<Product>(cartUrl + "/" + product.id)
+    if(product.qty === 1){
+      return this.http.delete<Product>(cartUrl + "/" + product.id)
+    }
+    else{
+      
+    }
   }
 }

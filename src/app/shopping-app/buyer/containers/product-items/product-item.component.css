@@ -15,6 +15,7 @@ img:hover{
     background-color: rgb(216, 213, 177);
     width: 260px;
     z-index: 1;
+    text-align: start;
 }
 
 
@@ -79,4 +80,14 @@ strong > p{
 
 .alert-success > p{
     padding-left: 10px;
+}
+
+.counterBtn > button{
+    background-color: rgb(112, 112, 104);
+    border: none;
+    width: 50px;
+}
+
+.counterBtn{
+    width: 200x;
 }

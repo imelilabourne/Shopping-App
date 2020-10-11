@@ -7,6 +7,12 @@ img{
    height: 350px;
    max-width: 1100px;
    margin: auto;
+   top: 70px;
+}
+
+.carousel-indicators{
+    top: 390px;
+    z-index: 1;
 }
 
 @media screen and (max-width: 700px) {

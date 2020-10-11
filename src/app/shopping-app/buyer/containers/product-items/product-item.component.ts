@@ -20,16 +20,19 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
                 </div></div>
             
         
-                <button (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+                <button [disabled]="productItem.stocks === 0" (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
                 <div class="desc" *ngIf="photoIsClicked === true" >
+                    <p>Description: </p>
                     <p>{{ productItem.description }}</p>
                 </div>
                 <div>
-                    <div>
+                    <div *ngIf="productItem.stocks !== 0" class="counterBtn">
                         <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
                         {{ value }}
                         <button [disabled]="value === max" type="button" (click)="increment()">+</button>
                     </div>
+
+                    <p *ngIf="productItem.stocks === 0">sold out</p>
                 </div>
 
                 <strong><p>{{ productItem.name }}
@@ -38,10 +41,11 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
                 </p>
                 </strong>
                 <p>{{ productItem.price | currency: 'Php '}}</p>
+
+                
     </div>  
 `
 })
-
 export class ProductItemComponent{
     @Input() productItem: Product
     @Input() addedtoWishlist: boolean;

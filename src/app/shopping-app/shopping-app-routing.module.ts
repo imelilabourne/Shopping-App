@@ -4,6 +4,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { CartComponent } from './buyer/containers/cart/cart.component';
 import { ConfirmationPageComponent } from './buyer/containers/confirmation-page/confirmation-page.component';
 import { ContactInformationComponent } from './buyer/containers/contact-information/contact-information.component';
+import { WishlistComponent } from './buyer/containers/wishlist/wishlist.component';
 import { BuyerLoginComponent } from './containers/login/buyer-login.component';
 import { SellerComponent } from './seller/seller.component';
 import { UpdateProductComponent } from './seller/update-product/update-product.component'
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'shop', pathMatch: 'full'},
   {path: 'shop', component: BuyerComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'wishlist', component: WishlistComponent},
   {path: 'login', component: BuyerLoginComponent},
   {path: 'info', component: ContactInformationComponent},
   {path: 'success', component: ConfirmationPageComponent},
@@ -35,5 +37,6 @@ export const routingComponents = [
   SellerComponent,
   UpdateProductComponent,
   ContactInformationComponent,
-  ConfirmationPageComponent
+  ConfirmationPageComponent,
+  WishlistComponent
 ]
