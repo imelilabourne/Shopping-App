@@ -36,6 +36,9 @@ export class SellerDashboardComponent implements OnInit {
   upproducts: Product[] = [];
 
   selectedfile: File = null;
+ 
+  user = localStorage.getItem('user');
+
 
   title = 'angular-app';
   fileName= 'ExcelSheet.xlsx';
@@ -191,6 +194,11 @@ export class SellerDashboardComponent implements OnInit {
      
       this.router.navigate(['/updateproduct',prodId])
     }
+    logout(){
+      localStorage.clear();
+      this.user = null;
+      this.router.navigateByUrl('shop')
+  }
 }// End of Class
 
   

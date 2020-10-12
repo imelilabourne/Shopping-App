@@ -22,6 +22,8 @@ import { UsersService } from '../../services/users.service';
 })
 
 export class BuyerLoginComponent{
+
+   
     constructor(private fb: FormBuilder, 
         private router: Router,
         private userService: UsersService){}
@@ -35,8 +37,11 @@ export class BuyerLoginComponent{
         this.userService.getUsers()
             .subscribe((users) =>{
                 users.map(item => {
-                    if(this.form.get('user').value === item.username && this.form.get('pass').value === item.password){
+                    if(this.form.get('user').value === item.username && this.form.get('pass').value === item.password && item.role === "buyer"){
                         this.router.navigateByUrl('/shop');
+                        localStorage.setItem('user', this.form.get('user').value);
+                    }else if(this.form.get('user').value === item.username && this.form.get('pass').value === item.password  && item.role === "seller"){
+                        this.router.navigateByUrl('/seller');
                         localStorage.setItem('user', this.form.get('user').value);
                     }
                 })
