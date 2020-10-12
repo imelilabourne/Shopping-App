@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { validateConfig } from '@angular/router/src/config';
 import { Product } from '../model/products.interface';
-import { product } from '../seller/model/product';
+
 
 @Pipe({
   name: 'filter'

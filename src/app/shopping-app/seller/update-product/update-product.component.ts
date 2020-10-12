@@ -6,13 +6,12 @@ import {Observable} from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 //services
-import {AuthService} from '../../services/auth.service'
+import {ProductService} from '../../services/product.service'
+import { productsUrl } from '../../config/api';
 
 //interface
-import {Products} from '../model/Products'
-import {product} from '../model/product'
-import { HttpClient } from '@angular/common/http';
-///import {product} from '../model/product'
+import {Product} from '../../model/products.interface'
+
 
 @Component({
   selector: 'app-update-product',
@@ -25,19 +24,23 @@ export class UpdateProductComponent implements OnInit {
   data:object={};
   product=[];
   productObj={
-    "ProductName": "",
-    "ProductDeatils":"",
-    "ProductPrice":0,
-    "ProductQuantity":0,
-    "Status":""
+   
+    "name": "",
+    "description":"",
+    "price":0,
+    "stocks":0,
+    
   }
 
   private headers = new Headers ({'Content-Type': 'application/json'});
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http ,private fb: FormBuilder) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute, 
+              private dataservice: ProductService,
+              private http: Http ,
+              private fb: FormBuilder) { }    
 
   onUpdate(product){
-   
-    const url = `${"http://localhost:9999/product"}/${this.id}`;
+    const url = `${productsUrl}/${this.id}`;
     this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
     .then(()=>{
     this.router.navigate(['/seller'])
@@ -48,7 +51,7 @@ export class UpdateProductComponent implements OnInit {
     this.route.params.subscribe(params =>{
       this.id = +params['id'];
     });
-    this.http.get("http://localhost:9999/product").subscribe(
+    this.http.get(productsUrl).subscribe(
       (res: Response)=>{
         this.product= res.json();
         for (var i = 0; i< this.product.length;i++){
