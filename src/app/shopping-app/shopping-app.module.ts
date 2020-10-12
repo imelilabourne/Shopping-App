@@ -17,11 +17,9 @@ import { BuyerHeaderComponent } from './buyer/components/header/buyer-header.com
 import { ProductItemComponent } from './buyer/containers/product-items/product-item.component';
 import { CartComponent } from './buyer/containers/cart/cart.component';
 import { CartItemComponent } from './buyer/containers/cart/cart-item/cart-item.component';
-import { SellerDashboardComponent} from './seller/seller-dashboard/seller-dashboard.component'
-import {AuthService} from './services/auth.service';
-import { UpdateProductComponent } from './seller/update-product/update-product.component'
+import { SellerDashboardComponent} from './seller/seller-dashboard/seller-dashboard.component';
+import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { BuyerLoginComponent } from './containers/login/buyer-login.component';
-import { ExportFileComponent } from './seller/export-file/export-file.component'
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { BuyerFooter } from './buyer/components/footer/buyer-footer.component';
@@ -45,7 +43,6 @@ import { AuthGuard } from './auth.guard';
     UpdateProductComponent,
     BuyerFooter,
     routingComponents,
-    ExportFileComponent,
     FilterPipe,
     SortPipe
   ],
@@ -61,7 +58,11 @@ import { AuthGuard } from './auth.guard';
     DataTablesModule
 
   ],
+<<<<<<< Updated upstream
   providers: [AuthGuard, AuthService],
+=======
+  providers: [],
+>>>>>>> Stashed changes
   exports:[
     BaseComponent
   ]

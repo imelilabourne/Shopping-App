@@ -5,11 +5,12 @@
   </div>
 
   <div class ="export">
-    <button class="btn btn-info pull-right" (click)="exportexcel()">Export to Excel</button>
+    <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
   </div>
 <div class="container">
  
-  <table id="dataTable" class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"  > 
+  <table id="dataTable" class="table table-bordered table-sm row-border hover"  > 
+    
     
     <thead>
       <tr>
@@ -24,10 +25,10 @@
     <tbody>
       <tr *ngFor="let list of upproducts">
         <td>{{list.id}}</td>
-        <td><img src="{{list.Image}}" class="img-thumbnail" style="height:100px;" /></td>
-        <td>{{list.ProductName}}</td>
-        <td>{{list.ProductPrice | currency: 'PHP' }}</td>
-        <td>{{list.ProductQuantity}}
+        <td><img src="{{list.imageUrl}}" class="img-thumbnail" style="height:100px;" /></td>
+        <td>{{list.name}}</td>
+        <td>{{list.price | currency: 'PHP' }}</td>
+        <td>{{list.stocks}}
         </td>
         <td>
           <button class="btn btn-primary btn-sm" [routerLink]="['/updateproduct',list.id]">Update Product</button> &nbsp;
@@ -60,11 +61,11 @@
                         <i class="fa fa-cart-plus"></i>
                     </div>
                     </div>
-                      <input type="text" class="form-control" name="pname" placeholder="Product Name" formControlName="ProductName">
+                      <input type="text" class="form-control" name="pname" placeholder="Product Name" formControlName="name">
                   </div>
-                  <span *ngIf = "!ProductName.valid && ProductName.touched" class="error-block"> Please Input Product Name</span>
+                  <span *ngIf = "!name.valid && name.touched" class="error-block"> Please Input Product Name</span>
               </div>
-              <input type="hidden" formControlName="imgSrc" >
+             
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -72,9 +73,9 @@
                   <i class="fa fa-info-circle"></i>
               </div>
               </div>
-              <input type="text" class="form-control" name="pdetails" placeholder="Product Details" formControlName="ProductDeatils" >
+              <input type="text" class="form-control" name="pdetails" placeholder="Product Details" formControlName="description" >
           </div>
-          <span *ngIf = "!ProductDeatils.valid && ProductDeatils.touched" class="error-block"> Please Input Product Details</span>
+          <span *ngIf = "!description.valid && description.touched" class="error-block"> Please Input Product Details</span>
     </div> 
     <div class="form-group">
       <div class="input-group">
@@ -83,9 +84,9 @@
               <i class="fa fa-money"></i>
           </div>
           </div>
-          <input type="number" class="form-control" name="pprice" placeholder="Product Price" formControlName="ProductPrice" >
+          <input type="number" class="form-control" name="pprice" placeholder="Product Price" formControlName="price" >
       </div>
-      <span *ngIf = "!ProductPrice.valid && ProductPrice.touched" class="error-block"> Please Input Price</span>
+      <span *ngIf = "!price.valid && price.touched" class="error-block"> Please Input Price</span>
   </div> 
 
         <div class="form-group">
@@ -95,21 +96,11 @@
                   <i class="fa fa-cubes"></i>
               </div>
               </div>
-              <input type="number" class="form-control" name="pquantity" placeholder="Product Quantity" formControlName="ProductQuantity" >
+              <input type="number" class="form-control" name="pquantity" placeholder="Product Quantity" formControlName="stocks" >
           </div>
-          <span *ngIf = "!ProductQuantity.valid && ProductQuantity.touched" class="error-block"> Please Input Quantity</span>
+          <span *ngIf = "!stocks.valid && stocks.touched" class="error-block"> Please Input Quantity</span>
       </div> 
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fa fa-tag"></i>
-            </div>
-            </div>
-            <input type="text" class="form-control" name="pstatus" placeholder="Product Status" formControlName="Status" >
-        </div>
-        <span *ngIf = "!Status.valid && Status.touched" class="error-block"> Please Input Status</span>
-    </div> 
+     
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-prepend">
@@ -118,9 +109,9 @@
           </div>
           </div>
          <!--- <img [src]="url" height="200"> <br/>-->
-          <input type="file" class="form-control" name="image" (change)="onSelectFile($event)" formControlName="Image" >
+          <input type="file" class="form-control" name="image" (change)="onSelectFile($event)" formControlName="imageUrl" >
       </div>
-      <span *ngIf = "!Image.valid && Image.touched" class="error-block"> Please Select File</span>
+      <span *ngIf = "!imageUrl.valid && imageUrl.touched" class="error-block"> Please Select File</span>
   </div> 
     <button [disabled]='!newProductForm.valid' type="submit" class="btn btn-success">Add Product</button>
           </form>

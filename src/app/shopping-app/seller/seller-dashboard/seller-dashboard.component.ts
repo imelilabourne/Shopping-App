@@ -9,12 +9,11 @@ declare var $:any;
 //declare const $;
 
 //services
-import {AuthService} from '../../services/auth.service'
 
+import {ProductService} from '../../services/product.service';
 //interface
-import {Products} from '../model/Products'
+import {Product} from '../../model/products.interface'
 import { DomSanitizer } from '@angular/platform-browser';
-//import {product} from '../model/product'
 //import { HttpClient } from '@angular/common/http';
 
 
@@ -33,8 +32,8 @@ export class SellerDashboardComponent implements OnInit {
   
 
   newProductForm:FormGroup;
-  products: Products[];
-  upproducts: Products[] = [];
+  products: Product[];
+  upproducts: Product[] = [];
 
   selectedfile: File = null;
 
@@ -42,21 +41,27 @@ export class SellerDashboardComponent implements OnInit {
   fileName= 'ExcelSheet.xlsx';
   url: string | ArrayBuffer;
   selectedFile : File = null;
-  constructor(private router: Router,private route: ActivatedRoute, private dataservice: AuthService,private http: Http,private fb: FormBuilder,private _sanitizer: DomSanitizer) { }
+  
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private dataservice: ProductService,
+              private http: Http,
+              private fb: FormBuilder,
+              private _sanitizer: DomSanitizer) { }
    
 
   ngOnInit() {
     this.displayProductList();
     this.newProduct();
 
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-       pageLength: 5,
-       lengthMenu : [5, 10, 25],
-       processing: true
-    };
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.DataTable(); 
+   // this.dtOptions = {
+   //   pagingType: 'full_numbers',
+    //   pageLength: 5,
+   //    lengthMenu : [5, 10, 25],
+   //    processing: true
+   // };
+   // this.dataTable = $(this.table.nativeElement);
+    //this.dataTable.DataTable(); 
 
     $(() => {
       $('.dropify').dropify();
@@ -72,58 +77,37 @@ export class SellerDashboardComponent implements OnInit {
  //   });
 
   }
-
+ 
   newProduct(){
     this.newProductForm = this.fb.group({
-      ProductName : [null,[Validators.required]],
-      ProductDeatils :[null,[Validators.required]],
-      ProductPrice : [null,[Validators.required]],
-      ProductQuantity :[null,[Validators.required]],
-      Status : [null,[Validators.required]],
-     // Image : [null,[Validators.required]]
-     Image :'',
+      name : [null,[Validators.required]],
+      description :[null,[Validators.required]],
+      price : [null,[Validators.required]],
+      stocks :[null,[Validators.required]],
+      imageUrl :[null,[Validators.required]]
     });
   }
 
-  exportexcel(): void{
-    /* pass here the table id */
-    let element = document.getElementById('dataTable');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
- 
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
- 
-    /* save to file */  
-    XLSX.writeFile(wb, this.fileName);
- 
-  }
 
-  get ProductName(){
-    return this.newProductForm.get('ProductName') as FormControl;
+  get name(){
+    return this.newProductForm.get('name') as FormControl;
   }
-  get ProductDeatils(){
-    return this.newProductForm.get('ProductDeatils') as FormControl;
+  get description(){
+    return this.newProductForm.get('description') as FormControl;
   }
-  get ProductPrice(){
-    return this.newProductForm.get('ProductPrice') as FormControl;
+  get price(){
+    return this.newProductForm.get('price') as FormControl;
   }
-  get ProductQuantity(){
-    return this.newProductForm.get('ProductQuantity') as FormControl;
+  get stocks(){
+    return this.newProductForm.get('stocks') as FormControl;
   }
-  get Status(){
-    return this.newProductForm.get('Status') as FormControl;
+  get imageUrl(){
+    return this.newProductForm.get('imageUrl') as FormControl;
   }
-  get Image(){
-    return this.newProductForm.get('Image') as FormControl;
-  }
-  get imgSrc(){
-    return this.newProductForm.get('imgSrc') as FormControl;
-
-  }
+  
 
   displayProductList() {
-    this.dataservice. getProductlist().subscribe(data =>
+    this.dataservice.getProductlist().subscribe(data =>
       {
         // as the Web Api doesn't sort the list of todos, we do here in the frontend
         this.upproducts = data.sort((a,b)=> {
@@ -133,6 +117,8 @@ export class SellerDashboardComponent implements OnInit {
         console.log('display productList', this.upproducts);
       });
   }
+
+  
  
   onSelectFile(event) { // called each time file input changes
 
@@ -164,7 +150,9 @@ export class SellerDashboardComponent implements OnInit {
 
   onSubmit(){
     this.dataservice.createProduct({
-      ...this.newProductForm.value, Image : `../../../../assets/${this.selectedfile.name}`
+      ...this.newProductForm.value, 
+      //productId:`${this.id}`,
+      imageUrl : `../../../../assets/${this.selectedfile.name}`
     })
     .subscribe(
        response => alert('Inserted Successful'),    
@@ -177,6 +165,21 @@ export class SellerDashboardComponent implements OnInit {
     
     }
 
+    onExportExcel(): void{
+      /* pass here the table id */
+      let element = document.getElementById('dataTable');
+      const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+      //delete (ws['5'])
+      ws['!cols'] = [];
+      ws['!cols'][5] = { hidden: true };
+      /* generate workbook and add the worksheet */
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+   
+      /* save to file */  
+      XLSX.writeFile(wb, this.fileName);
+    }
+  
 
     onDelete(id: number){
       console.log('delete', id);    
