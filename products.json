@@ -153,6 +153,20 @@
       "customerName": "user1",
       "qty": 1,
       "id": 8
+    },
+    {
+      "product": {
+        "id": 2,
+        "productId": 2,
+        "name": "IYSL Beauty",
+        "description": "Some stores may convert best with only bullet point descriptions. Others may need a long paragraph, or a mix of bullet points and a paragraph. And some websites may convert best with no copy at all. You can use A/B split tests tools like Google Optimize to determine what format works best for you.",
+        "price": 2993,
+        "imageUrl": "../../../assets/product5.jpg",
+        "stocks": 10
+      },
+      "customerName": "user3",
+      "qty": 1,
+      "id": 9
     }
   ],
   "wishlist": [
@@ -203,5 +217,49 @@
       "id": 4
     }
   ],
-  "transac": []
+  "transac": [
+    {
+      "cartItems": [
+        {
+          "id": 2,
+          "productName": "IYSL Beauty",
+          "qty": 1,
+          "price": 2993,
+          "customerName": "user2"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "cartItems": [
+        {
+          "id": 2,
+          "productName": "IYSL Beauty",
+          "qty": 1,
+          "price": 2993,
+          "customerName": "user2"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "cartItems": [
+        {
+          "id": 1,
+          "productName": "IYSL Beauty",
+          "qty": 1,
+          "price": 2993,
+          "customerName": "user1"
+        },
+        {
+          "id": 8,
+          "productName": "Mac",
+          "qty": 1,
+          "price": 6200,
+          "customerName": "user1"
+        }
+      ],
+      "id": 4
+    }
+  ]
 }
