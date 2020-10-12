@@ -58,11 +58,8 @@ import { AuthGuard } from './auth.guard';
     DataTablesModule
 
   ],
-<<<<<<< Updated upstream
-  providers: [AuthGuard, AuthService],
-=======
-  providers: [],
->>>>>>> Stashed changes
+  providers: [AuthGuard],
+ 
   exports:[
     BaseComponent
   ]

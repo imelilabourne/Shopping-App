@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { transacUrl } from "../config/api";
 import { Product } from "../model/products.interface";
 import { User } from "../model/user.interface";
-import { Products } from "../seller/model/Products";
+//import { Products } from "../seller/model/Products";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +14,7 @@ export class TransactService{
 
     constructor(private http: HttpClient){}
 
-    postTransact(cartItems: Products[]):Observable<Product[]>{
+    postTransact(cartItems: Product[]):Observable<Product[]>{
         return this.http.post<Product[]>(transacUrl,{cartItems});
     }
 
