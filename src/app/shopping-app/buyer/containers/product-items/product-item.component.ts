@@ -13,36 +13,44 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
     styleUrls: [`product-item.component.css`],
     template: `
     <div class="item-wrapper">
-                <div (click)="photoIsClicked = !photoIsClicked" class="img-wrapper"><img src="{{ productItem?.imageUrl }}">
-               
-                <div class="alert-success"  *ngIf="itemAdded">
-                    <p>Item added to cart <span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
-                </div></div>
-            
+        <div (click)="photoIsClicked = !photoIsClicked" class="img-wrapper"><img src="{{ productItem?.imageUrl }}">
         
-                <button [disabled]="productItem.stocks === 0" (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
-                <div class="desc" *ngIf="photoIsClicked === true" >
-                    <p>Description: </p>
-                    <p>{{ productItem.description }}</p>
-                </div>
-                <div>
-                    <div *ngIf="productItem.stocks !== 0" class="counterBtn">
+            <div class="alert-success"  *ngIf="itemAdded">
+                <p>Item added to cart <span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row add-row" *ngIf="productItem.stocks !== 0">
+                <div  class="counterBtn">
                         <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
                         {{ value }}
                         <button [disabled]="value === max" type="button" (click)="increment()">+</button>
-                    </div>
-
-                    <p *ngIf="productItem.stocks === 0">sold out</p>
                 </div>
 
-                <strong><p>{{ productItem.name }}
+                <button [disabled]="productItem.stocks === 0" (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div (click)="photoIsClicked = !photoIsClicked" class="descPopup">Description <i *ngIf="photoIsClicked" class="fa fa-minus"></i><i *ngIf="!photoIsClicked" class="fa fa-plus"></i></div>
+       
+        <div>
+            
+            <p class="sold-out" *ngIf="productItem.stocks === 0">sold out</p>
+        </div>
+
+        <div class="desc" *ngIf="photoIsClicked === true" >
+            <p>{{ productItem.description }}</p>
+        </div>
+    
+        <strong>
+            <p>{{ productItem.name }}
                 <i *ngIf="addedtoWishlist" class="fa fa-heart heart1 float-right" (click)="handleRemovefromWistlist()"></i>
                 <i *ngIf="!addedtoWishlist" class="fa fa-heart heart2 float-right" (click)="handleAddtoWishlist()"></i>
-                </p>
-                </strong>
-                <p>{{ productItem.price | currency: 'Php '}}</p>
-
-                
+            </p>
+        </strong>
+        <p>{{ productItem.price | currency: 'Php '}}</p>
     </div>  
 `
 })
@@ -100,8 +108,6 @@ export class ProductItemComponent{
     }
 
     handleAddtoCart(){
-        // this.messengerService.sendMsg(this.productItem);
-  
         let userLocal = localStorage.getItem('user'); 
             this.userService.getUsers()
             .subscribe(users => users.forEach(user => {
@@ -113,15 +119,15 @@ export class ProductItemComponent{
                         this.itemAdded =true;
                     })
                 }
-                //   else if( userLocal !== user.username){
-                //     this.router.navigateByUrl("info");
-                // }
+                  else if( userLocal === null){
+                    this.router.navigateByUrl("info");
+                }
             }))
       
     }
 
     handleAddtoWishlist(){
-        this.wishlistService.addToWishlist(this.productItem.id)
+        this.wishlistService.addToWishlist(this.productItem)
             .subscribe(()=>{
                 this.addedtoWishlist = true;  
                 console.log(this.productItem);

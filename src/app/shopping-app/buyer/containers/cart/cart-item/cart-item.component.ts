@@ -8,10 +8,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
     <div class="container">
         <div class="row">
-            <div class="col-md-1">
-                <p>{{ cartItem.id }}</p>
-            </div>
-            
             <div class="col-md-3" >
                 <p class="">{{ cartItem.productName }}</p>
             </div>
@@ -20,7 +16,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
                 <p>{{ cartItem.qty }}</p>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <p>{{ cartItem.price | currency: 'Php '}}</p>
             </div>
 

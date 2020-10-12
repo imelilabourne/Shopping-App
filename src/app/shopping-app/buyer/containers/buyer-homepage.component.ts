@@ -15,25 +15,21 @@ import { WishlistService } from '../../services/wishlist.service';
                         <input class="" type="text" placeholder="Search" [(ngModel)] = "searchProduct" aria-label="Search">
                     </div>
                     <div>
-                        <button class="searchBtn mr-sm-2 " type="button" (click)="search()" ><i class="fa fa-search"></i></button>
+                        <button class="searchBtn mr-sm-2 " type="button" (click)="clear()" ><i class="fa fa-search"></i></button>
                     </div>
                     <div>
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown">
-                                <!-- <a class="nav-link dropdown-toggle sort" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</a> -->
                                 <select [(ngModel)] = "SortbyParam" class="select">
                                     <option disabled value="name" >Sort by</option>
                                     <option value="name" >Name</option>
                                     <option value="price" >Price</option>
-                                    <!-- <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a> -->
-                                </select>
-                                
+                                </select>     
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <button (click)="sortDesc()" class="sortBtn" type="button" (click)="search()"><i class="fa fa-sort"></i></button>
+                        <button (click)="sortDesc()" class="sortBtn" type="button" ><i class="fa fa-sort"></i></button>
                     </div>
             </div>
         </div>
@@ -60,10 +56,6 @@ export class BuyerHomepage{
     constructor(
         private productService: ProductService, 
         private wishlistService: WishlistService){
-    }
-
-    search(){
-    
     }
 
     sortDesc(){

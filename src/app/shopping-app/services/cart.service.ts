@@ -19,9 +19,7 @@ export class CartService {
       let cartItem: CartItem[] = [];
       for(let item of result){
         let bool: boolean = false;
-
         for(let i; i < cartItem.length; i++){
-          // console.log(i);
             if (cartItem[i].productName === item.product.name){
                 cartItem[i].qty++;
                 bool = true;

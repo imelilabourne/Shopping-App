@@ -8,10 +8,25 @@ import { User } from '../model/user.interface';
     providedIn: 'root'
 })
 
+
 export class UsersService{
+
+    private loggedInStatus = false;
     constructor(private http: HttpClient){}
 
+    setLoggegIn(value: boolean){
+        this.loggedInStatus = value;
+    }
+
+    get isLoggedIn(){
+        return this.loggedInStatus;
+    }
+    
     getUsers():Observable<User[]>{
         return this.http.get<User[]>(usersUrl);
+    }
+
+    postUser(user: User):Observable<User>{
+        return this.http.post<User>(usersUrl, user);
     }
 }

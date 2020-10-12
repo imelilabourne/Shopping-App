@@ -1,13 +1,8 @@
-/* img{
-    max-width: 260px;
-} */
-
 .product{
     position: relative;
     justify-content: center;
     display: grid;
 }
-
 
 p{
     text-align: center;
@@ -46,7 +41,6 @@ p{
 .clear{
     margin-top: 22px
 }
-
 
 select{
     height: 40px;

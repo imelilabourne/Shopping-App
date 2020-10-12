@@ -25,6 +25,8 @@ import { ExportFileComponent } from './seller/export-file/export-file.component'
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { BuyerFooter } from './buyer/components/footer/buyer-footer.component';
+import { AuthGuard } from './auth.guard';
+
 
 
 @NgModule({
@@ -59,9 +61,7 @@ import { BuyerFooter } from './buyer/components/footer/buyer-footer.component';
     DataTablesModule
 
   ],
-  providers: [
-    AuthService
-  ],
+  providers: [AuthGuard, AuthService],
   exports:[
     BaseComponent
   ]

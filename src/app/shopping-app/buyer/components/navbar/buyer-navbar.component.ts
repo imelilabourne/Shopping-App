@@ -16,19 +16,19 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fa fa-home"></i> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-home"></i> <span class="hidden"> Home</span><span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/cart"> <i class="fa fa-shopping-cart"></i></a>
-            </li>  <li class="nav-item">
-                <a class="nav-link" routerLink="/wishlist"> <i class="fa fa-heart"></i></a>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/cart"> <i class="fa fa-shopping-cart"> </i><span class="hidden"> Cart</span></a>
+            </li>  <li class="nav-item active">
+                <a class="nav-link" routerLink="/wishlist"> <i class="fa fa-heart"> </i> <span class="hidden"> Wishlist</span></a>
             </li>
             
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
             
-            <button *ngIf="user === null" class="btn btn-info" routerLink="/login" (click) = "login()">Login</button>
+            <button *ngIf="user === null" class="btn btn-info" routerLink="/login">Login</button>
             <button *ngIf="user !== null" class="btn btn-info" (click) = "logout()">Logout</button>
             </form>
         </div>
@@ -39,18 +39,12 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
 
 export class BuyerNavbarComponent { 
 
-    constructor(private router: Router, private productService: ProductService){}
+    constructor(private router: Router){}
     user = localStorage.getItem('user');
-    login(){
-        
-    }
 
-    ngOnInit(){
-
-    }
-    
     logout(){
         localStorage.clear();
+        this.user = null;
         this.router.navigateByUrl('shop')
     }
 }

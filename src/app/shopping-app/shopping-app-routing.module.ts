@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { BuyerComponent } from './buyer/buyer.component';
 import { CartComponent } from './buyer/containers/cart/cart.component';
 import { ConfirmationPageComponent } from './buyer/containers/confirmation-page/confirmation-page.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'wishlist', component: WishlistComponent},
   {path: 'login', component: BuyerLoginComponent},
   {path: 'info', component: ContactInformationComponent},
-  {path: 'success', component: ConfirmationPageComponent},
+  {path: 'success', component: ConfirmationPageComponent, canActivate: [AuthGuard]},
   {path: 'seller', component: SellerComponent},
   {path:'updateproduct/:id',component: UpdateProductComponent},
   {path: '**', component: BuyerComponent},
