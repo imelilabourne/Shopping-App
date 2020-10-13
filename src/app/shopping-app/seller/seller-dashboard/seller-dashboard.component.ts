@@ -44,8 +44,8 @@ export class SellerDashboardComponent implements OnInit {
   fileName= 'ExcelSheet.xlsx';
   url: string | ArrayBuffer;
   selectedFile : File = null;
-  Seller1String:string="Lizada";
-  Seller2String:string="Shippo";
+  Seller1String:string="Apple";
+  Seller2String:string="5E Cakes";
   isSeller1 : boolean = false;
   isSeller2 : boolean = false;
 

@@ -89,7 +89,7 @@ export class ProductItemComponent{
 
     step: number = 1
     min: number = 1
-    max: number =10
+    max: number;
 
 
     increment(){

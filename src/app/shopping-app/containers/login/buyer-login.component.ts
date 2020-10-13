@@ -14,7 +14,7 @@ import { UsersService } from '../../services/users.service';
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" formControlName="user">
                 <input type="password" class="form-control" placeholder="Password" formControlName="pass">
-                <button class="btn btn-block" type="submit">Login</button> 
+                <button class="btn btn-block " type="submit">Login</button> 
                 <a routerLink="../shop">go back to homepage</a>
             </div>
         </form>

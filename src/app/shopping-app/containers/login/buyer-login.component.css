@@ -11,12 +11,28 @@ input{
     margin-bottom: 20px;
 }
 
-.btn{
+/* .btn{
     background-color: rgb(204, 247, 165);
 }
 
 .btn:hover{
     background-color: rgb(105, 189, 27);
+} */
+
+button{
+    margin-bottom: 20px;
+}
+
+.loginBtn, .btn{
+    background-color: rgb(75, 148, 124);
+    border: none;
+    color: white;
+    border-radius: 2px;
+}
+
+a{
+    font-size: smaller;
+    margin-top: 10px;
 }
 
 .main{

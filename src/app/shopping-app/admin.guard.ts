@@ -6,14 +6,14 @@ import { AuthService } from './services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor( private auth:AuthService, private router:Router){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         
-        if(localStorage.getItem('user') !== null){
+        if(localStorage.getItem('user') === 'admin1' || localStorage.getItem('user') === 'admin2'){
             return true;
         }
         this.router.navigateByUrl('login')

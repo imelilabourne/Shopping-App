@@ -20,3 +20,18 @@ nav{
         display: none;
     }
 }
+
+
+.loginBtn, .btn{
+    background-color: rgb(75, 148, 124);
+    border: none;
+    color: white;
+    border-radius: 2px;
+}
+
+.username{
+    font-size: 20px;
+    margin-top: 6px;
+    margin-right: 6px;
+    color: white;
+}

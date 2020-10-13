@@ -10,3 +10,50 @@
 .btn{
     margin-left: 10px;
 }
+
+
+.seller-header{
+    margin-top: 90px;
+    /* height: 200px; */
+    border: 1px solid rgb(212, 206, 206);
+    display: flex;
+    align-items: center;
+    box-shadow: rgb(212, 206, 206) 4px 2px;
+    margin-bottom: 20px;
+}
+
+.seller-header > h1{
+    margin: 10px;
+}
+
+.action{
+    position: absolute;
+    right: 9em;
+}
+
+
+
+.search{
+    position: absolute;
+    right: 140px;
+    /* top: 450px; */
+}
+.searchBtn, .searchInput > input{
+    border: 1px rgb(101, 173, 170) solid;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(127, 183, 201);
+}
+
+.searchBtn, .sortBtn{
+    background-color: rgb(101, 173, 170);
+    color: white;
+}
+
+.tab{
+    margin-top: 90px;
+}
+
+.act{
+    width: 180px;
+}
