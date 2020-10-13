@@ -11,7 +11,7 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
     template: `
     <buyer-navbar></buyer-navbar>
     <div class="container main">
-    <div *ngIf="temp.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty</div>
+    <div *ngIf="temp.length === 0" style="z-index:0" class="alert alert-danger">Your wishlist is empty, <a routerLink="shop">show now</a></div>
     <div *ngIf="temp.length !== 0" style="z-index:0">
             <!-- <button class="btn btn-outline-primary">X</button> -->
             <h5 class="list-group-item list-group-item-success" >My Wishlist</h5>
@@ -88,21 +88,38 @@ export class WishlistComponent{
 
     temp: Product[] = [];
     ngOnInit(){
+                    let user;
+                    this.wishlistService.getlist()
+                    .subscribe(res =>
+                    {   
+                        for(let item in res){
+                            if(res[item].user === localStorage.getItem('user')){
+                                console.log(res[item].user);
+                                user = res[item].user;
+                            }
+                            else if("guest" === localStorage.getItem('user')){
+                                user = "guest"
+                            }
+                        }
+
+                    });
+
                     this.productService.getProducts()
                     .subscribe(data => {
                         
                         this.wishlistService.getWishlist()
                         .subscribe(list => {
-                          
+                        
                             data.filter(product => {
                                 for(let i in list){
-                                if(product.id === list[i] ){
-                                    this.temp.push(product);
-                                }
+                                    if(product.id === list[i] && user){
+                                        this.temp.push(product);
+                                    }
                             }
                             })                     
                         });
-        })
+                    })
+    
 
     }
 

@@ -13,7 +13,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     template: `
     <buyer-navbar></buyer-navbar>
     <div class="container main">
-        <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty</div>
+        <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty, <a routerLink="shop">show now</a></div>
         <br>
         <div *ngIf="cartItems.length > 0" >
             <!-- <button class="btn btn-outline-primary">X</button> -->
@@ -99,8 +99,6 @@ export class CartComponent{
         });
     }
 
-
-
     accumulatedPrice(){
         this.cartService.getCartItems()
         .subscribe(data => {
@@ -115,18 +113,21 @@ export class CartComponent{
     }
 
     removeItem(event){
-        this.cartItems = this.cartItems.filter(item =>{ 
-            if(item.qty > 1){
-                return item.qty--;
-            }
-            else{
-                return item != event;
-            }
+ 
+        this.cartService.removeProduct(event).subscribe(() => {
+            this.cartItems = this.cartItems.filter(item =>{ 
+                // if (event.qty === 1){
+                    return item != event;
+                    
+                // }
+                // else{
+                
+                //     return event.qty = event.qty - 1;
+                // }    
+            });
+            
         });
 
-        this.cartService.removeProduct(event).subscribe(() => {
-            this.accumulatedPrice();
-        });
     }
 
     placeOrder(){

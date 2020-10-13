@@ -7,7 +7,8 @@ import { UsersService } from '../../services/users.service';
     selector: `buyer-login`,
     styleUrls: [`buyer-login.component.css`],
     template:  `
-    <div>
+    <buyer-navbar></buyer-navbar>
+    <div class="main">
         <form [formGroup] = "form" (ngSubmit)="submit()">
             <p>Welcome to Shopoo</p>
             <div class="form-group">
@@ -18,6 +19,7 @@ import { UsersService } from '../../services/users.service';
             </div>
         </form>
     </div>
+    <buyer-footer></buyer-footer>
     `
 })
 

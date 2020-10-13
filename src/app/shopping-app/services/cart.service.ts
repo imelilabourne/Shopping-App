@@ -43,11 +43,6 @@ export class CartService {
   }
 
   removeProduct(product:Product):Observable<Product>{
-    if(product.qty === 1){
       return this.http.delete<Product>(cartUrl + "/" + product.id)
-    }
-    else{
-      
-    }
   }
 }

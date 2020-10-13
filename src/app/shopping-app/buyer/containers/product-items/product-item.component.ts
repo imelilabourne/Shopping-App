@@ -4,6 +4,7 @@ import { usersUrl } from 'src/app/shopping-app/config/api';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { CartService } from 'src/app/shopping-app/services/cart.service';
 import { MessengerService } from 'src/app/shopping-app/services/messenger.service';
+import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
 import { WishlistService } from 'src/app/shopping-app/services/wishlist.service';
 
@@ -67,7 +68,8 @@ export class ProductItemComponent{
         private cartService: CartService, 
         private wishlistService: WishlistService, 
         private router: Router,
-        private userService: UsersService){
+        private userService: UsersService,
+        private productService: ProductService){
     }
 
     writeValue(value){
@@ -79,6 +81,10 @@ export class ProductItemComponent{
     registerOnChange(fn){
         this.onModelChange = fn;
     }
+
+    ngOnInit(){
+        // this.productService.getProductlist().subscribe(data => data.map(item => console.log(item.stocks)))
+    }
     
 
     step: number = 1
@@ -87,7 +93,7 @@ export class ProductItemComponent{
 
 
     increment(){
-        if(this.value < this.max){
+        if(this.value < this.productItem.stocks){
             this.value = this.value + this.step;
             this.onModelChange(this.value);
         }
@@ -127,6 +133,9 @@ export class ProductItemComponent{
     }
 
     handleAddtoWishlist(){
+
+        const user = localStorage.getItem('user');
+        
         this.wishlistService.addToWishlist(this.productItem)
             .subscribe(()=>{
                 this.addedtoWishlist = true;  

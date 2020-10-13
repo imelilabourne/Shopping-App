@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { User } from 'src/app/shopping-app/model/user.interface';
+import { CartService } from 'src/app/shopping-app/services/cart.service';
+import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { TransactService } from 'src/app/shopping-app/services/transac.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
 
@@ -8,6 +10,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     selector: 'confirm-page',
     styleUrls: ['confirmation-page.component.css'],
     template: `
+    <buyer-navbar></buyer-navbar>
     <div class="container main">
 
         <h4>Select Payment Method</h4>
@@ -42,8 +45,8 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                 <thead>
                     <tr>
                         <th scope="col">Customer Name</th>    
-                        <th scope="col">Quantity</th>    
-                        <th scope="col">Price</th>    
+                        <th scope="col">Home Addres</th>    
+                        <th scope="col">Email Address</th>    
                         <th scope="col">Contact Number</th>    
                         <th scope="col">Payment Method</th>    
                     </tr>
@@ -62,7 +65,9 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
             </table>
         </div>
         <button (click)="modal(); checkoutreset()" class="btn btn-info" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Check out</button>
-           <!-- Modal -->
+        <button (click)="checkoutreset()" class="btn btn-info" type="button" routerLink="../cart" class="btn btn-primary">Go Back</button>
+         
+        <!-- Modal -->
            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -78,14 +83,15 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                     <div><a data-dismiss="modal" routerLink="../">Continue Shopping 🛒</a></div>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <div class="modal-footer"> -->
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
+                <!-- </div> -->
                 </div>
             </div>
             </div>
     </div>
+    <buyer-footer></buyer-footer>
     `
 })
 
@@ -98,7 +104,8 @@ export class ConfirmationPageComponent{
     @Input() infoForm;
 
     finalOrder: CartItem[] = [];
-    constructor(private userService: UsersService, private transac: TransactService){}
+    constructor(private userService: UsersService, private transac: TransactService, private cartService:CartService, 
+        private productService: ProductService){}
 
     ngOnInit(){
         this.userService.getUsers().subscribe(data => {
@@ -111,7 +118,12 @@ export class ConfirmationPageComponent{
         })
         
         this.transac.getTransac().subscribe( res => {
-            this.finalOrder = [...res[0].cartItems];
+        
+
+            for(let i in res){
+            console.log(res[i]);
+                this.finalOrder = res[i].cartItems;
+            }
         })
 
     }
@@ -123,6 +135,25 @@ export class ConfirmationPageComponent{
     
     checkoutreset(){
         this.transac.resetTransac().subscribe()
+        let orderedItemDeduction;
+        let productStock;
+        this.transac.getTransac().subscribe(data =>{ 
+            orderedItemDeduction = data[0].cartItems[0];
+            console.log(orderedItemDeduction.productName);
+        });
+
+        this.productService.getProducts().subscribe(data => {
+            data.forEach(item => {
+                if(item.name === orderedItemDeduction.productName){
+                    productStock = item.stocks;
+                    // console.log(item);
+                    // console.log(orderedItemDeduction);
+                    // console.log(productStock - orderedItemDeduction.qty);
+
+                    this.productService.updateStocks(item.id, {...item, stocks: productStock - orderedItemDeduction.qty}).subscribe(data => console.log(data))
+                }
+            })
+        })
     }
  
 }

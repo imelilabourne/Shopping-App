@@ -15,8 +15,8 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
 const routes: Routes = [
   {path: '', redirectTo: 'shop', pathMatch: 'full'},
   {path: 'shop', component: BuyerComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'wishlist', component: WishlistComponent},
+  {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard]},
   {path: 'login', component: BuyerLoginComponent},
   {path: 'info', component: ContactInformationComponent},
   {path: 'success', component: ConfirmationPageComponent, canActivate: [AuthGuard]},

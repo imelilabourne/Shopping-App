@@ -40,7 +40,10 @@ export class ProductService{
     }
     // HttpClient API put() method => Update todo
     updateProduct(id, product): Observable<Product> {
-        console.log('trying to update',id, product);
-        return this.http.put<Product>(productsUrl + id, JSON.stringify(product), this.httpOptions)
+        return this.http.put<Product>(productsUrl + '/' + id, JSON.stringify(product), this.httpOptions)
+    }
+
+    updateStocks(id, product):Observable<Product>{
+        return this.http.put<Product>(productsUrl + '/' + id, product, this.httpOptions)
     }
 }

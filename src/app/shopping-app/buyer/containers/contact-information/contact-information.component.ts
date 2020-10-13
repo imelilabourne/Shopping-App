@@ -37,9 +37,9 @@ export class ContactInformationComponent{
     })
 
     submitInfo(){
-        this.userService.postUser({ username: 'eli', password: 'default', ...this.infoForm.value})
+        this.userService.postUser({ username: 'guest', password: 'default', ...this.infoForm.value})
         .subscribe()
-        localStorage.setItem('user', 'eli');
+        localStorage.setItem('user', 'guest');
         this.router.navigateByUrl('success');
     }
 }

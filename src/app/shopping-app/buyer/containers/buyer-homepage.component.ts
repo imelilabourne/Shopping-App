@@ -15,7 +15,7 @@ import { WishlistService } from '../../services/wishlist.service';
                         <input class="" type="text" placeholder="Search" [(ngModel)] = "searchProduct" aria-label="Search">
                     </div>
                     <div>
-                        <button class="searchBtn mr-sm-2 " type="button" (click)="clear()" ><i class="fa fa-search"></i></button>
+                        <button disabled class="searchBtn mr-sm-2 " type="button" (click)="clear()" ><i class="fa fa-search"></i></button>
                     </div>
                     <div>
                         <ul class="navbar-nav mr-auto">

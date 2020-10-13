@@ -18,3 +18,7 @@ input{
 .btn:hover{
     background-color: rgb(105, 189, 27);
 }
+
+.main{
+    min-height: 60vh;
+}
