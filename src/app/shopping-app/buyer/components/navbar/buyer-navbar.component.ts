@@ -37,6 +37,7 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
     `
 })
 
+
 export class BuyerNavbarComponent { 
 
     constructor(private router: Router){}

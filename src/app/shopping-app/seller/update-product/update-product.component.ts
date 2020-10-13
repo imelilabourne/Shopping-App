@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 //services
 import {ProductService} from '../../services/product.service'
-import { productsUrl } from '../../config/api';
+import { productsUrl, productsUrl2 } from '../../config/api';
 
 //interface
 import {Product} from '../../model/products.interface'
@@ -31,6 +31,7 @@ export class UpdateProductComponent implements OnInit {
     "stocks":0,
     
   }
+  user = localStorage.getItem('user');
 
   private headers = new Headers ({'Content-Type': 'application/json'});
   constructor(private router: Router,
@@ -40,17 +41,26 @@ export class UpdateProductComponent implements OnInit {
               private fb: FormBuilder) { }    
 
   onUpdate(product){
+    if (this.user === "admin1"){
     const url = `${productsUrl}/${this.id}`;
     this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
     .then(()=>{
     this.router.navigate(['/seller'])
     });
+  }else if (this.user === "admin2"){
+    const url = `${productsUrl2}/${this.id}`;
+    this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
+    .then(()=>{
+    this.router.navigate(['/seller'])
+    });
+  }
   }
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
       this.id = +params['id'];
     });
+    if (this.user === "admin1"){
     this.http.get(productsUrl).subscribe(
       (res: Response)=>{
         this.product= res.json();
@@ -62,6 +72,20 @@ export class UpdateProductComponent implements OnInit {
         }
       }
     )
+  }else if (this.user === "admin2"){
+    console.log("admin2");
+    this.http.get(productsUrl2).subscribe(
+      (res: Response)=>{
+        this.product= res.json();
+        for (var i = 0; i< this.product.length;i++){
+          if(parseInt(this.product[i].id)===this.id){
+            this.productObj=this.product[i];
+            break;
+          }
+        }
+      }
+    )
+  }
     
   }
 

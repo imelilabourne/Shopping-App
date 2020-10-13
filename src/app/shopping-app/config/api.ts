@@ -6,5 +6,5 @@ export const cartUrl = baseUrl + '/cart'
 export const wishlistUrl = baseUrl + '/wishlist'
 export const usersUrl = baseUrl + '/users'
 export const transacUrl = baseUrl + '/transac'
-
+export const productsUrl2 = baseUrl + '/product1'
 

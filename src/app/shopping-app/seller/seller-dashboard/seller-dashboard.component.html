@@ -1,13 +1,24 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-2">Seller Dashboard</h1>
-      <a class="btn btn-success pull-right"  role="button" data-toggle="modal" data-target="#myModal">Add New Product</a>
+  <!---  <h1 class="display-2">Seller Dashboard</h1>--->
+      <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
+      <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
+      <div class ="export">
+        <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
+      </div>
+      <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Add New Product</button>
   </div>
+  <div class="container ">     
+    <div class="row search">
+            <div class="searchInput">
+                <input class="" type="text" placeholder="Search Product" [(ngModel)] = "searchProduct" aria-label="Search">
+            </div>
+            <div>
+                <button class="searchBtn mr-sm-2 " type="button" (click)="clear()" ><i class="fa fa-search"></i></button>
+            </div>
+    </div>
+</div>
 
-  <div class ="export">
-    <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
-    <button class="btn btn-info" (click) = "logout()">Logout</button>
-  </div>
 <div class="container">
  
   <table id="dataTable" class="table table-bordered table-sm row-border hover"  > 
@@ -24,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of upproducts">
+      <tr *ngFor="let list of upproducts  | filter: searchProduct: 'name' ">
         <td>{{list.id}}</td>
         <td><img src="{{list.imageUrl}}" class="img-thumbnail" style="height:100px;" /></td>
         <td>{{list.name}}</td>

@@ -29,7 +29,7 @@ export class SellerDashboardComponent implements OnInit {
   UploadFile: File;
   dataTable: any;
   dtOptions: DataTables.Settings = {};
-  
+  searchProduct = "";
 
   newProductForm:FormGroup;
   products: Product[];
@@ -44,7 +44,11 @@ export class SellerDashboardComponent implements OnInit {
   fileName= 'ExcelSheet.xlsx';
   url: string | ArrayBuffer;
   selectedFile : File = null;
-  
+  Seller1String:string="Lizada";
+  Seller2String:string="Shippo";
+  isSeller1 : boolean = false;
+  isSeller2 : boolean = false;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private dataservice: ProductService,
@@ -110,6 +114,7 @@ export class SellerDashboardComponent implements OnInit {
   
 
   displayProductList() {
+    if (this.user === "admin1"){
     this.dataservice.getProductlist().subscribe(data =>
       {
         // as the Web Api doesn't sort the list of todos, we do here in the frontend
@@ -117,8 +122,21 @@ export class SellerDashboardComponent implements OnInit {
           if (a.id>b.id) return -1;
           if (a.id<b.id) return 1;
         });
-        console.log('display productList', this.upproducts);
+        console.log('display productList1', this.upproducts);
+        this.isSeller1 = true;
       });
+    }else if (this.user === "admin2"){
+      this.dataservice.getProductlist2().subscribe(data =>
+        {
+          // as the Web Api doesn't sort the list of todos, we do here in the frontend
+          this.upproducts = data.sort((a,b)=> {
+            if (a.id>b.id) return -1;
+            if (a.id<b.id) return 1;
+          });
+          console.log('display productList2', this.upproducts);
+          this.isSeller2 = true;
+        });
+    }
   }
 
   
@@ -152,6 +170,7 @@ export class SellerDashboardComponent implements OnInit {
 //}
 
   onSubmit(){
+    if (this.user === "admin1"){
     this.dataservice.createProduct({
       ...this.newProductForm.value, 
       //productId:`${this.id}`,
@@ -165,7 +184,20 @@ export class SellerDashboardComponent implements OnInit {
     this.router.navigate(['seller'])
     this.displayProductList();
     // console.log("url",this.url);
-    
+    }else if (this.user === "admin2"){
+      this.dataservice.createProduct2({
+        ...this.newProductForm.value, 
+        imageUrl : `../../../../assets/${this.selectedfile.name}`
+      })
+      .subscribe(
+         response => alert('Inserted Successful'),    
+        error=> console.error('Error',error)
+      )
+      this.newProductForm.reset();
+      this.router.navigate(['seller'])
+      this.displayProductList();
+
+    }
     }
 
     onExportExcel(): void{
@@ -185,20 +217,22 @@ export class SellerDashboardComponent implements OnInit {
   
 
     onDelete(id: number){
+      if (this.user === "admin1"){
       console.log('delete', id);    
       this.dataservice.deleteProduct(id).subscribe();
       this.displayProductList();
+    }else if (this.user === "admin2"){
+      console.log('delete2', id);    
+      this.dataservice.deleteProduct2(id).subscribe();
+      this.displayProductList();
+    }
     }
 
     onEdit(prodId : number){
      
       this.router.navigate(['/updateproduct',prodId])
     }
-    logout(){
-      localStorage.clear();
-      this.user = null;
-      this.router.navigateByUrl('shop')
-  }
+   
 }// End of Class
 
   

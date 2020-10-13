@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-navbar',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router){}
 
+
+  user = localStorage.getItem('user');
+
+  
   ngOnInit() {
   }
 
+  logout(){
+    localStorage.clear();
+    this.user = null;
+    this.router.navigateByUrl('shop')
+}
 }
