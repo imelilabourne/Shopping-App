@@ -112,6 +112,8 @@ export class CartComponent{
 
     }
 
+
+
     removeItem(event){
  
         this.cartService.removeProduct(event).subscribe(() => {

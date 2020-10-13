@@ -23,14 +23,14 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
         </div>
 
         <div class="container">
-            <div class="row add-row" *ngIf="productItem.stocks !== 0">
+            <div class="row add-row" *ngIf="productItem.stocks !== 0  && user !== 'admin1' && user !== 'admin2'">
                 <div  class="counterBtn">
                         <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
                         {{ value }}
                         <button [disabled]="value === max" type="button" (click)="increment()">+</button>
                 </div>
 
-                <button [disabled]="productItem.stocks === 0" (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+                <button  [disabled]="productItem.stocks === 0 " (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
             </div>
         </div>
 
@@ -60,6 +60,7 @@ export class ProductItemComponent{
     @Input() addedtoWishlist: boolean;
     itemAdded: boolean = false;
     photoIsClicked:boolean = false;
+    user = localStorage.getItem('user');
     value = 1;
     private onTouch: Function;
     private onModelChange: Function;
