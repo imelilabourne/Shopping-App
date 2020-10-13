@@ -1,4 +1,5 @@
 export interface User{
+    
     id: number;
     username: string,
     password: string,
@@ -6,5 +7,6 @@ export interface User{
     lname: string,
     homeadd: string,
     email: string,
-    contact: number
+    contact: number,
+    role: string;
 }

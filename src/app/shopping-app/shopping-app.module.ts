@@ -24,6 +24,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { BuyerFooter } from './buyer/components/footer/buyer-footer.component';
 import { AuthGuard } from './auth.guard';
+import { SellerNavbarComponent } from './seller/components/seller-navbar/seller-navbar.component';
+import { SellerFooterComponent } from './seller/components/seller-footer/seller-footer.component';
 
 
 
@@ -44,7 +46,9 @@ import { AuthGuard } from './auth.guard';
     BuyerFooter,
     routingComponents,
     FilterPipe,
-    SortPipe
+    SortPipe,
+    SellerNavbarComponent,
+    SellerFooterComponent
   ],
   imports: [
     BrowserModule,

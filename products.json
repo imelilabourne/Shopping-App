@@ -1,4 +1,46 @@
 {
+  "product": {
+    "admin1": [
+      {
+        "id": 1,
+        "productId": 1,
+        "name": "Nike Airforce 270",
+        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
+        "price": 4200,
+        "imageUrl": "../../../assets/shoes1.jpg",
+        "stocks": 10
+      },
+      {
+        "id": 2,
+        "productId": 1,
+        "name": "Nike Airforce 270",
+        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
+        "price": 4200,
+        "imageUrl": "../../../assets/shoes1.jpg",
+        "stocks": 10
+      }
+    ],
+    "admin2": [
+      {
+        "id": 3,
+        "productId": 1,
+        "name": "Nike Airforce 270",
+        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
+        "price": 4200,
+        "imageUrl": "../../../assets/shoes1.jpg",
+        "stocks": 10
+      },
+      {
+        "id": 4,
+        "productId": 1,
+        "name": "Nike Airforce 270",
+        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
+        "price": 4200,
+        "imageUrl": "../../../assets/shoes1.jpg",
+        "stocks": 10
+      }
+    ]
+  },
   "products": [
     {
       "id": 1,
@@ -131,21 +173,43 @@
   ],
   "wishlist": [
     {
+<<<<<<< HEAD
       "id": 2
+=======
+      "id": 7,
+      "user": "user2"
+    },
+    {
+      "id": 4,
+      "user": "user1"
+>>>>>>> 6d9acf2dfcd071b51c27e7dc8370eedebd76fe95
     }
   ],
   "users": [
     {
       "username": "user1",
-      "password": "123"
+      "password": "123",
+      "role": "buyer"
     },
     {
       "username": "user2",
-      "password": "123"
+      "password": "123",
+      "role": "buyer"
     },
     {
       "username": "user3",
-      "password": "123"
+      "password": "123",
+      "role": "buyer"
+    },
+    {
+      "username": "admin1",
+      "password": "123",
+      "role": "seller"
+    },
+    {
+      "username": "admin1",
+      "password": "123",
+      "role": "seller"
     }
   ],
   "transac": [
