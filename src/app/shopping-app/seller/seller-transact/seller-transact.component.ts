@@ -89,9 +89,9 @@ export class SellerTransactComponent implements OnInit {
     let element = document.getElementById('dataTable');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     //delete (ws['5'])
-    ws['!cols'] = [];
-    ws['!cols'][5] = { hidden: true };
-    ws['!cols'][1] = { hidden: true };
+   // ws['!cols'] = [];
+   // ws['!cols'][5] = { hidden: true };
+   // ws['!cols'][1] = { hidden: true };
     /* generate workbook and add the worksheet */
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
