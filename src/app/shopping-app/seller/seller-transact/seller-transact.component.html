@@ -1,0 +1,50 @@
+<app-seller-navbar></app-seller-navbar>
+
+<div class="seller-header">
+  <!---  <h1 class="display-2">Seller Dashboard</h1>--->
+      <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
+      <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
+      <div class ="export action">
+        <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
+
+  
+      </div>
+  </div>
+
+  <div class="container ">     
+    <div class="row search">
+            <div class="searchInput">
+                <input class="" type="text" placeholder="Search Product" [(ngModel)] = "searchProduct" aria-label="Search">
+            </div>
+            <div>
+                <button class="searchBtn mr-sm-2 " type="button"  ><i class="fa fa-search"></i></button>
+            </div>
+    </div>
+</div>
+
+<div class="container tab">
+ 
+  <table id="dataTable" class="table table-bordered table-sm row-border hover"  > 
+    
+    
+    <thead style="text-align:center" >
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Customer Name</th>
+      </tr>
+    </thead>
+    <tbody style="text-align:center" >
+      <tr *ngFor="let list of upproducts  | filter: searchProduct: 'name' ">
+        <td colspan="1" >{{list.id}}</td>
+        <td colspan="1" >{{list.name}}</td>
+        <td colspan="1" >{{list.price | currency: 'PHP' }}</td>
+        <td colspan="1">{{list.stocks}}
+        </td>
+      </tr>
+  </tbody>
+  </table>
+  </div>
+
+  <app-seller-footer></app-seller-footer>

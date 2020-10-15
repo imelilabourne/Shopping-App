@@ -10,7 +10,7 @@ import { WishlistComponent } from './buyer/containers/wishlist/wishlist.componen
 import { BuyerLoginComponent } from './containers/login/buyer-login.component';
 import { SellerComponent } from './seller/seller.component';
 import { UpdateProductComponent } from './seller/update-product/update-product.component'
-
+import { SellerTransactComponent } from './seller/seller-transact/seller-transact.component';
 
 
 const routes: Routes = [
@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'success', component: ConfirmationPageComponent, canActivate: [AuthGuard]},
   {path: 'seller', component: SellerComponent , canActivate: [AdminGuard]},
   {path:'updateproduct/:id',component: UpdateProductComponent},
+  {path: 'transact' ,component:SellerTransactComponent},
   {path: '**', component: BuyerComponent},
  
 

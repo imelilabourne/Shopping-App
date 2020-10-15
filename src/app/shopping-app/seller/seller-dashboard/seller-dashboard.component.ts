@@ -180,9 +180,9 @@ export class SellerDashboardComponent implements OnInit {
        response => alert('Inserted Successful'),    
       error=> console.error('Error',error)
     )
-    this.newProductForm.reset();
+    this.newProductForm.reset()
     this.router.navigate(['seller'])
-    this.displayProductList();
+    this.displayProductList()
     // console.log("url",this.url);
     }else if (this.user === "admin2"){
       this.dataservice.createProduct2({
@@ -198,6 +198,7 @@ export class SellerDashboardComponent implements OnInit {
       this.displayProductList();
 
     }
+    this.displayProductList()
     }
 
     onExportExcel(): void{
@@ -207,6 +208,7 @@ export class SellerDashboardComponent implements OnInit {
       //delete (ws['5'])
       ws['!cols'] = [];
       ws['!cols'][5] = { hidden: true };
+      ws['!cols'][1] = { hidden: true };
       /* generate workbook and add the worksheet */
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
