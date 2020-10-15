@@ -7,10 +7,11 @@ import * as XLSX from 'xlsx';
 
 
 //services
-
-import {ProductService} from '../../services/product.service';
+import {CartService} from '../../services/cart.service';
+import {TransactService} from '../../services/transac.service';
 //interface
 import {Product} from '../../model/products.interface'
+import {CartItem } from '../../model/cart-item.interface'
 import { DomSanitizer } from '@angular/platform-browser';
 //import { HttpClient } from '@angular/common/http';
 
@@ -31,7 +32,7 @@ export class SellerTransactComponent implements OnInit {
   newProductForm:FormGroup;
   products: Product[];
   upproducts: Product[] = [];
-
+  upcart : CartItem[] = [];
   selectedfile: File = null;
  
   user = localStorage.getItem('user');
@@ -46,7 +47,8 @@ export class SellerTransactComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private dataservice: ProductService,
+    private dataservice: TransactService,
+    private cartservice : CartService,
     private http: Http,
     private fb: FormBuilder,
     private _sanitizer: DomSanitizer) { }
@@ -56,30 +58,31 @@ export class SellerTransactComponent implements OnInit {
   }
 
   displayProductList() {
-    if (this.user === "admin1"){
-    this.dataservice.getProductlist().subscribe(data =>
-      {
-        // as the Web Api doesn't sort the list of todos, we do here in the frontend
-        this.upproducts = data.sort((a,b)=> {
-          if (a.id>b.id) return -1;
-          if (a.id<b.id) return 1;
-        });
-        console.log('display productList1', this.upproducts);
+  //  if (this.user === "admin1"){
+    this.dataservice.getTransac().subscribe( res => {
+        
+
+      for(let i in res){
+      console.log(res[i]);
+          this.upcart = res[i].cartItems;
+      }
+  })
+        console.log('this Transaction', this.upcart);
         this.isSeller1 = true;
-      });
-    }else if (this.user === "admin2"){
-      this.dataservice.getProductlist2().subscribe(data =>
-        {
+      }
+ //   }else if (this.user === "admin2"){
+     // this.dataservice.postTransact().subscribe(data =>
+      //  {
           // as the Web Api doesn't sort the list of todos, we do here in the frontend
-          this.upproducts = data.sort((a,b)=> {
-            if (a.id>b.id) return -1;
-            if (a.id<b.id) return 1;
-          });
-          console.log('display productList2', this.upproducts);
-          this.isSeller2 = true;
-        });
-    }
-  }
+        //  this.upproducts = data.sort((a,b)=> {
+        //    if (a.id>b.id) return -1;
+         //   if (a.id<b.id) return 1;
+       //   });
+       //   console.log('display productList2', this.upproducts);
+       //   this.isSeller2 = true;
+      //  });
+   // }
+  
 
   onExportExcel(): void{
     /* pass here the table id */
