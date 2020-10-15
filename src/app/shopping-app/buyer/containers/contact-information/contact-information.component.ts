@@ -7,7 +7,8 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     selector: 'contact-information',
     styleUrls: ['contact-information.component.css'],
     template: `
-    <div>
+    <buyer-navbar></buyer-navbar>
+    <div class="main">
         <form [formGroup] = "infoForm" (ngSubmit) = "submitInfo()">
             <div class="form-group form">
                 <input type="text" class="form-control" placeholder="First Name" formControlName="fname">
@@ -21,6 +22,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
             </div>
         </form>
     </div>
+    <buyer-footer></buyer-footer>
     `
 })
 

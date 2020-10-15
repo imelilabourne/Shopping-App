@@ -1,11 +1,12 @@
 .form{
     width: 500px;
     margin: auto;
+    margin-top: 70px;
 }
 
 form{
     
-    padding: 100px;
+    padding: 50px;
 }
 
 input{

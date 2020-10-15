@@ -112,8 +112,6 @@ export class CartComponent{
 
     }
 
-
-
     removeItem(event){
  
         this.cartService.removeProduct(event).subscribe(() => {
@@ -128,6 +126,11 @@ export class CartComponent{
                 // }    
             });
             
+
+            this.cartService.removeProduct(event).subscribe(() => {
+        
+                this.accumulatedPrice();
+            });
         });
 
     }

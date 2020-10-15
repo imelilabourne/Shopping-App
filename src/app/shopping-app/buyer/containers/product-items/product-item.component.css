@@ -35,6 +35,7 @@ i{
     border: solid 1px rgb(212, 210, 210);
     box-sizing: border-box;
     z-index: 0;
+    box-shadow:rgb(212, 210, 210) 4px 0 ;
 }
 
 .item-wrapper{
@@ -94,6 +95,7 @@ strong > p{
 .add-row{
     display: flex;
     justify-content: space-between;
+    box-shadow:rgb(212, 210, 210) 4px 0 ;
 }
 
 .descPopup{
@@ -101,6 +103,7 @@ strong > p{
     justify-content: space-between;
     padding: 0 20px;
     border: 1px solid #b4b1b1;
+    box-shadow:rgb(212, 210, 210) 4px 2px ;
 }
 
 .sold-out{
@@ -109,4 +112,5 @@ strong > p{
     height: 40px;
     line-height: 40px;
     text-transform: uppercase;
+    box-shadow:rgb(212, 210, 210) 4px 2px ;
 }
