@@ -10,8 +10,8 @@ p{
 
 .search{
     position: absolute;
-    right: 415px;
-    top: 450px;
+    right: 180px;
+    top: 445px;
 }
 .searchBtn, .searchInput > input, .sortBtn{
     border: 1px rgb(101, 173, 170) solid;

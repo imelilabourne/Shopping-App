@@ -62,8 +62,6 @@ export class ProductItemComponent{
     photoIsClicked:boolean = false;
     user = localStorage.getItem('user');
     value = 1;
-    private onTouch: Function;
-    private onModelChange: Function;
 
     constructor(private messengerService: MessengerService, 
         private cartService: CartService, 
@@ -75,12 +73,6 @@ export class ProductItemComponent{
 
     writeValue(value){
         this.value = value | 0;
-    }
-    registerOnTouched(fn){
-        this.onTouch = fn;
-    }
-    registerOnChange(fn){
-        this.onModelChange = fn;
     }
 
     ngOnInit(){
@@ -96,17 +88,14 @@ export class ProductItemComponent{
     increment(){
         if(this.value < this.productItem.stocks){
             this.value = this.value + this.step;
-            this.onModelChange(this.value);
         }
-        this.onTouch();
     }
 
     decrement(){
         if(this.min < this.value){
             this.value = this.value - this.step;
-            this.onModelChange(this.value);
         }
-        this.onTouch();
+
     }
 
         

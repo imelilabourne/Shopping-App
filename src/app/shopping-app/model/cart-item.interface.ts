@@ -12,6 +12,6 @@ export class CartItem{
         this.productName = product.name; 
         this.qty = qty;
         this.price = product.price; 
-        this.customerName = customerName
+        this.customerName = customerName;
     }
 }

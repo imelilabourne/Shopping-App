@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
+import { Product } from 'src/app/shopping-app/model/products.interface';
 import { User } from 'src/app/shopping-app/model/user.interface';
 import { CartService } from 'src/app/shopping-app/services/cart.service';
 import { ProductService } from 'src/app/shopping-app/services/product.service';
@@ -12,7 +13,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     template: `
     <buyer-navbar></buyer-navbar>
     <div class="container main">
-
         <h4>Select Payment Method</h4>
         <button class="btn btn-info">COD</button>
         <button (click)="method = 'Paypal'" class="btn btn-info">Paypal</button>
@@ -30,7 +30,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                     
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of finalOrder" >
+                    <tr *ngFor="let order of finalOrder">
                         <td>{{ order.productName }}</td>
                         <td>{{ order.qty }}</td>
                         <td>{{ order.price }}</td>
@@ -38,7 +38,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                 </tbody>
             </table>
         </div>
-
         <h5>Delivery Details</h5>
         <div>
             <table class="table table-ligth">
@@ -60,7 +59,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <td>{{ user?.contact }}</td>
                         <td>{{ method }}</td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
@@ -81,12 +79,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                     Order Completed!  
                     Thank you for shopping with us
                     <div><a data-dismiss="modal" routerLink="../">Continue Shopping 🛒</a></div>
-
                 </div>
-                <!-- <div class="modal-footer"> -->
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                <!-- </div> -->
                 </div>
             </div>
             </div>
@@ -103,6 +96,9 @@ export class ConfirmationPageComponent{
     user: User;
     @Input() infoForm;
 
+    cartItems:CartItem[] = [];
+    products:Product[] = [];
+
     finalOrder: CartItem[] = [];
     constructor(private userService: UsersService, private transac: TransactService, private cartService:CartService, 
         private productService: ProductService){}
@@ -117,14 +113,11 @@ export class ConfirmationPageComponent{
  
         })
         
-        this.transac.getTransac().subscribe( res => {
-        
+        this.transac.getTransac().subscribe(res => {
+          res.map(resp => this.finalOrder = resp);
+        });
 
-            for(let i in res){
-            console.log(res[i]);
-                this.finalOrder = res[i].cartItems;
-            }
-        })
+        this.productService.getProductlist().subscribe(data => this.products = data);   
 
     }
 
@@ -134,26 +127,41 @@ export class ConfirmationPageComponent{
     }
     
     checkoutreset(){
-        this.transac.resetTransac().subscribe()
-        let orderedItemDeduction;
-        let productStock;
-        this.transac.getTransac().subscribe(data =>{ 
-            orderedItemDeduction = data[0].cartItems[0];
-            console.log(orderedItemDeduction.productName);
-        });
+        const orderSummary = [];
+        this.transac.getTransac()
+        .subscribe(data => data.map(order => order.map(item => {
+            orderSummary.push(item);
+        })));
 
         this.productService.getProducts().subscribe(data => {
-            data.forEach(item => {
-                if(item.name === orderedItemDeduction.productName){
-                    productStock = item.stocks;
-                    // console.log(item);
-                    // console.log(orderedItemDeduction);
-                    // console.log(productStock - orderedItemDeduction.qty);
+            data.map(product => {
+                orderSummary.map(order => {
+                    if(product.name === order.productName){
+                        this.productService.updateStocks(product.id, {...product, stocks: product.stocks - order.qty}).subscribe();
 
-                    this.productService.updateStocks(item.id, {...item, stocks: productStock - orderedItemDeduction.qty}).subscribe(data => console.log(data))
-                }
+                        this.cartService.getCartItems().subscribe(data => {
+                            this.cartItems = data;
+                        });
+
+
+                        this.cartService.getCartItems().subscribe(data => {
+                            data.map(cart => {
+                                this.products.forEach(product => {
+                                                if(product.stocks < cart.qty){
+                                                    return this.cartService.removeProduct(cart).subscribe(res=>console.log(res));
+                                                }      
+                                })
+                            });
+                        })
+                    }
+                })
             })
-        })
+        });
+
+       
+        this.transac.resetTransac().subscribe()
+
+            
     }
- 
+
 }

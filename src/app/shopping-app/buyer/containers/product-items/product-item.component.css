@@ -1,5 +1,5 @@
 img{
-    max-width: 250px;
+    max-width: 240px;
     position: absolute;
     z-index: 0;
     max-height: 300px;
@@ -36,6 +36,7 @@ i{
     box-sizing: border-box;
     z-index: 0;
     box-shadow:rgb(212, 210, 210) 4px 0 ;
+    padding: auto;
 }
 
 .item-wrapper{
@@ -64,7 +65,6 @@ strong > p{
 }
 
 .alert-success{
-    /* margin-left: 10px; */
     height: 40px;
 }
 

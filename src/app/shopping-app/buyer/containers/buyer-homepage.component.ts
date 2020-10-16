@@ -29,7 +29,8 @@ import { WishlistService } from '../../services/wishlist.service';
                         </ul>
                     </div>
                     <div>
-                        <button (click)="sortDesc()" class="sortBtn" type="button" ><i class="fa fa-sort"></i></button>
+                        <button *ngIf="sortDirection === 'asc'" (click)="sortDesc()" class="sortBtn" type="button" ><i class="fa fa-sort-up"></i></button>
+                        <button *ngIf="sortDirection === 'desc'" (click)="sortDesc()" class="sortBtn" type="button" ><i class="fa fa-sort-down"></i></button>
                     </div>
             </div>
         </div>

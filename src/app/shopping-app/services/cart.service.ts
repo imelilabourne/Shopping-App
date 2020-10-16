@@ -42,7 +42,7 @@ export class CartService {
     return this.http.post(cartUrl, {product , customerName, qty});
   }
 
-  removeProduct(product:Product):Observable<Product>{
+  removeProduct(product):Observable<Product>{
       return this.http.delete<Product>(cartUrl + "/" + product.id)
   }
 }
