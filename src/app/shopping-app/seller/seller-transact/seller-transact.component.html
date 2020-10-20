@@ -1,13 +1,11 @@
 <app-seller-navbar></app-seller-navbar>
-
+<div class="container">
 <div class="seller-header">
   <!---  <h1 class="display-2">Seller Dashboard</h1>--->
       <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
       <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
       <div class ="export action">
         <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
-
-  
       </div>
   </div>
 
@@ -48,3 +46,5 @@
   </div>
 
   <app-seller-footer></app-seller-footer>
+
+</div>
