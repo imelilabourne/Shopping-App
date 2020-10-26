@@ -3,13 +3,11 @@
   <!---  <h1 class="display-2">Seller Dashboard</h1>--->
       <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
       <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
-      <div class ="export action">
-        <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
-
-        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Add New Product</button>
-      </div>
   </div>
-  <div class="container ">     
+  <div class="container ">  
+    <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
+
+    <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Add New Product</button>   
     <div class="row search">
             <div class="searchInput">
                 <input class="" type="text" placeholder="Search Product" [(ngModel)] = "searchProduct" aria-label="Search">

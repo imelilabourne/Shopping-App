@@ -26,18 +26,6 @@
     margin: 10px;
 }
 
-.action{
-    position: absolute;
-    right: 9em;
-}
-
-
-
-.search{
-    position: absolute;
-    right: 140px;
-    /* top: 450px; */
-}
 .searchBtn, .searchInput > input{
     border: 1px rgb(101, 173, 170) solid;
     height: 40px;

@@ -9,3 +9,9 @@ textarea{
     height:100px;
     padding-top: 10px;
 }
+
+.input-group-text{
+    width : 150px; /*adjust as needed*/
+  }
+  
+ 
