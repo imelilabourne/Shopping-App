@@ -5,4 +5,99 @@ button{
 .main{
     margin-top: 10px;
     padding: 90px 0;
+
 }
+
+.flex{
+    display: flex;
+    margin: 30px;
+    justify-content: space-around;
+}
+
+.flex > div:first-child{
+    width: 350px;
+}
+
+.flex > div:nth-child(2){
+    min-width: 400px;
+}
+
+.button{
+    background-color:rgb(83, 134, 177);
+    min-width: 80px;
+    border: none;
+    color: white;
+    height: 40px;
+}
+
+.button:hover{
+    background-color:  rgb(29, 28, 28);
+    color: rgb(212, 211, 211);
+}
+
+.checkout{
+    margin-left: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif   ;
+}
+
+hr{
+    background-color: rgb(145, 145, 145);
+    margin: 8px 0;
+}
+
+.details > div > p{
+    margin: 4px 0px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.icon{
+    width: 30px;
+    margin: auto;
+}
+
+.map{
+    display: flex;
+}
+
+.label{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+
+}
+
+.label >a{
+    color: rgb(122, 122, 122);
+
+}
+
+.label > span{
+    margin: 0 10px;
+}
+
+.ship{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.control{
+    width: 100%;
+    line-height: 40px;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: rgb(180, 180, 182);
+    font-style: italic;
+}
+
+.control:focus {
+    border-color: green
+  }
+
+  .text{
+      background-color: white;
+      color: black;
+  }

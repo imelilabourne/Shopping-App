@@ -28,8 +28,8 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
             </ul>
             <form class="form-inline my-2 my-lg-0">
             <h1 *ngIf="user" class="username">Welcome, {{ user }}</h1>
-            <button *ngIf="user === null" class="btn btn-info" routerLink="/login">Login</button>
-            <button *ngIf="user !== null" class="btn btn-info" (click) = "logout()">Logout</button>
+            <button *ngIf="user === null" class="btn " routerLink="/login">Login</button>
+            <button *ngIf="user !== null" class="btn " (click) = "logout()">Logout</button>
             </form>
         </div>
         </nav>

@@ -16,13 +16,12 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
         <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty, <a routerLink="shop">show now</a></div>
         <br>
         <div *ngIf="cartItems.length > 0" >
-            <h5 class="list-group-item list-group-item-success" >My Cart</h5>
+            <h5 class="heading" >My Cart</h5>
 
             <div class="cartpopup">
                 <div class="container">
-                    <div class="row" >
-    
-                        
+                    <div class="row">   
+                    <!--
                         <div class="col-md-3" >
                             <p class="head" >Product Name</p>
                         </div>
@@ -42,17 +41,17 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <div class="col-md-1" >
                             <p class="head">Action</p>
                         </div>
+                        -->
                     </div>
                 </div>
     
                 <cart-item *ngFor="let cart of cartItems" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
             </div>
-                
-                <div class="float-right grand">Grand Total: {{grandTotal | currency: 'Php '}}</div>
-                
-                <br><br><br>
-                <div>
-                <button class="float-right" (click)="placeOrder()">Place Order</button>
+                <div class="flex">
+                    <div class="grand">Grand Total: {{grandTotal | currency: 'Php '}}</div>
+                    <div>
+                    <button class="" (click)="placeOrder()">Place Order</button>
+                    </div>
                  </div>
         </div>
     </div>
@@ -103,6 +102,7 @@ export class CartComponent{
                if(item.customerName === user){
                    return this.cartItems = data.filter(each => user === each.customerName );
                }
+               
             })
         });
     }

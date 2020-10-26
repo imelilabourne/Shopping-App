@@ -1,7 +1,13 @@
 .product{
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
     display: grid;
+    max-width: 260px;
+    margin: 0 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 10px #b3b1b1;
+    background-color:rgba(255, 255, 255, 0.753);
+
 }
 
 p{
@@ -9,20 +15,44 @@ p{
 }
 
 .search{
-    position: absolute;
-    right: 180px;
-    top: 445px;
+    display: flex;
+    z-index: 1;
+    width: 90%;
+    justify-content: flex-end;
+    margin-top: -20px;
+    margin-bottom: 20px;
 }
-.searchBtn, .searchInput > input, .sortBtn{
-    border: 1px rgb(101, 173, 170) solid;
 
+.searchInput{
+    width: 150px;
+    transition: .7s ease-in-out;
+    background-color: none;
+    border-radius: 4px;
+    /* margin-left: 300px; */
+}
+
+.searchInput:focus{
+    width: 300px;
+}
+
+.searchInput, .select{
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: rgb(180, 180, 182);
+    line-height: 36px;
+    border-radius: 4px;
+    padding-right: -10px;
+}
+
+.searchBtn, .searchInput > input, .sortBtn{
+    border: 1px rgb(83, 134, 177) solid;
     height: 40px;
-    background-color: rgb(255, 255, 255);
     color: rgb(127, 183, 201);
+    border-radius: 4px;
 }
 
 .searchBtn, .sortBtn{
-    background-color: rgb(101, 173, 170);
+    background-color: rgb(83, 134, 177);
     color: white;
 }
 
@@ -31,12 +61,17 @@ p{
         top: 80px;
         z-index: 0;
     }
+
 }
 
 .main-products{
-    margin: 90px 0;
-    padding: 40px 0;
+    margin: 60px 4px 20px 4px;
+    padding: 40px 0 20px 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(169, 185, 199, 0.37);
 }
+
 
 .clear{
     margin-top: 22px
@@ -47,5 +82,5 @@ select{
     background-color: rgb(255, 255, 255);
     color: rgb(116, 124, 124);
     border: solid 1px rgb(127, 183, 201);
-
 }
+

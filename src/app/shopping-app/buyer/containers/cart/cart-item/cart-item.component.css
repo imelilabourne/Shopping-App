@@ -1,0 +1,35 @@
+
+img{
+    max-width: 200px;
+}
+
+.cart-item{
+    border: 1px black;
+    background-color: rgb(214, 211, 216);
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+/* @media screen and (max-width: 800px){
+    img{
+        transform: scale(.5);
+        transform: translate(100x, 300px);
+    }
+} */
+
+.trash{
+    margin-top: 20px;
+}
+
+.img-wrapper{
+    /* width: 400px; */
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    align-items: center;
+    object-fit: contain;
+}
+
+.productName{
+    font-size: 30px;
+}
