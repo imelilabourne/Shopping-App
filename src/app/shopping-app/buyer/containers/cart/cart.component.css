@@ -1,9 +1,9 @@
 button, .grand{
-    border: 1px rgb(116, 221, 181) solid;
+    border:none;
     width: 230px;
     height: 40px;
-    background-color: rgb(255, 255, 255);
-    color:rgb(11, 206, 131);
+    background-color:  rgb(219, 217, 217);
+    color:rgb(29, 29, 29);
     text-align: center;
     line-height: 40px;
 }
@@ -14,12 +14,13 @@ button, .grand{
 }
 
 .grand{
-    background-color: rgb(116, 221, 181);
-    color: rgb(22, 22, 22);
+    width: 560px;
+    background-color:black;
+    color: rgb(214, 211, 216);
 }
 
 button:hover{
-    background-color: rgb(116, 221, 181);
+    background-color: rgb(83, 134, 177);
     color: white;
 }
 
@@ -32,8 +33,15 @@ button:hover{
     padding: 20px;
     padding-top: 80px;
     min-height: 70vh;
+    /* background-color: honeydew; */
 }
 
-.cartpopup{
-    padding: 40px;
+/* 
+.heading{
+    border: 1px black solid ;
+} */
+
+.flex{
+    display: flex;
+    justify-content: space-between;
 }

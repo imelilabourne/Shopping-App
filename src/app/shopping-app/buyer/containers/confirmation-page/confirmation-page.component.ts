@@ -12,36 +12,32 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     styleUrls: ['confirmation-page.component.css'],
     template: `
     <buyer-navbar></buyer-navbar>
+    
     <div class="container main">
-        <h4>Select Payment Method</h4>
-        <button class="btn btn-info">COD</button>
-        <button (click)="method = 'Paypal'" class="btn btn-info">Paypal</button>
-        <button (click)="method = 'Gcash'" class="btn btn-info">Gcash</button>
-    <br><br>
-        <h5>Order Summary</h5>
-        <div>
-            <table class="table table-ligth">
-                <thead>
-                    <tr>
-                        <th scope="col">Product Name</th>    
-                        <th scope="col">Quantity</th>    
-                        <th scope="col">Price</th>    
-                    </tr>
-                    
-                </thead>
-                <tbody>
-                    <tr *ngFor="let order of finalOrder">
-                        <td>{{ order.productName }}</td>
-                        <td>{{ order.qty }}</td>
-                        <td>{{ order.price }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!--
+        <div class="map">
+        <img src="../../../assets/icon.png" class="image-fluid icon">
         </div>
-        <h5>Delivery Details</h5>
-        <div>
-            <table class="table table-ligth">
-                <thead>
+        -->
+        <div class="label">
+            <a (click)="checkoutreset()" routerLink="/shop">Back to Shop</a><span>&#10095;</span>
+            <a (click)="checkoutreset()" routerLink="/cart">Shopping Bag</a><span>&#10095;</span>
+            <p>Checkout</p>
+        </div>
+    <h2 class="checkout">Checkout</h2>
+
+    <div class="flex">
+        <div>   
+        
+                <div class="row ship">
+                    <p class="bold">Shipping Details</p>
+                    <span (click)="editToggler()">Edit</span>
+                    
+                </div>
+                <hr>
+    
+                <div>
+                <!--
                     <tr>
                         <th scope="col">Customer Name</th>    
                         <th scope="col">Home Addres</th>    
@@ -49,22 +45,73 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <th scope="col">Contact Number</th>    
                         <th scope="col">Payment Method</th>    
                     </tr>
-                    
-                </thead>
-                <tbody>
-                    <tr >
-                        <td>{{ user?.fname }} {{ user?.lname }}</td>
-                        <td>{{ user?.homeadd }}</td>
-                        <td>{{ user?.email }}</td>
-                        <td>{{ user?.contact }}</td>
-                        <td>{{ method }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                -->
+                    <div class="details">
+                        <div *ngIf="!editToggle">
+                        <p>{{ user?.fname }} {{ user?.lname }}</p>
+                        <p>{{ user?.homeadd }}</p>
+                        <p>{{ user?.email }}</p>
+                        <p>{{ user?.contact }}</p>
+                        <p>{{ method }}</p>
+                        </div>
+                        <div *ngIf="editToggle">
+                            <form>
+                                <input class="control" placeholder="Name" [value]="user.fname + ' ' + user.lname">
+                                <input class="control" placeholder="Home Address" [value] = "user.homeadd">
+                                <input class="control" placeholder="Email Address" [value] = "user.email">
+                                <input class="control" placeholder="Contact Information" [value] = "user.contact">
+                            </form>
+                        </div>
+                    </div>
+                    <p>Select Payment Method</p>
+                    <button class="button">COD</button>
+                    <button (click)="method = 'Paypal'" class="button">Paypal</button>
+                    <button (click)="method = 'Gcash'" class="button">Gcash</button>
+                    <br><br>
+
+               
+            </div>
         </div>
-        <button (click)="modal(); checkoutreset()" class="btn btn-info" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Check out</button>
-        <button (click)="checkoutreset()" class="btn btn-info" type="button" routerLink="../cart" class="btn btn-primary">Go Back</button>
-         
+        <div>
+
+        <p class="bold">Your Order</p>
+        <hr>
+            <table class="table table-striped">
+            <tr *ngFor="let order of finalOrder">
+                <td>{{ order.productName }}</td>
+                <td>{{ order.qty }}</td>
+                <td>{{ order.price | currency: 'Php ' }}</td><hr>
+            </tr>
+            </table>
+            <div class="container">
+                <div class="row ship">
+                  <p>Sub Total</p>
+                  <p>Php 2300.00</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row ship">
+                    <p>Shipping Fee</p>
+                    <p>Php 150.00</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row ship">
+                    <p>Grand Total</p>
+                    <p>Php 2450.00</p>
+                </div>
+            </div>
+ 
+            <button (click)="showMsg()" class="button btn-block text">Add Voucher</button>
+            <button (click)="modal(); checkoutreset()" class="button btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Check out</button>
+
+            <small *ngIf="showMessage">No voucher available for this item</small>
+
+        </div>
+        </div>
+        <!--
+        <button (click)="checkoutreset()" class="button" type="button" routerLink="../cart">Go Back</button>
+        -->
         <!-- Modal -->
            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -88,9 +135,11 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     `
 })
 
-export class ConfirmationPageComponent{
 
-    modalToggle = false;
+export class ConfirmationPageComponent{
+    showMessage:boolean = false;
+    editToggle:boolean = false;
+    modalToggle:boolean = false;
     method: string = "COD";
 
     user: User;
@@ -162,6 +211,14 @@ export class ConfirmationPageComponent{
         this.transac.resetTransac().subscribe()
 
             
+    }
+
+    showMsg(){
+        this.showMessage = true;
+    }
+
+    editToggler(){
+        this.editToggle = !this.editToggle;
     }
 
 }

@@ -7,28 +7,30 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
     selector: `cart-item`,
     styleUrls: [`cart-item.component.css`],
     template:  `
-    <div class="container" >
+    <div class="main">
+    <div class="container cart-item" >
+      
         <div class="row">
-            <div class="col-md-3" >
-                <p class="">{{ cartItem?.productName }}</p>
+        <div class="col-md-3">
+            <div class="img-wrapper">
+                <img src="{{cartItem?.photo}}">
             </div>
-            <div class="col-md-2">
-                <p>{{ cartItem?.qty }}</p>
             </div>
-            <div class="col-md-2">
-                <p>{{ cartItem?.price | currency: 'Php '}}</p>
-            </div>
-        
+            <div class="col-md-8 p-3" >
+                <h5 class="productName">{{ cartItem?.productName }}</h5>
+                <p>{{ cartItem?.desc }}</p>
+                <p>Quantity: {{ cartItem?.qty }}</p>
 
-            <div class="col-md-2">
-                <p>{{ cartItem?.price * cartItem?.qty | currency: 'Php '}}</p>
+                <p>Unit Price: {{ cartItem?.price | currency: 'Php '}}</p>
+         
+                <p>Total Price: {{ cartItem?.price * cartItem?.qty | currency: 'Php '}}</p>
             </div>
-        
-            <div class="col-md-1" >
-                <button (click)="removeCart(cartItem)" class="btn"><i class="fa fa-trash"></i></button>
+            <div class="col-md-1">
+                <button (click)="removeCart(cartItem)" class="btn trash"><i class="fa fa-trash"></i></button>
             </div>
         </div>
         
+    </div>
     </div>
     `
 })

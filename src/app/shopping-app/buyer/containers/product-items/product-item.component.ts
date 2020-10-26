@@ -14,44 +14,47 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
     styleUrls: [`product-item.component.css`],
     template: `
     <div class="item-wrapper">
-        <div (click)="photoIsClicked = !photoIsClicked" class="img-wrapper"><img src="{{ productItem?.imageUrl }}">
-        
-            <div class="alert-success"  *ngIf="itemAdded">
-                <p>Item added to cart <span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <div class="row add-row" *ngIf="productItem.stocks !== 0  && user !== 'admin1' && user !== 'admin2'">
-                <div  class="counterBtn">
-                        <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
-                        {{ value }}
-                        <button [disabled]="value === max" type="button" (click)="increment()">+</button>
+        <div class="container-fluid product">
+            <div (click)="photoIsClicked = !photoIsClicked" class="img-wrapper"><img src="{{ productItem?.imageUrl }}">
+            
+                <div class="alert-success"  *ngIf="itemAdded">
+                    <p>Item added to cart <span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
                 </div>
 
-                <button  [disabled]="productItem.stocks === 0 " (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+            </div>
+            <div class="details-container">
+            <p class="product-details product-name">{{ productItem.name }}
+                <i *ngIf="addedtoWishlist" class="fa fa-heart heart1 float-right" (click)="handleRemovefromWistlist()"></i>
+                <i *ngIf="!addedtoWishlist" class="fa fa-heart heart2 float-right" (click)="handleAddtoWishlist()"></i>
+            </p>
+            <p class="product-details">{{ productItem.price | currency: 'Php '}}</p>
             </div>
         </div>
+
+        <div class="container-fluid addtocart-container">
+        <div class="row add-row" *ngIf="productItem.stocks !== 0  && user !== 'admin1' && user !== 'admin2'">
+            <div  class="counterBtn">
+                    <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
+                    {{ value }}
+                    <button [disabled]="value === max" type="button" (click)="increment()">+</button>
+            </div>
+            <button  [disabled]="productItem.stocks === 0 " (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+        </div>
+    </div>
+        
+
+ 
 
         <div (click)="photoIsClicked = !photoIsClicked" class="descPopup">Description <i *ngIf="photoIsClicked" class="fa fa-minus"></i><i *ngIf="!photoIsClicked" class="fa fa-plus"></i></div>
        
-        <div>
-            
-            <p class="sold-out" *ngIf="productItem.stocks === 0">sold out</p>
-        </div>
+      
 
         <div class="desc" *ngIf="photoIsClicked === true" >
             <p>{{ productItem.description }}</p>
         </div>
-    
-        <strong>
-            <p>{{ productItem.name }}
-                <i *ngIf="addedtoWishlist" class="fa fa-heart heart1 float-right" (click)="handleRemovefromWistlist()"></i>
-                <i *ngIf="!addedtoWishlist" class="fa fa-heart heart2 float-right" (click)="handleAddtoWishlist()"></i>
-            </p>
-        </strong>
-        <p>{{ productItem.price | currency: 'Php '}}</p>
+        <div>
+        <p class="sold-out" *ngIf="productItem.stocks === 0">sold out</p>
+    </div>
     </div>  
 `
 })

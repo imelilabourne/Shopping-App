@@ -7,20 +7,12 @@ p{
     margin-top: 100px;
 }
 
-input{
-    margin-bottom: 20px;
+.pass{
+    margin-top:  20px;
 }
-
-/* .btn{
-    background-color: rgb(204, 247, 165);
-}
-
-.btn:hover{
-    background-color: rgb(105, 189, 27);
-} */
 
 button{
-    margin-bottom: 20px;
+    margin:  20px 0;
 }
 
 .loginBtn, .btn{

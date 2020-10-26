@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 *{
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif   ;
 }
 
 .button{
