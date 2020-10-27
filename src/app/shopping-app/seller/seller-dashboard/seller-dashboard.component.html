@@ -17,7 +17,9 @@
             </div>
     </div>
 </div>
-
+<div class="alert-success"  *ngIf="itemAdded">
+  <p>Item has been Deleted<span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
+</div> 
 <div class="container tab">
  
   <table id="dataTable" class="table table-bordered table-sm row-border hover"  > 

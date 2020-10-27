@@ -48,6 +48,7 @@ export class SellerDashboardComponent implements OnInit {
   Seller2String:string="5E Cakes";
   isSeller1 : boolean = false;
   isSeller2 : boolean = false;
+  itemAdded: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -84,7 +85,9 @@ export class SellerDashboardComponent implements OnInit {
  //   });
 
   }
- 
+  itemMsg(){
+     this.itemAdded = false;
+            }
   newProduct(){
     this.newProductForm = this.fb.group({
       name : [null,[Validators.required]],
@@ -219,15 +222,17 @@ export class SellerDashboardComponent implements OnInit {
   
 
     onDelete(id: number){
-      if (this.user === "admin1"){
+    //  if (this.user === "admin1"){
       console.log('delete', id);    
       this.dataservice.deleteProduct(id).subscribe();
+     
+      this.itemAdded =true;
       this.displayProductList();
-    }else if (this.user === "admin2"){
-      console.log('delete2', id);    
-      this.dataservice.deleteProduct2(id).subscribe();
-      this.displayProductList();
-    }
+  // }else if (this.user === "admin2"){
+    //  console.log('delete2', id);    
+    //  this.dataservice.deleteProduct2(id).subscribe();
+    //  this.displayProductList();
+   // }
     }
 
     onEdit(prodId : number){

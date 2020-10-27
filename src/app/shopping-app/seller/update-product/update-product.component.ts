@@ -32,28 +32,28 @@ export class UpdateProductComponent implements OnInit {
     
   }
   user = localStorage.getItem('user');
-
+  itemAdded: boolean = false;
   private headers = new Headers ({'Content-Type': 'application/json'});
   constructor(private router: Router,
               private route: ActivatedRoute, 
               private dataservice: ProductService,
               private http: Http ,
               private fb: FormBuilder) { }    
+  
 
+              itemMsg(){
+                this.itemAdded = false;
+            }
   onUpdate(product){
-    if (this.user === "admin1"){
+    //if (this.user === "admin1"){
     const url = `${productsUrl}/${this.id}`;
     this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
     .then(()=>{
-    this.router.navigate(['/seller'])
+   // this.router.navigate(['/seller'])
+   this.itemAdded =true;
     });
-  }else if (this.user === "admin2"){
-    const url = `${productsUrl2}/${this.id}`;
-    this.http.put(url, JSON.stringify(this.productObj),{headers:this.headers}).toPromise()
-    .then(()=>{
-    this.router.navigate(['/seller'])
-    });
-  }
+  //}else if (this.user === "admin2"){
+   
   }
 
   ngOnInit() {

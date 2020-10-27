@@ -9,6 +9,7 @@
 
 .btn{
     margin-left: 10px;
+  
 }
 
 
@@ -39,9 +40,24 @@
 }
 
 .tab{
-    margin-top: 90px;
+    margin-top: 20px;
 }
 
 .act{
     width: 180px;
+}
+
+.alert-success{
+    height: 40px;
+    width: 250px;
+    text-align: center;
+    z-index: 1;
+}
+
+.alert-success{
+    height: 40px;
+}
+
+.alert-success > p{
+    padding-left: 10px;
 }

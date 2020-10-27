@@ -58,7 +58,7 @@ export class SellerTransactComponent implements OnInit {
 
   ngOnInit() {
     this.displayProductList();
-   
+  
   }
   displayProductList() {
     this.dataservice.getTransac().subscribe(res => {
