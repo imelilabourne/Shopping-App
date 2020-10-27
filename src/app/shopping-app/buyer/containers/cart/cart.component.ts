@@ -60,7 +60,7 @@ export class CartComponent{
 
     handleSub(){
         this.messengerService.getMsg()
-            .subscribe((data:Product) => {
+            .subscribe(() => {
                 this.getUserCartItems();
                 this.accumulatedPrice();        
         })
@@ -71,7 +71,7 @@ export class CartComponent{
         this.cartService.getCartItems()
         .subscribe(data => {
             data.map(item => {
-               if(item.customerName ){
+               if(item.customerName){
                    return this.cartItems = data.filter(each => user === each.customerName );
                }
                

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { User } from 'src/app/shopping-app/model/user.interface';
@@ -6,6 +7,7 @@ import { CartService } from 'src/app/shopping-app/services/cart.service';
 import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { TransactService } from 'src/app/shopping-app/services/transac.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
+import { switchMap } from 'rxjs/operators'
 
 @Component({
     selector: 'confirm-page',
@@ -20,9 +22,9 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
         </div>
         -->
         <div class="label">
-            <a (click)="checkoutreset()" routerLink="/shop">Back to Shop</a><span>&#10095;</span>
-            <a (click)="checkoutreset()" routerLink="/cart">Shopping Bag</a><span>&#10095;</span>
-            <p>Checkout</p>
+            <a (click)="reset()" routerLink="/shop">Back to Shop</a><span>&#10095;</span>
+            <a (click)="reset()" routerLink="/cart">Shopping Bag</a><span>&#10095;</span>
+            <p style="color: green">Checkout</p>
         </div>
     <h2 class="checkout">Checkout</h2>
 
@@ -45,11 +47,13 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <p style="color: green; font-weight: bold">{{ method }}</p>
                         </div>
                         <div *ngIf="editToggle">
-                            <form>
-                                <input class="control" placeholder="Name" [value]="user.fname + ' ' + user.lname">
-                                <input class="control" placeholder="Home Address" [value] = "user.homeadd">
-                                <input class="control" placeholder="Email Address" [value] = "user.email">
-                                <input class="control" placeholder="Contact Information" [value] = "user.contact">
+                            <form [formGroup] = "shipForm" (ngSubmit)="onSubmit(shipForm.value)" >
+                                <input type="text" class="control" placeholder="First Name" [value]="user.fname" formControlName="fname">
+                                <input type="text" class="control" placeholder="Last Name" [value]="user.lname" formControlName="lname">
+                                <input type="text" class="control" placeholder="Home Address" [value] = "user.homeadd" formControlName = "homeadd">
+                                <input type="email" class="control" placeholder="Email Address" [value] = "user.email" formControlName = "email">
+                                <input type="number" class="control" placeholder="Contact Information" [value] = "user.contact" formControlName = "contact">
+                                <button type="submit" class="btn btn-info">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -75,10 +79,12 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                 <td>{{ order.price | currency: 'Php ' }}</td><hr>
             </tr>
             </table>
+            <hr>
+            <br>
             <div class="container">
                 <div class="row ship">
                   <p>Sub Total</p>
-                  <p>Php 2300.00</p>
+                  <p>{{ subtotal | currency: 'Php ' }}</p>
                 </div>
             </div>
             <div class="container">
@@ -90,7 +96,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
             <div class="container">
                 <div class="row ship">
                     <p>Grand Total</p>
-                    <p>Php 2450.00</p>
+                    <p>{{ subtotal + 150 |  currency: 'Php ' }}</p>
                 </div>
             </div>
  
@@ -99,12 +105,9 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
 
             <small *ngIf="showMessage">No voucher available for this item</small>
 
+            </div>
         </div>
-        </div>
-        <!--
-        <button (click)="checkoutreset()" class="button" type="button" routerLink="../cart">Go Back</button>
-        -->
-        <!-- Modal -->
+
            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -133,38 +136,104 @@ export class ConfirmationPageComponent{
     editToggle:boolean = false;
     modalToggle:boolean = false;
     method: string = "COD";
-
+    subtotal: number = 0;
     user: User;
-    @Input() infoForm;
-
-    cartItems:CartItem[] = [];
+    infoForm;
+    cartItems: CartItem[] =[];
     products:Product[] = [];
-
     finalOrder: CartItem[] = [];
-    constructor(private userService: UsersService, private transac: TransactService, private cartService:CartService, 
-        private productService: ProductService){}
+    name: string;
+    beforeEditing: string;
+    beforeEditinglname: string;
+    beforeEditinghomeadd: string;
+    beforeEditingemail: string;
+    beforeEditingcontact: number;
+    constructor(private userService: UsersService, 
+                private transac: TransactService, 
+                private cartService:CartService, 
+                private productService: ProductService, 
+                private fb: FormBuilder
+    ){}
+
+    shipForm = this.fb.group({
+        fname : '',
+        lname : '',
+        homeadd : '',
+        email : '',
+        contact :''
+    })
 
     ngOnInit(){
+        this.beforeEditing = '';
+        this.beforeEditinglname = '';
+        this.beforeEditingemail = '';
+        this.beforeEditinghomeadd = '';
+
         this.userService.getUsers().subscribe(data => {
             data.map(user => {
                 if(user.username === localStorage.getItem('user')){
                     this.user = user;
                 }
             });
- 
         })
-        
         this.transac.getTransac().subscribe(res => {
-          res.map(resp => this.finalOrder = resp);
+          res.map(resp => {this.finalOrder = resp
+            this.subTotal();
+            });
         });
-
         this.productService.getProductlist().subscribe(data => this.products = data);   
-
     }
+
+    onSubmit(){
+        this.beforeEditing = this.user.fname;
+        this.beforeEditinglname = this.user.lname;
+        this.beforeEditinghomeadd = this.user.homeadd;
+        this.beforeEditingemail = this.user.email;
+        this.beforeEditingcontact = this.user.contact;
+
+        this.infoForm = Object.assign({}, this.shipForm.value, this.shipForm.value)
+
+        this.user.fname =  this.infoForm.fname;
+        this.user.lname =  this.infoForm.lname;
+        this.user.homeadd = this.infoForm.homeadd;
+        this.user.email =  this.infoForm.email;
+        this.user.contact = this.infoForm.contact;
+        
+        if(this.infoForm.fname.trim().length === 0){
+            this.user.fname = this.beforeEditing;
+        }
+        if(this.infoForm.lname.trim().length === 0){
+            this.user.lname = this.beforeEditinglname;
+        }
+        if(this.infoForm.homeadd.trim().length === 0){
+            this.user.homeadd = this.beforeEditinghomeadd;
+        }
+        if(this.infoForm.email.trim().length === 0){
+            this.user.email = this.beforeEditingemail;
+        }
+        if(this.infoForm.contact.trim().length === 0){
+            this.user.contact = this.beforeEditingcontact;
+        }
+
+        this.editToggle = false;
+    }
+    
+    
+    
 
     modal(){
         this.modalToggle = !this.modalToggle;
        
+    }
+
+    subTotal(){
+   
+        this.finalOrder.map(cart => {
+           
+                this.subtotal += cart.price * cart.qty;
+            
+        })
+    
     }
     
     checkoutreset(){
@@ -184,24 +253,25 @@ export class ConfirmationPageComponent{
                         });
 
 
-                        this.cartService.getCartItems().subscribe(data => {
-                            data.map(cart => {
-                                this.products.forEach(product => {
-                                    if(product.stocks < cart.qty){
-                                        return this.cartService.removeProduct(cart).subscribe(res=>console.log(res));
-                                    }      
-                                })
-                            });
-                        })
+                        this.cartService.removeProduct(order).subscribe();
+                        // this.cartService.getCartItems().subscribe(carts => {
+                        //     carts.map(cart => {
+                        //         if(cart.qty >= product.stocks){
+                        //             this.cartService.removeProduct(cart).subscribe();
+                        //         }
+                        //     })
+                        // })
                     }
                 })
             })
         });
-
-       
-        this.transac.resetTransac().subscribe()
+        this.reset();
 
             
+    }
+
+    reset(){
+        this.transac.resetTransac().subscribe()
     }
 
     showMsg(){
@@ -209,7 +279,7 @@ export class ConfirmationPageComponent{
     }
 
     editToggler(){
-        this.editToggle = !this.editToggle;
+        this.editToggle = !this.editToggle
     }
 
 }

@@ -1,7 +1,13 @@
 
 img{
-    max-width: 200px;
+    max-width: 190px;
     max-height: 200px;
+}
+
+@media screen and (max-width: 990px) and (min-width: 766px){
+    img{
+        max-width: 150px;
+    }
 }
 
 .cart-item{

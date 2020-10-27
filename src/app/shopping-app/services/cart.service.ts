@@ -32,7 +32,6 @@ export class CartService {
         }  
 
       }
-      
       return cartItem;
     }));
   }

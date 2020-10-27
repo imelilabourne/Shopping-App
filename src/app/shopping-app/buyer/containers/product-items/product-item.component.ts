@@ -35,11 +35,11 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
         <div class="container-fluid addtocart-container">
         <div class="row add-row" *ngIf="productItem.stocks !== 0  && user !== 'admin1' && user !== 'admin2'">
             <div  class="counterBtn">
-                    <button [disabled]="value === min" type="button" (click)="decrement()">-</button>
+                    <button [disabled]="value === min" type="button || productItem.stocks <= 0" (click)="decrement()">-</button>
                     {{ value }}
-                    <button [disabled]="value === max" type="button" (click)="increment()">+</button>
+                    <button [disabled]="value === max" type="button || productItem.stocks <= 0" (click)="increment()">+</button>
             </div>
-            <button  [disabled]="productItem.stocks === 0 " (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
+            <button  [disabled]="productItem.stocks <= 0 " (click)="handleAddtoCart()" class="addtoCart">Add to Cart</button>
         </div>
     </div>
         

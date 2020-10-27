@@ -46,13 +46,13 @@ export class CartItemComponent{
         private productService: ProductService){}
 
     ngOnInit(){
-        this.productService.getProductlist().subscribe(data => {
-            data.map(product => {
-                if(product.stocks > 0){
-                    this.products = data;
-                }
-            })
-        })
+        // this.productService.getProductlist().subscribe(data => {
+        //     data.map(product => {
+        //         this.products = data;
+        //         this.products = this.products.filter(prod => prod.stocks > 0 )
+        //         console.log(this.products);
+        //     })
+        // })
     }
     removeCart(item){
         return this.itemSelected.emit(item);

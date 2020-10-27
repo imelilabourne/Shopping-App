@@ -46,7 +46,7 @@ hr{
 }
 
 .details > div > p{
-    margin: 4px 0px;
+    margin: 10px 0px;
 }
 
 .bold{
@@ -109,4 +109,9 @@ hr{
 .text{
     background-color: white;
     color: black;
+    border-bottom: rgb(128, 128, 128) 5px solid;
+}
+
+.table{
+    margin-top: 20px;
 }
