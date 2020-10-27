@@ -75,11 +75,15 @@ export class BuyerHomepage{
     }
 
     inc(){
-        this.pageNumber += 1;
+        if(this.pageNumber < this.products.length){
+            this.pageNumber += 1;
+        }
     }
 
     dec(){
-        this.pageNumber -= 1;
+        if(this.pageNumber > 1){
+            this.pageNumber -= 1;
+        }
     }
 
     sortDesc(){
