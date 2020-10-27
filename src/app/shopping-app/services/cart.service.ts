@@ -20,10 +20,10 @@ export class CartService {
       for(let item of result){
         let bool: boolean = false;
         for(let i of cartItem){
-            if (i.id === item.product.id){
-                i.qty++;
+            if (i.productName === item.product.name && i.customerName === item.customerName){
+                i.qty+= item.qty;
                 bool = true;
-                break;
+                // break;
             }
         }
 

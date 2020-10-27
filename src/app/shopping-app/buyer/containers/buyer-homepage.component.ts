@@ -48,7 +48,7 @@ import { WishlistService } from '../../services/wishlist.service';
         <div>
             <small># of items per page </small>
             <button class="button" (click)="dec()"><i class="fa fa-minus"></i></button>
-            <input class="input" [value]="pageNumber">
+            <input disabled class="input" [value]="pageNumber">
             <button class="button" (click)="inc()"><i class="fa fa-plus"></i></button>
         </div>
        </div>

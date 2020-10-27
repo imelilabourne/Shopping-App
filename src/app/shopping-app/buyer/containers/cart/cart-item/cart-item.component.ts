@@ -46,7 +46,13 @@ export class CartItemComponent{
         private productService: ProductService){}
 
     ngOnInit(){
-        this.productService.getProductlist().subscribe(data => this.products = data)
+        this.productService.getProductlist().subscribe(data => {
+            data.map(product => {
+                if(product.stocks > 0){
+                    this.products = data;
+                }
+            })
+        })
     }
     removeCart(item){
         return this.itemSelected.emit(item);

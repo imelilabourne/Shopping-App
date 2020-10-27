@@ -179,7 +179,6 @@ export class ConfirmationPageComponent{
                 orderSummary.map(order => {
                     if(product.name === order.productName){
                         this.productService.updateStocks(product.id, {...product, stocks: product.stocks - order.qty}).subscribe();
-
                         this.cartService.getCartItems().subscribe(data => {
                             this.cartItems = data;
                         });
@@ -188,9 +187,9 @@ export class ConfirmationPageComponent{
                         this.cartService.getCartItems().subscribe(data => {
                             data.map(cart => {
                                 this.products.forEach(product => {
-                                                if(product.stocks < cart.qty){
-                                                    return this.cartService.removeProduct(cart).subscribe(res=>console.log(res));
-                                                }      
+                                    if(product.stocks < cart.qty){
+                                        return this.cartService.removeProduct(cart).subscribe(res=>console.log(res));
+                                    }      
                                 })
                             });
                         })
