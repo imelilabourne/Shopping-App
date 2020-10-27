@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // to use ngModel
 import { DataTablesModule} from 'angular-datatables';
 
@@ -57,6 +58,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpModule,
     FormsModule, 
     ReactiveFormsModule,
     AppRoutingModule,    

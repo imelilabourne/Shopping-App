@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody style="text-align:center" >
-      <tr *ngFor="let list of finalOrder  | filter: searchProduct: 'name' ">
+      <tr *ngFor="let list of finalOrder  | filter: searchProduct: 'productName' ">
         <td colspan="1" >{{list.id}}</td>
         <td colspan="1" >{{list.productName}}</td>
         <td colspan="1" >{{list.price | currency: 'PHP' }}</td>
