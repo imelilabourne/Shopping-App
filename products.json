@@ -68,7 +68,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 599,
       "imageUrl": "../../../assets/headphones.png",
-      "stocks": 10
+      "stocks": 9
     },
     {
       "id": 4,
@@ -86,7 +86,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 1500,
       "imageUrl": "../../../assets/lipstick.png",
-      "stocks": 10
+      "stocks": 4
     },
     {
       "id": 6,
@@ -101,26 +101,12 @@
       "name": "Duffle Bag",
       "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
       "price": 599,
-      "stocks": 10,
+      "stocks": 7,
       "imageUrl": "../../../assets/dufflebag.png",
       "id": 1
     }
   ],
   "cart": [
-    {
-      "product": {
-        "id": 5,
-        "productId": 5,
-        "name": "Fenty Beauty",
-        "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
-        "price": 1500,
-        "imageUrl": "../../../assets/lipstick.png",
-        "stocks": 4
-      },
-      "customerName": "user2",
-      "qty": 1,
-      "id": 6
-    },
     {
       "product": {
         "name": "Duffle Bag",
@@ -257,6 +243,19 @@
       "customerName": "user1",
       "qty": 4,
       "id": 16
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 10,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
+      },
+      "customerName": "user2",
+      "qty": 3,
+      "id": 17
     }
   ],
   "wishlist": [
@@ -312,34 +311,5 @@
     }
   ],
   "transac": [
-    [
-      {
-        "id": 10,
-        "productName": "Duffle Bag",
-        "qty": 3,
-        "price": 599,
-        "customerName": "user1",
-        "photo": "../../../assets/dufflebag.png",
-        "desc": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away."
-      },
-      {
-        "id": 11,
-        "productName": "Fenty Beauty",
-        "qty": 6,
-        "price": 1500,
-        "customerName": "user1",
-        "photo": "../../../assets/lipstick.png",
-        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
-      },
-      {
-        "id": 12,
-        "productName": "Headphone",
-        "qty": 4,
-        "price": 599,
-        "customerName": "user1",
-        "photo": "../../../assets/headphones.png",
-        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
-      }
-    ]
   ]
 }
