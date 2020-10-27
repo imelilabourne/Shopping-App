@@ -53,6 +53,15 @@ hr{
     font-weight: bold;
 }
 
+.bottom{
+    margin-bottom: 14px;
+}
+
+.order{
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
 .icon{
     width: 30px;
     margin: auto;
@@ -81,7 +90,7 @@ hr{
 .ship{
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: -4px 0;
 }
 
 .control{
@@ -89,7 +98,7 @@ hr{
     line-height: 40px;
     outline: 0;
     border-width: 0 0 2px;
-    border-color: rgb(180, 180, 182);
+    border-color: rgb(118, 161, 216);
     font-style: italic;
 }
 
@@ -97,7 +106,7 @@ hr{
     border-color: green
   }
 
-  .text{
-      background-color: white;
-      color: black;
-  }
+.text{
+    background-color: white;
+    color: black;
+}

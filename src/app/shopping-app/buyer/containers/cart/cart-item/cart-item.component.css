@@ -1,28 +1,22 @@
 
 img{
     max-width: 200px;
+    max-height: 200px;
 }
 
 .cart-item{
-    border: 1px black;
-    background-color: rgb(214, 211, 216);
+    /* border: 1px rgb(199, 197, 197) solid; */
+    background-color: rgb(233, 231, 235);
     margin-bottom: 20px;
     font-size: 12px;
+    box-shadow: 0 0 4px rgb(110, 109, 109);
 }
-
-/* @media screen and (max-width: 800px){
-    img{
-        transform: scale(.5);
-        transform: translate(100x, 300px);
-    }
-} */
 
 .trash{
     margin-top: 20px;
 }
 
 .img-wrapper{
-    /* width: 400px; */
     display: flex;
     justify-content: center;
     height: 250px;

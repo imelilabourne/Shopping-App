@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // to use ngModel
 import { DataTablesModule} from 'angular-datatables';
-import { HttpModule } from '@angular/http';
 
 
 import { AppRoutingModule, routingComponents } from './shopping-app-routing.module';
@@ -27,6 +26,7 @@ import { AuthGuard } from './auth.guard';
 import { SellerNavbarComponent } from './seller/components/seller-navbar/seller-navbar.component';
 import { SellerFooterComponent } from './seller/components/seller-footer/seller-footer.component';
 import { SellerTransactComponent } from './seller/seller-transact/seller-transact.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -59,10 +59,9 @@ import { SellerTransactComponent } from './seller/seller-transact/seller-transac
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpModule,
     AppRoutingModule,    
-    DataTablesModule
-
+    DataTablesModule,
+    NgxPaginationModule
   ],
   providers: [AuthGuard],
  

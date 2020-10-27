@@ -44,8 +44,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         -->
                     </div>
                 </div>
-    
-                <cart-item *ngFor="let cart of cartItems" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
+                    <cart-item *ngFor="let cart of cartItems" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
             </div>
                 <div class="flex">
                     <div class="grand">Grand Total: {{grandTotal | currency: 'Php '}}</div>

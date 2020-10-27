@@ -20,6 +20,7 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
                 <div class="alert-success"  *ngIf="itemAdded">
                     <p>Item added to cart <span><button (click)="itemMsg()" class="btn ekis"><i class="fa fa-times"></i></button></span></p>
                 </div>
+                <p class="sold-out" *ngIf="productItem.stocks <= 0">sold out</p>
 
             </div>
             <div class="details-container">
@@ -53,7 +54,6 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
             <p>{{ productItem.description }}</p>
         </div>
         <div>
-        <p class="sold-out" *ngIf="productItem.stocks === 0">sold out</p>
     </div>
     </div>  
 `

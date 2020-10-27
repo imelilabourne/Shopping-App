@@ -8,9 +8,6 @@ import { WishlistService } from '../../services/wishlist.service';
     styleUrls: ['buyer-homepage.component.css'],
     template: `
     <div class="container con">
-
-           
- 
         <button class="btn btn-outline-secondary clear " *ngIf="showClearBtn" (click)="clear()">All Products</button>
         <br>
         <div class="main-products row" >
@@ -41,10 +38,23 @@ import { WishlistService } from '../../services/wishlist.service';
         </div>
 
 </div>
-            <div class="col product" *ngFor="let product of products | filter: searchProduct: 'name' | sort:[SortbyParam, sortDirection]">
+            <div class="col product" *ngFor="let product of products | filter: searchProduct: 'name' | sort:[SortbyParam, sortDirection] | paginate: { itemsPerPage: pageNumber, currentPage: p }">
                 <product-item [productItem]="product" [addedtoWishlist] = "wishlist.indexOf(product.id) >= 0" ></product-item>
             </div>
+         
         </div>
+        <div class="paginate">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <div>
+            <small># of items per page </small>
+            <button class="button" (click)="dec()"><i class="fa fa-minus"></i></button>
+            <input class="input" [value]="pageNumber">
+            <button class="button" (click)="inc()"><i class="fa fa-plus"></i></button>
+        </div>
+       </div>
+       
+ 
+
     </div>
     `
 })
@@ -56,11 +66,20 @@ export class BuyerHomepage{
     showClearBtn: boolean = false;
     SortbyParam = "name";
     sortDirection = "asc";
+    pageNumber: number = 3;
     user = localStorage.getItem('user');
 
     constructor(
         private productService: ProductService, 
         private wishlistService: WishlistService){
+    }
+
+    inc(){
+        this.pageNumber += 1;
+    }
+
+    dec(){
+        this.pageNumber -= 1;
     }
 
     sortDesc(){

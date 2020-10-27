@@ -29,30 +29,20 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     <div class="flex">
         <div>   
         
-                <div class="row ship">
-                    <p class="bold">Shipping Details</p>
-                    <span (click)="editToggler()">Edit</span>
-                    
+                <div class="row ship bold">
+                    <p>Shipping Details</p>
+                    <span (click)="editToggler()"> <i class="fa fa-pencil"></i></span>
                 </div>
                 <hr>
     
                 <div>
-                <!--
-                    <tr>
-                        <th scope="col">Customer Name</th>    
-                        <th scope="col">Home Addres</th>    
-                        <th scope="col">Email Address</th>    
-                        <th scope="col">Contact Number</th>    
-                        <th scope="col">Payment Method</th>    
-                    </tr>
-                -->
                     <div class="details">
                         <div *ngIf="!editToggle">
                         <p>{{ user?.fname }} {{ user?.lname }}</p>
                         <p>{{ user?.homeadd }}</p>
                         <p>{{ user?.email }}</p>
                         <p>{{ user?.contact }}</p>
-                        <p>{{ method }}</p>
+                        <p style="color: green; font-weight: bold">{{ method }}</p>
                         </div>
                         <div *ngIf="editToggle">
                             <form>
@@ -63,7 +53,8 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                             </form>
                         </div>
                     </div>
-                    <p>Select Payment Method</p>
+                    <br>
+                    <p>Select Payment Method:</p>
                     <button class="button">COD</button>
                     <button (click)="method = 'Paypal'" class="button">Paypal</button>
                     <button (click)="method = 'Gcash'" class="button">Gcash</button>
@@ -72,9 +63,10 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                
             </div>
         </div>
-        <div>
-
-        <p class="bold">Your Order</p>
+        <div class="summary-order">
+        <div class="bottom">
+            <p class="bold order">Your Order</p>
+        </div>
         <hr>
             <table class="table table-striped">
             <tr *ngFor="let order of finalOrder">

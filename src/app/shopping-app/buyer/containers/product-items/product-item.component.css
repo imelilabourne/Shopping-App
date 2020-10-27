@@ -128,10 +128,13 @@ strong > p{
 }
 
 .sold-out{
-    background-color: rgb(43, 43, 42) ;
-    color: rgb(247, 216, 216);
+    background-color: rgba(131, 14, 14, 0.438) ;
+    color: rgb(255, 255, 255);
     height: 40px;
     line-height: 40px;
+    width: 200px;
     text-transform: uppercase;
     /* box-shadow:rgb(212, 210, 210) 4px 2px ; */
+    position: absolute;
+    transform: rotate(-30deg);
 }

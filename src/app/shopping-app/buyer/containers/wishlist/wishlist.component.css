@@ -1,20 +1,7 @@
-/* button{
-    border: 1px rgb(116, 221, 181) solid;
-    width: 230px;
-    height: 40px;
-    background-color: rgb(255, 255, 255);
-    color:rgb(116, 221, 181);
-}
-
-button:hover{
-    background-color: rgb(101, 173, 170);
-    color: white;
-} */
 
 .head{
     font-weight: bold;
 }
-
 
 .main{
     padding: 20px;
