@@ -9,6 +9,7 @@ import * as XLSX from 'xlsx';
 //services
 import {CartService} from '../../services/cart.service';
 import {TransactService} from '../../services/transac.service';
+import {ProductService} from '../../services/product.service';
 //interface
 import {Product} from '../../model/products.interface'
 import {CartItem } from '../../model/cart-item.interface'
@@ -45,44 +46,31 @@ export class SellerTransactComponent implements OnInit {
   isSeller1 : boolean = false;
   isSeller2 : boolean = false;
 
+  finalOrder: CartItem[] = [];
   constructor(private router: Router,
     private route: ActivatedRoute,
     private dataservice: TransactService,
     private cartservice : CartService,
     private http: Http,
     private fb: FormBuilder,
-    private _sanitizer: DomSanitizer) { }
+    private _sanitizer: DomSanitizer,
+    private productService :ProductService) { }
 
   ngOnInit() {
     this.displayProductList();
+   
   }
-
   displayProductList() {
-  //  if (this.user === "admin1"){
-    this.dataservice.getTransac().subscribe( res => {
-        
+    this.dataservice.getTransac().subscribe(res => {
+      res.map(resp => this.finalOrder = resp);
+    });
 
-      for(let i in res){
-      console.log(res[i]);
-          this.upcart = res[i].cartItems;
-      }
-  })
-        console.log('this Transaction', this.upcart);
-        this.isSeller1 = true;
-      }
- //   }else if (this.user === "admin2"){
-     // this.dataservice.postTransact().subscribe(data =>
-      //  {
-          // as the Web Api doesn't sort the list of todos, we do here in the frontend
-        //  this.upproducts = data.sort((a,b)=> {
-        //    if (a.id>b.id) return -1;
-         //   if (a.id<b.id) return 1;
-       //   });
-       //   console.log('display productList2', this.upproducts);
-       //   this.isSeller2 = true;
-      //  });
-   // }
-  
+    this.productService.getProductlist().subscribe(data => this.upproducts = data);  
+    console.log('display Transaction', this.finalOrder);
+    this.isSeller1=true;
+    
+  }
+ 
 
   onExportExcel(): void{
     /* pass here the table id */

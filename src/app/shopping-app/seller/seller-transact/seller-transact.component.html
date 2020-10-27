@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody style="text-align:center" >
-      <tr *ngFor="let list of upcart  | filter: searchProduct: 'name' ">
+      <tr *ngFor="let list of finalOrder  | filter: searchProduct: 'name' ">
         <td colspan="1" >{{list.id}}</td>
         <td colspan="1" >{{list.productName}}</td>
         <td colspan="1" >{{list.price | currency: 'PHP' }}</td>
@@ -43,7 +43,6 @@
   </tbody>
   </table>
   </div>
-
+</div>
   <app-seller-footer></app-seller-footer>
 
-</div>

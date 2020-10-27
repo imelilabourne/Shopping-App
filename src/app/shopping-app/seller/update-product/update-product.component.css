@@ -14,4 +14,21 @@ textarea{
     width : 150px; /*adjust as needed*/
   }
   
- 
+  
+  .btn{
+      margin-bottom: 10px;
+  }
+
+  .seller-header{
+    margin-top: 90px;
+    /* height: 200px; */
+    border: 1px solid rgb(212, 206, 206);
+    display: flex;
+    align-items: center;
+    box-shadow: rgb(212, 206, 206) 4px 2px;
+    margin-bottom: 20px;
+}
+
+.seller-header > h1{
+    margin: 10px;
+}
