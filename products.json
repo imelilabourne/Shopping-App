@@ -86,11 +86,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 1500,
       "imageUrl": "../../../assets/lipstick.png",
-<<<<<<< Updated upstream
-      "stocks": 6
-=======
-      "stocks": 3
->>>>>>> Stashed changes
+      "stocks": 0
     },
     {
       "id": 6,
@@ -105,11 +101,7 @@
       "name": "Duffle Bag",
       "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
       "price": 599,
-<<<<<<< Updated upstream
-      "stocks": 9,
-=======
-      "stocks": -1,
->>>>>>> Stashed changes
+      "stocks": 5,
       "imageUrl": "../../../assets/dufflebag.png",
       "id": 1
     },
@@ -117,7 +109,7 @@
       "name": "Canon M50",
       "description": "with 16GB SD card",
       "price": 45000,
-      "stocks": 10,
+      "stocks": 9,
       "imageUrl": "../../../../assets/IMG_7212.png",
       "id": 7
     }
@@ -125,50 +117,33 @@
   "cart": [
     {
       "product": {
-<<<<<<< Updated upstream
         "id": 5,
         "productId": 5,
         "name": "Fenty Beauty",
         "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
         "price": 1500,
         "imageUrl": "../../../assets/lipstick.png",
-        "stocks": 8
+        "stocks": 3
+      },
+      "customerName": "user2",
+      "qty": 3,
+      "id": 5
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 9,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
       },
       "customerName": "user2",
       "qty": 1,
-      "id": 4
-=======
-        "id": 4,
-        "productId": 4,
-        "name": "Nikon D500",
-        "description": "DX Series DSLRs combine pro-level DSLR features and flexibility with lightweight, nimble handling.",
-        "price": 1200,
-        "imageUrl": "../../../assets/nikon.png",
-        "stocks": 1
-      },
-      "customerName": "user2",
-      "qty": 1,
-      "id": 2
->>>>>>> Stashed changes
+      "id": 7
     }
   ],
-  "wishlist": [
-    {
-      "id": 7,
-      "user": "user2"
-<<<<<<< Updated upstream
-=======
-    },
-    {
-      "id": 1,
-      "user": "user1"
-    },
-    {
-      "id": 3,
-      "user": "user2"
->>>>>>> Stashed changes
-    }
-  ],
+  "wishlist": [],
   "users": [
     {
       "username": "user1",
@@ -211,39 +186,5 @@
       "role": "seller"
     }
   ],
-<<<<<<< Updated upstream
   "transac": []
-=======
-  "transac": [
-    [
-      {
-        "id": 1,
-        "productName": "Fenty Beauty",
-        "qty": 2,
-        "price": 1500,
-        "customerName": "user1",
-        "photo": "../../../assets/lipstick.png",
-        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
-      },
-      {
-        "id": 3,
-        "productName": "Fenty Beauty",
-        "qty": 1,
-        "price": 1500,
-        "customerName": "user1",
-        "photo": "../../../assets/lipstick.png",
-        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
-      },
-      {
-        "id": 4,
-        "productName": "Mac",
-        "qty": 1,
-        "price": 6200,
-        "customerName": "user1",
-        "photo": "../../../assets/mac.png",
-        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
-      }
-    ]
-  ]
->>>>>>> Stashed changes
 }

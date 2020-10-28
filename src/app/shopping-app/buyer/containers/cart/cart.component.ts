@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { CartService } from 'src/app/shopping-app/services/cart.service';
 import { MessengerService } from 'src/app/shopping-app/services/messenger.service';
+import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { TransactService } from 'src/app/shopping-app/services/transac.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
 
@@ -38,16 +40,30 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
 })
 
 export class CartComponent{
-    cartItems= []
+    cartItems= [];
+    products:Product[] = []
     grandTotal: number = 0;
     user: string = localStorage.getItem('user');
     available: boolean = true;
 
     ngOnInit(){
+
         this.getUserCartItems();
         this.handleSub();
         this.accumulatedPrice();
-
+        this.productService.getProducts().subscribe(data => {
+            return this.cartItems = this.cartItems.filter(cartItem => {
+                const tempCart = [];
+                for(let i of data){
+                    // return cartItem.qty <= i.stocks;
+                    if(cartItem.qty <= i.stocks && cartItem.productName === i.name){
+                        return tempCart.push(cartItem);
+                    }
+                    
+                    
+                }
+            })
+        });
     }
 
     constructor(
@@ -56,6 +72,7 @@ export class CartComponent{
         private transacService: TransactService, 
         private userService: UsersService,
         private router: Router,
+        private productService: ProductService
     ){}
 
     handleSub(){

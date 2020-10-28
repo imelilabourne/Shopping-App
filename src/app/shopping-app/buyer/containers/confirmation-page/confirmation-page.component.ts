@@ -7,7 +7,6 @@ import { CartService } from 'src/app/shopping-app/services/cart.service';
 import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { TransactService } from 'src/app/shopping-app/services/transac.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
-import { switchMap } from 'rxjs/operators'
 
 @Component({
     selector: 'confirm-page',
