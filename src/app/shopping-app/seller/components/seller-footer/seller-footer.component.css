@@ -10,3 +10,16 @@
 .icons > i{
     margin-right: 30px;
 }
+
+
+@media (max-device-width: 2000px) and (orientation: landscape)  {
+    footer {
+        color: rgb(219, 217, 217);
+        margin: auto;
+        margin-top: 150px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        position: static;
+    }
+  }

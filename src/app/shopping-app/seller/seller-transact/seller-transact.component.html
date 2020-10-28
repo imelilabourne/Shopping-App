@@ -3,8 +3,6 @@
 <div class="seller-header">
   <!---  <h1 class="display-2">Seller Dashboard</h1>--->
       <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
-      <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
-    
   </div>
 
   <div class="container ">   
@@ -32,23 +30,23 @@
         <th scope="col">Customer Name</th>
       </tr>
     </thead>
+    
     <tbody style="text-align:center" >
       <tr *ngFor="let list of finalOrder  | filter: searchProduct: 'productName' ">
         <td colspan="1" >{{list.id}}</td>
         <td colspan="1" >{{list.productName}}</td>
         <td colspan="1" >{{list.price | currency: 'PHP' }}</td>
-        <td colspan="1">{{list.customerName}}
+        <td colspan="1" >{{list.customerName}}
         </td>
       </tr>
   </tbody>
-  <tfoot>
-    <tr>
-        <th colspan="2 " style="text-align:right">Total:</th>
-        <th></th>
-    </tr>
-</tfoot>
   </table>
   </div>
+
+  <div *ngIf="finalOrder?.length == 0 ">
+    <h2 style="text-align:center" >No Transaction</h2>
+  </div>
+
 </div>
   <app-seller-footer></app-seller-footer>
 

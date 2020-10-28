@@ -2,7 +2,7 @@
   <div class="seller-header">
   <!---  <h1 class="display-2">Seller Dashboard</h1>--->
       <h1 *ngIf="isSeller1" class="display-2">{{Seller1String}}</h1>
-      <h1 *ngIf="isSeller2" class="display-2" >{{Seller2String}}</h1>
+      
   </div>
   <div class="container ">  
     <button class="btn btn-info pull-right" (click)="onExportExcel()" >Export to Excel</button>
@@ -50,6 +50,11 @@
       </tr>
   </tbody>
   </table>
+
+  <div *ngIf="upproducts?.length == 0 ">
+    <h2 style="text-align:center" >No Products</h2>
+  </div>
+
   </div>
 
 
