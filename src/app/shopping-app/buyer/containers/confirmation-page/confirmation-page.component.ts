@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { User } from 'src/app/shopping-app/model/user.interface';
 import { CartService } from 'src/app/shopping-app/services/cart.service';
+import { HistoryService } from 'src/app/shopping-app/services/history.service';
 import { ProductService } from 'src/app/shopping-app/services/product.service';
 import { TransactService } from 'src/app/shopping-app/services/transac.service';
 import { UsersService } from 'src/app/shopping-app/services/users.service';
@@ -151,7 +152,8 @@ export class ConfirmationPageComponent{
                 private transac: TransactService, 
                 private cartService:CartService, 
                 private productService: ProductService, 
-                private fb: FormBuilder
+                private fb: FormBuilder,
+                private historyService: HistoryService
     ){}
 
     shipForm = this.fb.group({
@@ -252,7 +254,7 @@ export class ConfirmationPageComponent{
                         });
 
 
-                        this.cartService.removeProduct(order).subscribe();
+                        // this.cartService.removeProduct(order).subscribe();
                         // this.cartService.getCartItems().subscribe(carts => {
                         //     carts.map(cart => {
                         //         if(cart.qty >= product.stocks){
@@ -260,17 +262,20 @@ export class ConfirmationPageComponent{
                         //         }
                         //     })
                         // })
+                        this.historyService.postHistory(order).subscribe();
                     }
                 })
             })
         });
+
         this.reset();
 
             
     }
 
     reset(){
-        this.transac.resetTransac().subscribe()
+        this.transac.resetTransac().subscribe();
+        
     }
 
     showMsg(){
