@@ -293,17 +293,6 @@
       "username": "admin2",
       "password": "123",
       "role": "seller"
-    },
-    {
-      "username": "guest",
-      "password": "default",
-      "role": "guest",
-      "fname": "sdbrb",
-      "lname": "rebr",
-      "homeadd": "breb",
-      "email": "rebre",
-      "contact": 3523532532,
-      "id": 5
     }
   ],
   "transac": []
