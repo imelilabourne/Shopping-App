@@ -42,11 +42,12 @@ export class SellerTransactComponent implements OnInit {
   url: string | ArrayBuffer;
   selectedFile : File = null;
   Seller1String:string="Apple";
-  Seller2String:string="5E Cakes";
+  //Seller2String:string="5E Cakes";
   isSeller1 : boolean = false;
   isSeller2 : boolean = false;
-
   finalOrder: CartItem[] = [];
+  
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private dataservice: TransactService,

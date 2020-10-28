@@ -1,56 +1,5 @@
 {
-  "product": {
-    "admin1": [
-      {
-        "id": 1,
-        "productId": 1,
-        "name": "Nike Airforce 270",
-        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
-        "price": 4200,
-        "imageUrl": "../../../assets/shoes1.jpg",
-        "stocks": 10
-      },
-      {
-        "id": 2,
-        "productId": 1,
-        "name": "Nike Airforce 270",
-        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
-        "price": 4200,
-        "imageUrl": "../../../assets/shoes1.jpg",
-        "stocks": 10
-      }
-    ],
-    "admin2": [
-      {
-        "id": 3,
-        "productId": 1,
-        "name": "Nike Airforce 270",
-        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
-        "price": 4200,
-        "imageUrl": "../../../assets/shoes1.jpg",
-        "stocks": 10
-      },
-      {
-        "id": 4,
-        "productId": 1,
-        "name": "Nike Airforce 270",
-        "description": "It depends. Like every other aspect of your website, product descriptions may or may not be needed. It needs to be split tested. Each website has a different layout, personality, and style which may require a different product description template.",
-        "price": 4200,
-        "imageUrl": "../../../assets/shoes1.jpg",
-        "stocks": 10
-      }
-    ]
-  },
-  "product1": [
-    {
-      "name": "Iphone1",
-      "description": "fgdf",
-      "price": 454,
-      "stocks": 4,
-      "imageUrl": "../../../../assets/product4.jpg",
-      "id": 2
-    }
-  ],
+   
   "products": [
     {
       "id": 2,
@@ -68,7 +17,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 599,
       "imageUrl": "../../../assets/headphones.png",
-      "stocks": 1
+      "stocks": 10
     },
     {
       "id": 4,
@@ -101,7 +50,7 @@
       "name": "Duffle Bag",
       "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
       "price": 599,
-      "stocks": 0,
+      "stocks": 5,
       "imageUrl": "../../../assets/dufflebag.png",
       "id": 1
     },
@@ -109,7 +58,7 @@
       "name": "Canon M50",
       "description": "with 16GB SD card",
       "price": 45000,
-      "stocks": -1,
+      "stocks": 10,
       "imageUrl": "../../../../assets/IMG_7212.png",
       "id": 7
     }
@@ -181,11 +130,6 @@
     },
     {
       "username": "admin1",
-      "password": "123",
-      "role": "seller"
-    },
-    {
-      "username": "admin2",
       "password": "123",
       "role": "seller"
     }
