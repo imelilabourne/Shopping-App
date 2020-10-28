@@ -68,7 +68,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 599,
       "imageUrl": "../../../assets/headphones.png",
-      "stocks": 5
+      "stocks": 1
     },
     {
       "id": 4,
@@ -95,13 +95,13 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 6200,
       "imageUrl": "../../../assets/mac.png",
-      "stocks": 9
+      "stocks": 10
     },
     {
       "name": "Duffle Bag",
       "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
       "price": 599,
-      "stocks": 5,
+      "stocks": 4,
       "imageUrl": "../../../assets/dufflebag.png",
       "id": 1
     },
@@ -109,7 +109,7 @@
       "name": "Canon M50",
       "description": "with 16GB SD card",
       "price": 45000,
-      "stocks": 9,
+      "stocks": 8,
       "imageUrl": "../../../../assets/IMG_7212.png",
       "id": 7
     }
@@ -134,18 +134,125 @@
         "name": "Duffle Bag",
         "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
         "price": 599,
-        "stocks": 9,
+        "stocks": 4,
         "imageUrl": "../../../assets/dufflebag.png",
         "id": 1
       },
-      "customerName": "user2",
+      "customerName": "user1",
+      "qty": 4,
+      "id": 9
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 4,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
+      },
+      "customerName": "guest",
       "qty": 1,
-      "id": 7
+      "id": 10
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 4,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
+      },
+      "customerName": "guest",
+      "qty": 1,
+      "id": 11
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 4,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
+      },
+      "customerName": "guest",
+      "qty": 1,
+      "id": 12
+    },
+    {
+      "product": {
+        "name": "Duffle Bag",
+        "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
+        "price": 599,
+        "stocks": 4,
+        "imageUrl": "../../../assets/dufflebag.png",
+        "id": 1
+      },
+      "customerName": "guest",
+      "qty": 1,
+      "id": 13
+    },
+    {
+      "product": {
+        "name": "Canon M50",
+        "description": "with 16GB SD card",
+        "price": 45000,
+        "stocks": 8,
+        "imageUrl": "../../../../assets/IMG_7212.png",
+        "id": 7
+      },
+      "customerName": "user1",
+      "qty": 1,
+      "id": 14
+    },
+    {
+      "product": {
+        "name": "Canon M50",
+        "description": "with 16GB SD card",
+        "price": 45000,
+        "stocks": 8,
+        "imageUrl": "../../../../assets/IMG_7212.png",
+        "id": 7
+      },
+      "customerName": "user1",
+      "qty": 1,
+      "id": 15
+    },
+    {
+      "product": {
+        "id": 3,
+        "productId": 3,
+        "name": "Headphone",
+        "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
+        "price": 599,
+        "imageUrl": "../../../assets/headphones.png",
+        "stocks": 5
+      },
+      "customerName": "user1",
+      "qty": 1,
+      "id": 16
+    },
+    {
+      "product": {
+        "id": 3,
+        "productId": 3,
+        "name": "Headphone",
+        "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
+        "price": 599,
+        "imageUrl": "../../../assets/headphones.png",
+        "stocks": 5
+      },
+      "customerName": "user1",
+      "qty": 3,
+      "id": 17
     }
   ],
   "wishlist": [],
   "users": [
     {
+      "id": 1,
       "username": "user1",
       "password": "123",
       "role": "buyer",
@@ -156,6 +263,7 @@
       "contact": "09959143409"
     },
     {
+      "id": 2,
       "username": "user2",
       "password": "123",
       "role": "buyer",
@@ -166,6 +274,7 @@
       "contact": "09959143409"
     },
     {
+      "id": 3,
       "username": "user3",
       "password": "123",
       "role": "buyer",
@@ -184,6 +293,17 @@
       "username": "admin2",
       "password": "123",
       "role": "seller"
+    },
+    {
+      "username": "guest",
+      "password": "default",
+      "role": "guest",
+      "fname": "sdbrb",
+      "lname": "rebr",
+      "homeadd": "breb",
+      "email": "rebre",
+      "contact": 3523532532,
+      "id": 5
     }
   ],
   "transac": []

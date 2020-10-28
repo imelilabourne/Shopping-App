@@ -20,6 +20,7 @@ import { UsersService } from '../../services/users.service';
                 <div class="invalid-feedback" *ngIf="form.get('user').invalid && form.get('user').touched">
                 Username is required
                 </div>
+                
                 <input required type="password" class="form-control pass" placeholder="Password" formControlName="pass" [ngClass]="{'is-invalid': form.get('pass').touched && form.get('pass').invalid}">
 
                 <div class="invalid-feedback" *ngIf="form.get('pass').invalid && form.get('pass').touched">

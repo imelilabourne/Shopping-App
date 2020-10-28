@@ -29,4 +29,8 @@ export class UsersService{
     postUser(user: User):Observable<User>{
         return this.http.post<User>(usersUrl, user);
     }
+
+    removeUser(user: User):Observable<User>{
+        return this.http.delete<User>(usersUrl + '/' + user.id);
+    }
 }

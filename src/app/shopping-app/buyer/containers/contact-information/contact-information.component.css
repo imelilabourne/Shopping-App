@@ -1,7 +1,8 @@
 .form{
     width: 500px;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 130px;
+    min-height: 50vh;
 }
 
 form{
@@ -9,16 +10,18 @@ form{
     padding: 50px;
 }
 
-input{
+small{
     margin-bottom: 20px;
+    color: red;
+    font-style: italic;
 }
 
-button{
-    margin-bottom: 20px;
+input, button{
+    margin-top: 20px;
 }
 
 .loginBtn, .btn{
-    background-color: rgb(75, 148, 124);
+    background-color: rgb(83, 134, 177);
     border: none;
     color: white;
     border-radius: 2px;

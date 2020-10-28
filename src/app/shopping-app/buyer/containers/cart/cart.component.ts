@@ -55,12 +55,9 @@ export class CartComponent{
             return this.cartItems = this.cartItems.filter(cartItem => {
                 const tempCart = [];
                 for(let i of data){
-                    // return cartItem.qty <= i.stocks;
                     if(cartItem.qty <= i.stocks && cartItem.productName === i.name){
                         return tempCart.push(cartItem);
                     }
-                    
-                    
                 }
             })
         });
@@ -91,7 +88,6 @@ export class CartComponent{
                if(item.customerName){
                    return this.cartItems = data.filter(each => user === each.customerName );
                }
-               
             })
         });
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/shopping-app/services/product.service';
+import { UsersService } from 'src/app/shopping-app/services/users.service';
 
 @Component({
     selector: 'buyer-navbar',
@@ -40,12 +41,25 @@ import { ProductService } from 'src/app/shopping-app/services/product.service';
 
 export class BuyerNavbarComponent { 
 
-    constructor(private router: Router){}
+    constructor(private router: Router, private userService: UsersService){}
     user = localStorage.getItem('user');
 
     logout(){
-        localStorage.clear();
-        this.user = null;
-        this.router.navigateByUrl('shop')
+        if(localStorage.getItem('user') === 'guest'){
+            localStorage.clear();
+            this.user = null;
+            this.router.navigateByUrl('shop');
+            this.userService.getUsers().subscribe(data => {
+                data = data.filter(user => {
+                    return user.username === 'guest';
+                });
+                this.userService.removeUser(data[0]).subscribe()
+            });
+        }
+        else{
+            localStorage.clear();
+            this.user = null;
+            this.router.navigateByUrl('shop')
+        }
     }
 }
