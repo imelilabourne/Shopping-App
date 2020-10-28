@@ -117,7 +117,7 @@ export class SellerDashboardComponent implements OnInit {
   
 
   displayProductList() {
-    if (this.user === "admin1"){
+  //  if (this.user === "admin1"){
     this.dataservice.getProductlist().subscribe(data =>
       {
         // as the Web Api doesn't sort the list of todos, we do here in the frontend
@@ -128,18 +128,18 @@ export class SellerDashboardComponent implements OnInit {
         console.log('display productList1', this.upproducts);
         this.isSeller1 = true;
       });
-    }else if (this.user === "admin2"){
-      this.dataservice.getProductlist2().subscribe(data =>
-        {
+  //  }else if (this.user === "admin2"){
+    //  this.dataservice.getProductlist2().subscribe(data =>
+      //  {
           // as the Web Api doesn't sort the list of todos, we do here in the frontend
-          this.upproducts = data.sort((a,b)=> {
-            if (a.id>b.id) return -1;
-            if (a.id<b.id) return 1;
-          });
-          console.log('display productList2', this.upproducts);
-          this.isSeller2 = true;
-        });
-    }
+       //   this.upproducts = data.sort((a,b)=> {
+       //     if (a.id>b.id) return -1;
+       //     if (a.id<b.id) return 1;
+      //    });
+      //    console.log('display productList2', this.upproducts);
+      //    this.isSeller2 = true;
+      //  });
+    //}
   }
 
   

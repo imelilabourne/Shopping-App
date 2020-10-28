@@ -62,11 +62,18 @@ export class SellerTransactComponent implements OnInit {
   
   }
   displayProductList() {
-    this.dataservice.getTransac().subscribe(res => {
-      res.map(resp => this.finalOrder = resp);
-    });
+    this.dataservice.getHistory().subscribe(data =>
+      {
+        // as the Web Api doesn't sort the list of todos, we do here in the frontend
+        this.finalOrder = data.sort((a,b)=> {
+          if (a.id>b.id) return -1;
+          if (a.id<b.id) return 1;
+        });
+        console.log('Transaction', this.finalOrder);
+        this.isSeller1 = true;
+      });
 
-    this.productService.getProductlist().subscribe(data => this.upproducts = data);  
+    //this.productService.getProductlist().subscribe(data => this.upproducts = data);  
     console.log('display Transaction', this.finalOrder);
     this.isSeller1=true;
     

@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { cartUrl, transacUrl } from "../config/api";
+import { cartUrl, transacUrl,historyUrl } from "../config/api";
 import { Product } from "../model/products.interface";
+import { CartItem } from  "../model/cart-item.interface";
 import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
@@ -18,6 +19,12 @@ export class TransactService{
 
     getTransac(){
         return this.http.get(transacUrl).pipe(map((res:any) =>  res ));
+    }
+
+
+    getHistory(){
+        //return this.http.get(historyUrl).pipe(map((res:any) =>  res ));
+        return this.http.get<CartItem[]>(historyUrl);
     }
 
     resetTransac(){
