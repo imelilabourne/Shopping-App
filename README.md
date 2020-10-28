@@ -12,9 +12,9 @@ This application includes:
 ##### Does not include payment transaction.
 
 ## Development server
+Run `npm install` for dependencies.
 
-Run `json-server products.json --port 3000`.
+Run `npm start` for a dev server. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
+Navigate to `http://localhost:4200/` and enjoy shopping with shoppoo 😊
 
