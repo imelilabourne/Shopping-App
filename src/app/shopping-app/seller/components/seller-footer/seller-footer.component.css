@@ -1,25 +1,39 @@
 .footer{
-    color: rgb(219, 217, 217);
+    background-color: #343a40;
     margin: auto;
-   margin-top: 80px;
+    margin-top: 300px;
     left: 0;
     bottom: 0;
-     width: 100%;
+    width: 100%;
+    /*position: absolute;*/
 }
-
+bg-dark footer{
+    position: fixed;
+}
 .icons > i{
     margin-right: 30px;
+    color:white;
 }
 
 
 @media (max-device-width: 2000px) and (orientation: landscape)  {
     footer {
-        color: rgb(219, 217, 217);
+        background-color: #343a40;
         margin: auto;
-        margin-top: 150px;
+        margin-top: 300px;
         left: 0;
         bottom: 0;
         width: 100%;
-        position: static;
+        position: fixed;
+    }
+   
+    h1{
+        color:white;
+    }
+    p{
+        color:white;
+    }
+    .asia{
+        color:white;
     }
   }
