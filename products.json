@@ -1,5 +1,4 @@
 {
-   
   "products": [
     {
       "id": 2,
@@ -8,7 +7,7 @@
       "description": "Some stores may convert best with only bullet point descriptions. Others may need a long paragraph, or a mix of bullet points and a paragraph. And some websites may convert best with no copy at all. You can use A/B split tests tools like Google Optimize to determine what format works best for you.",
       "price": 2993,
       "imageUrl": "../../../assets/fd.png",
-      "stocks": 8
+      "stocks": 10
     },
     {
       "id": 3,
@@ -26,7 +25,7 @@
       "description": "DX Series DSLRs combine pro-level DSLR features and flexibility with lightweight, nimble handling.",
       "price": 1200,
       "imageUrl": "../../../assets/nikon.png",
-      "stocks": 9
+      "stocks": 20
     },
     {
       "id": 5,
@@ -35,7 +34,7 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 1500,
       "imageUrl": "../../../assets/lipstick.png",
-      "stocks": 0
+      "stocks": 20
     },
     {
       "id": 6,
@@ -44,13 +43,13 @@
       "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
       "price": 6200,
       "imageUrl": "../../../assets/mac.png",
-      "stocks": 8
+      "stocks": 10
     },
     {
       "name": "Duffle Bag",
       "description": "Everything fits. Organise all your gear in this durable adidas duffel bag. Multiple pockets stash your bottles, keys and phone. A separate compartment keeps muddy shoes from your other stuff. Dirt and moisture wipe away.",
       "price": 599,
-      "stocks": 5,
+      "stocks": 0,
       "imageUrl": "../../../assets/dufflebag.png",
       "id": 1
     },
@@ -58,41 +57,12 @@
       "name": "Canon M50",
       "description": "with 16GB SD card",
       "price": 45000,
-      "stocks": 10,
+      "stocks": 11,
       "imageUrl": "../../../../assets/IMG_7212.png",
       "id": 7
     }
   ],
-  "cart": [
-    {
-      "product": {
-        "id": 6,
-        "productId": 6,
-        "name": "Mac",
-        "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
-        "price": 6200,
-        "imageUrl": "../../../assets/mac.png",
-        "stocks": 10
-      },
-      "customerName": "user1",
-      "qty": 1,
-      "id": 2
-    },
-    {
-      "product": {
-        "id": 2,
-        "productId": 2,
-        "name": "Sony Flash Drive",
-        "description": "Some stores may convert best with only bullet point descriptions. Others may need a long paragraph, or a mix of bullet points and a paragraph. And some websites may convert best with no copy at all. You can use A/B split tests tools like Google Optimize to determine what format works best for you.",
-        "price": 2993,
-        "imageUrl": "../../../assets/fd.png",
-        "stocks": 10
-      },
-      "customerName": "user1",
-      "qty": 1,
-      "id": 3
-    }
-  ],
+  "cart": [],
   "wishlist": [],
   "users": [
     {
@@ -137,22 +107,28 @@
   "transac": [],
   "history": [
     {
-      "id": 3,
-      "productName": "Sony Flash Drive",
-      "qty": 1,
-      "price": 2993,
-      "customerName": "user1",
-      "photo": "../../../assets/fd.png",
-      "desc": "Some stores may convert best with only bullet point descriptions. Others may need a long paragraph, or a mix of bullet points and a paragraph. And some websites may convert best with no copy at all. You can use A/B split tests tools like Google Optimize to determine what format works best for you."
+      "transac": {
+        "id": 1,
+        "productName": "Fenty Beauty",
+        "qty": 1,
+        "price": 1500,
+        "customerName": "user1",
+        "photo": "../../../assets/lipstick.png",
+        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
+      },
+      "id": 1
     },
     {
-      "id": 2,
-      "productName": "Mac",
-      "qty": 1,
-      "price": 6200,
-      "customerName": "user1",
-      "photo": "../../../assets/mac.png",
-      "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
+      "transac": {
+        "id": 1,
+        "productName": "Fenty Beauty",
+        "qty": 1,
+        "price": 1500,
+        "customerName": "user1",
+        "photo": "../../../assets/lipstick.png",
+        "desc": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product."
+      },
+      "id": 2
     }
   ]
 }

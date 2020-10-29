@@ -44,4 +44,8 @@ export class CartService {
   removeProduct(product):Observable<Product>{
       return this.http.delete<Product>(cartUrl + "/" + product.id)
   }
+
+  getCart():Observable<CartItem[]>{
+    return this.http.get<CartItem[]>(cartUrl);
+  }
 }

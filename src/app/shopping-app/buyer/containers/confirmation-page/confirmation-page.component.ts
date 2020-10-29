@@ -16,11 +16,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     <buyer-navbar></buyer-navbar>
     
     <div class="container main">
-    <!--
-        <div class="map">
-        <img src="../../../assets/icon.png" class="image-fluid icon">
-        </div>
-        -->
         <div class="label">
             <a (click)="reset()" routerLink="/shop">Back to Shop</a><span>&#10095;</span>
             <a (click)="reset()" routerLink="/cart">Shopping Bag</a><span>&#10095;</span>
@@ -30,7 +25,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
 
     <div class="flex">
         <div>   
-        
                 <div class="row ship bold">
                     <p>Shipping Details</p>
                     <span (click)="editToggler()"> <i class="fa fa-pencil"></i></span>
@@ -44,7 +38,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <p>{{ user?.homeadd }}</p>
                         <p>{{ user?.email }}</p>
                         <p>{{ user?.contact }}</p>
-                        <p style="color: green; font-weight: bold">{{ method }}</p>
                         </div>
                         <div *ngIf="editToggle">
                             <form [formGroup] = "shipForm" (ngSubmit)="onSubmit(shipForm.value)" >
@@ -57,11 +50,15 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                             </form>
                         </div>
                     </div>
-                    <br>
-                    <p>Select Payment Method:</p>
-                    <button class="button">COD</button>
-                    <button (click)="method = 'Paypal'" class="button">Paypal</button>
-                    <button (click)="method = 'Gcash'" class="button">Gcash</button>
+                    
+                        <select (change)="selectChangeHandler($event)" class="select">
+                            <option disabled value="">Select Payment Method</option>
+                            <option value="COD">COD</option>
+                            <option value="Paypal">Paypal</option>
+                            <option value="Gcash">Gcash</option>
+                        </select>
+                        <p *ngIf="selectedDay !== ''">You selected <span style="color: green; font-weight: bold"> {{ selectedDay }}</span></p> <br>
+                        <small style="color: red;font-style: italic" *ngIf="selectedDay === ''">Payment method is required</small> 
                     <br><br>
 
                
@@ -101,10 +98,11 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
             </div>
  
             <button (click)="showMsg()" class="button btn-block text">Add Voucher</button>
-            <button (click)="modal(); checkoutreset()" class="button btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Check out</button>
-
+            <button [disabled]="methodDisable" *ngIf="!disable && selectedDay !== ''"  (click)="modal(); checkoutreset()" class="button btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Check out</button>
+            <button disabled *ngIf="selectedDay === ''" class="disable btn-block" type="button" >Check out</button>
+            <p *ngIf="disable" style="margin-top:10px; text-align:center">Order Succesfully Completed,<a data-dismiss="modal" routerLink="../"> wanna shop again? 🛒</a></p>
             <small *ngIf="showMessage">No voucher available for this item</small>
-
+        
             </div>
         </div>
 
@@ -136,7 +134,9 @@ export class ConfirmationPageComponent{
     editToggle:boolean = false;
     modalToggle:boolean = false;
     method: string = "COD";
+    methodDisable: boolean = false;
     subtotal: number = 0;
+    disable = false;
     user: User;
     infoForm;
     cartItems: CartItem[] =[];
@@ -148,6 +148,8 @@ export class ConfirmationPageComponent{
     beforeEditinghomeadd: string;
     beforeEditingemail: string;
     beforeEditingcontact: number;
+    selectedDay: string = '';
+
     constructor(private userService: UsersService, 
                 private transac: TransactService, 
                 private cartService:CartService, 
@@ -239,40 +241,56 @@ export class ConfirmationPageComponent{
     
     checkoutreset(){
         const orderSummary = [];
+        const cartCompare = [];
+        
         this.transac.getTransac()
         .subscribe(data => data.map(order => order.map(item => {
             orderSummary.push(item);
         })));
-
         this.productService.getProducts().subscribe(data => {
             data.map(product => {
                 orderSummary.map(order => {
                     if(product.name === order.productName){
                         this.productService.updateStocks(product.id, {...product, stocks: product.stocks - order.qty}).subscribe();
-                        this.cartService.getCartItems().subscribe(data => {
-                            this.cartItems = data;
+                        orderSummary.push(order);
+                        this.cartService.getCart().subscribe(data => {
+                            data.forEach(i => {
+                                if(i.customerName === order.customerName){
+                                    
+                                if(i.qty > 1){
+                                    cartCompare.push(i);
+                                    console.log(cartCompare)
+                                }
+                                else if (i.id){
+                                    this.cartService.removeProduct(order).subscribe();
+                                }
+                            }
                         });
-
-
-                        // this.cartService.removeProduct(order).subscribe();
-                        // this.cartService.getCartItems().subscribe(carts => {
-                        //     carts.map(cart => {
-                        //         if(cart.qty >= product.stocks){
-                        //             this.cartService.removeProduct(cart).subscribe();
-                        //         }
-                        //     })
-                        // })
-                        this.historyService.postHistory(order).subscribe();
+                        
+                        cartCompare.forEach(cart => {
+                            this.cartService.removeProduct(cart).subscribe();
+                            });
+                        });
+  
                     }
+
+                  
                 })
             })
         });
 
-        this.reset();
+        this.historyService.postHistory(orderSummary.map(num => num)).subscribe();
 
-            
+        this.reset();
+        this.disable = true;
     }
 
+
+    //event handler for the select element's change event
+    selectChangeHandler (event: any) {
+      //update the ui
+      this.selectedDay = event.target.value;
+    }
     reset(){
         this.transac.resetTransac().subscribe();
         

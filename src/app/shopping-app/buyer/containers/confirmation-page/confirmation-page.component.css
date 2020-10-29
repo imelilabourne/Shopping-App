@@ -35,6 +35,10 @@ button{
     color: rgb(212, 211, 211);
 }
 
+.disable{
+    height: 40px;
+}
+
 .checkout{
     margin-left: 30px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif   ;
@@ -114,4 +118,11 @@ hr{
 
 .table{
     margin-top: 20px;
+}
+
+.select{
+    width: 200px;
+    height: 40px;
+    border:  rgb(118, 161, 216) 1px solid;
+    color:  rgb(118, 161, 216);
 }
