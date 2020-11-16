@@ -8,18 +8,18 @@ import { LoadProductsSuccess, LOAD_PRODUCTS,  ProductsActions } from '../actions
 @Injectable({
     providedIn: 'root'
 })
-export class CartEffects {
+export class ProductsEffects {
     
     constructor(
         private actions$: Actions,
-        private cartService: ProductService
+        private productService: ProductService
       ) {}
 
     @Effect()
     loadProducts$ = this.actions$
         .pipe(
             ofType<ProductsActions>(LOAD_PRODUCTS),
-            mergeMap(() => this.cartService.getProducts()
+            mergeMap(() => this.productService.getProducts()
                 .pipe(
                     map(data => new LoadProductsSuccess(data))
                 )

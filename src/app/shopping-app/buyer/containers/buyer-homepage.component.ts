@@ -77,7 +77,6 @@ export class BuyerHomepage{
     user = localStorage.getItem('user');
     // prod$ : Observable<Array<Product>>;
     constructor(
-        private productService: ProductService, 
         private wishlistService: WishlistService,
         private store: Store<AppState>){
     }
@@ -114,10 +113,6 @@ export class BuyerHomepage{
         this.products = this.store.select(store => store.products.list);
         this.store.dispatch(new LoadProducts())
     }
-    // loadProducts(){
-    //     this.productService.getProducts()
-    //     .subscribe(data => this.products = data);
-    // }
 
     loadWishlist(){
         this.wishlistService.getWishlist()
