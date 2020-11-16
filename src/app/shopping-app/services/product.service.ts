@@ -17,7 +17,7 @@ export class ProductService{
         headers: new HttpHeaders({'Content-Type': 'application/json' })
       }
 
-    getProducts(): Observable<Product[]>{
+    getProducts(){
         // return this.products;
         return this.http.get<Product[]>(productsUrl);
     }
