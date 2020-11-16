@@ -62,7 +62,21 @@
       "id": 7
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "product": {
+        "name": "Canon M50",
+        "description": "with 16GB SD card",
+        "price": 45000,
+        "stocks": 11,
+        "imageUrl": "../../../../assets/IMG_7212.png",
+        "id": 7
+      },
+      "customerName": "user1",
+      "qty": 1,
+      "id": 1
+    }
+  ],
   "wishlist": [],
   "users": [
     {

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app.state';
 import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { CartService } from 'src/app/shopping-app/services/cart.service';
@@ -14,6 +17,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
     template: `
     <buyer-navbar></buyer-navbar>
     <div class="container main">
+    {{ cartItems$ | async | json}}
         <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty, <a routerLink="shop">show now</a></div>
         <br>
         <div *ngIf="cartItems.length > 0" >
@@ -45,6 +49,17 @@ export class CartComponent{
     grandTotal: number = 0;
     user: string = localStorage.getItem('user');
     available: boolean = true;
+    cartItems$:Observable<Product[]>;
+
+    constructor(
+        private messengerService: MessengerService, 
+        private cartService: CartService, 
+        private transacService: TransactService, 
+        private userService: UsersService,
+        private router: Router,
+        private productService: ProductService,
+        private store: Store<AppState>
+    ){}
 
     ngOnInit(){
 
@@ -61,16 +76,10 @@ export class CartComponent{
                 }
             })
         });
+
     }
 
-    constructor(
-        private messengerService: MessengerService, 
-        private cartService: CartService, 
-        private transacService: TransactService, 
-        private userService: UsersService,
-        private router: Router,
-        private productService: ProductService
-    ){}
+  
 
     handleSub(){
         this.messengerService.getMsg()

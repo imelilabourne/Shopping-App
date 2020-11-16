@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './shopping-app/shopping-app-routing.module';
 import { ShopingAppModule } from './shopping-app/shopping-app.module';
 import { SortPipe } from './shopping-app/pipes/sort.pipe';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducer } from './store/reducers/products.reducer';
 
 
 
@@ -17,7 +20,7 @@ import { SortPipe } from './shopping-app/pipes/sort.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShopingAppModule
+    ShopingAppModule,
     
   ],
   providers: [],

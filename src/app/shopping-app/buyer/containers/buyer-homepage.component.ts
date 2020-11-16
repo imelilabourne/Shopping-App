@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app.state';
+import { LoadProducts, LoadProductsSuccess } from 'src/app/store/actions/products.action';
+import { ShoppingState } from 'src/app/store/reducers/products.reducer';
 import { Product } from '../../model/products.interface';
 import { ProductService } from '../../services/product.service';
 import { WishlistService } from '../../services/wishlist.service';
@@ -8,6 +13,8 @@ import { WishlistService } from '../../services/wishlist.service';
     styleUrls: ['buyer-homepage.component.css'],
     template: `
     <div class="container con">
+
+    {{ prod$ | async | json}}
         <button class="btn btn-outline-secondary clear " *ngIf="showClearBtn" (click)="clear()">All Products</button>
         <br>
         <div class="main-products row" >
@@ -38,7 +45,7 @@ import { WishlistService } from '../../services/wishlist.service';
         </div>
 
 </div>
-            <div class="col product" *ngFor="let product of products | filter: searchProduct: 'name' | sort:[SortbyParam, sortDirection] | paginate: { itemsPerPage: pageNumber, currentPage: p }">
+            <div class="col product" *ngFor="let product of (products | async) | filter: searchProduct: 'name' | sort:[SortbyParam, sortDirection] | paginate: { itemsPerPage: pageNumber, currentPage: p }">
                 <product-item [productItem]="product" [addedtoWishlist] = "wishlist.indexOf(product.id) >= 0" ></product-item>
             </div>
          
@@ -60,7 +67,7 @@ import { WishlistService } from '../../services/wishlist.service';
 })
 
 export class BuyerHomepage{
-    products: Product[] = [];
+    products:Observable<Array<Product>>;
     wishlist: number[] = [];
     searchProduct = "";
     showClearBtn: boolean = false;
@@ -68,17 +75,18 @@ export class BuyerHomepage{
     sortDirection = "asc";
     pageNumber: number = 3;
     user = localStorage.getItem('user');
-
+    // prod$ : Observable<Array<Product>>;
     constructor(
         private productService: ProductService, 
-        private wishlistService: WishlistService){
+        private wishlistService: WishlistService,
+        private store: Store<AppState>){
     }
 
-    inc(){
-        if(this.pageNumber < this.products.length){
-            this.pageNumber += 1;
-        }
-    }
+    // inc(){
+    //     if(this.pageNumber < this.products.length){
+    //         this.pageNumber += 1;
+    //     }
+    // }
 
     dec(){
         if(this.pageNumber > 1){
@@ -101,13 +109,15 @@ export class BuyerHomepage{
     }
 
     ngOnInit(){
-        this.loadProducts();
+        // this.loadProducts();
         this.loadWishlist();
+        this.products = this.store.select(store => store.products.list);
+        this.store.dispatch(new LoadProducts())
     }
-    loadProducts(){
-        this.productService.getProducts()
-        .subscribe(data => this.products = data);
-    }
+    // loadProducts(){
+    //     this.productService.getProducts()
+    //     .subscribe(data => this.products = data);
+    // }
 
     loadWishlist(){
         this.wishlistService.getWishlist()
