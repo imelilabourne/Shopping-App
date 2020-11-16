@@ -1,13 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { usersUrl } from 'src/app/shopping-app/config/api';
 import { Product } from 'src/app/shopping-app/model/products.interface';
-import { CartService } from 'src/app/shopping-app/services/cart.service';
-import { MessengerService } from 'src/app/shopping-app/services/messenger.service';
-import { ProductService } from 'src/app/shopping-app/services/product.service';
-import { UsersService } from 'src/app/shopping-app/services/users.service';
-import { WishlistService } from 'src/app/shopping-app/services/wishlist.service';
-
+import * as fromServices from '../../../services';
 
 @Component({
     selector: `product-item`,
@@ -44,13 +38,9 @@ import { WishlistService } from 'src/app/shopping-app/services/wishlist.service'
     </div>
         
 
- 
-
         <div (click)="photoIsClicked = !photoIsClicked" class="descPopup">Description <i *ngIf="photoIsClicked" class="fa fa-minus"></i><i *ngIf="!photoIsClicked" class="fa fa-plus"></i></div>
-       
-      
 
-        <div class="desc" *ngIf="photoIsClicked === true" >
+        <div clss="desc" *ngIf="photoIsClicked === true" >
             <p>{{ productItem.description }}</p>
         </div>
         <div>
@@ -66,27 +56,22 @@ export class ProductItemComponent{
     user = localStorage.getItem('user');
     value = 1;
 
-    constructor(private messengerService: MessengerService, 
-        private cartService: CartService, 
-        private wishlistService: WishlistService, 
+    constructor(private messengerService: fromServices.MessengerService, 
+        private cartService: fromServices.CartService, 
+        private wishlistService: fromServices.WishlistService, 
         private router: Router,
-        private userService: UsersService,
-        private productService: ProductService){
+        private userService: fromServices.UsersService,
+        private productService: fromServices.ProductService){
     }
 
     writeValue(value){
         this.value = value | 0;
     }
 
-    ngOnInit(){
-        // this.productService.getProductlist().subscribe(data => data.map(item => console.log(item.stocks)))
-    }
-    
 
     step: number = 1
     min: number = 1
     max: number;
-
 
     increment(){
         if(this.value < this.productItem.stocks){
@@ -126,7 +111,6 @@ export class ProductItemComponent{
     }
 
     handleAddtoWishlist(){
-
         const user = localStorage.getItem('user');
         
         this.wishlistService.addToWishlist(this.productItem)

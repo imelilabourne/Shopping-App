@@ -3,13 +3,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
-import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
-import { CartService } from 'src/app/shopping-app/services/cart.service';
-import { MessengerService } from 'src/app/shopping-app/services/messenger.service';
-import { ProductService } from 'src/app/shopping-app/services/product.service';
-import { TransactService } from 'src/app/shopping-app/services/transac.service';
-import { UsersService } from 'src/app/shopping-app/services/users.service';
+
+import * as fromServices from '../../../services';
+import { LoadCart} from 'src/app/store/actions/products.action';
 
 @Component({
     selector:  `cart-component`,
@@ -28,7 +25,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                     <div class="row">   
                     </div>
                 </div>
-                    <cart-item *ngFor="let cart of cartItems" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
+                    <cart-item *ngFor="let cart of (cartItems$ | async)" (itemSelected)="removeItem($event)" [cartItem] ="cart"></cart-item >
             </div>
             <div class="flex">
                 <div class="grand">Grand Total: {{grandTotal | currency: 'Php '}}</div>
@@ -49,15 +46,15 @@ export class CartComponent{
     grandTotal: number = 0;
     user: string = localStorage.getItem('user');
     available: boolean = true;
-    cartItems$:Observable<Product[]>;
+    cartItems$:Observable<any>;
 
     constructor(
-        private messengerService: MessengerService, 
-        private cartService: CartService, 
-        private transacService: TransactService, 
-        private userService: UsersService,
+        private messengerService: fromServices.MessengerService, 
+        private cartService: fromServices.CartService, 
+        private transacService: fromServices.TransactService, 
+        private userService: fromServices.UsersService,
         private router: Router,
-        private productService: ProductService,
+        // private productService: fromServices.ProductService,
         private store: Store<AppState>
     ){}
 
@@ -66,16 +63,20 @@ export class CartComponent{
         this.getUserCartItems();
         this.handleSub();
         this.accumulatedPrice();
-        this.productService.getProducts().subscribe(data => {
-            return this.cartItems = this.cartItems.filter(cartItem => {
-                const tempCart = [];
-                for(let i of data){
-                    if(cartItem.qty <= i.stocks && cartItem.productName === i.name){
-                        return tempCart.push(cartItem);
-                    }
-                }
-            })
-        });
+        // this.productService.getProducts().subscribe(data => {
+        //     return this.cartItems = this.cartItems.filter(cartItem => {
+        //         const tempCart = [];
+        //         for(let i of data){
+        //             if(cartItem.qty <= i.stocks && cartItem.productName === i.name){
+        //                 return tempCart.push(cartItem);
+        //             }
+        //         }
+        //     })
+        // });
+
+        this.cartItems$ = this.store.select(store => store.carts.list)
+        this.store.dispatch(new LoadCart());
+      
 
     }
 
@@ -96,6 +97,7 @@ export class CartComponent{
             data.map(item => {
                if(item.customerName){
                    return this.cartItems = data.filter(each => user === each.customerName );
+
                }
             })
         });

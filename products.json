@@ -75,6 +75,20 @@
       "customerName": "user1",
       "qty": 1,
       "id": 1
+    },
+    {
+      "product": {
+        "id": 5,
+        "productId": 5,
+        "name": "Fenty Beauty",
+        "description": "It’s important that a product description writer is honest and transparent when describing the product. Saying a product is free when it really isn’t is deceptive. Saying your product is of the highest quality when you have countless complaints about the product quality isn’t going to trick people into liking your product.",
+        "price": 1500,
+        "imageUrl": "../../../assets/lipstick.png",
+        "stocks": 20
+      },
+      "customerName": "user1",
+      "qty": 1,
+      "id": 2
     }
   ],
   "wishlist": [],

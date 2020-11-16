@@ -3,11 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { CartItem } from 'src/app/shopping-app/model/cart-item.interface';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 import { User } from 'src/app/shopping-app/model/user.interface';
-import { CartService } from 'src/app/shopping-app/services/cart.service';
-import { HistoryService } from 'src/app/shopping-app/services/history.service';
-import { ProductService } from 'src/app/shopping-app/services/product.service';
-import { TransactService } from 'src/app/shopping-app/services/transac.service';
-import { UsersService } from 'src/app/shopping-app/services/users.service';
+import * as fromServices from '../../../services';
 
 @Component({
     selector: 'confirm-page',
@@ -49,8 +45,7 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                                 <button type="submit" class="btn btn-info">Submit</button>
                             </form>
                         </div>
-                    </div>
-                    
+                    </div>  
                         <select (change)="selectChangeHandler($event)" class="select">
                             <option disabled value="">Select Payment Method</option>
                             <option value="COD">COD</option>
@@ -60,8 +55,6 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                         <p *ngIf="selectedDay !== ''">You selected <span style="color: green; font-weight: bold"> {{ selectedDay }}</span></p> <br>
                         <small style="color: red;font-style: italic" *ngIf="selectedDay === ''">Payment method is required</small> 
                     <br><br>
-
-               
             </div>
         </div>
         <div class="summary-order">
@@ -150,12 +143,12 @@ export class ConfirmationPageComponent{
     beforeEditingcontact: number;
     selectedDay: string = '';
 
-    constructor(private userService: UsersService, 
-                private transac: TransactService, 
-                private cartService:CartService, 
-                private productService: ProductService, 
+    constructor(private userService: fromServices.UsersService, 
+                private transac: fromServices.TransactService, 
+                private cartService:fromServices.CartService, 
+                private productService: fromServices.ProductService, 
                 private fb: FormBuilder,
-                private historyService: HistoryService
+                private historyService: fromServices.HistoryService
     ){}
 
     shipForm = this.fb.group({
@@ -271,10 +264,7 @@ export class ConfirmationPageComponent{
                             this.cartService.removeProduct(cart).subscribe();
                             });
                         });
-  
-                    }
-
-                  
+                    }          
                 })
             })
         });
@@ -286,14 +276,12 @@ export class ConfirmationPageComponent{
     }
 
 
-    //event handler for the select element's change event
     selectChangeHandler (event: any) {
-      //update the ui
-      this.selectedDay = event.target.value;
+       this.selectedDay = event.target.value;
     }
+
     reset(){
-        this.transac.resetTransac().subscribe();
-        
+        this.transac.resetTransac().subscribe();    
     }
 
     showMsg(){
