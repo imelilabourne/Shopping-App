@@ -1,7 +1,7 @@
+import { filter } from 'rxjs/operators'
 
 import { CartItem } from "src/app/shopping-app/model/cart-item.interface";
-import { LOAD_CARTITEMS, LOAD_CARTITEMS_SUCCESS, ProductsActions } from "../actions/products.action";
-
+import { LOAD_CARTITEMS, LOAD_CARTITEMS_SUCCESS, ProductsActions, REMOVE_CARTITEMS } from "../actions/products.action";
 const initialState: ShoppingState = {
     list: [],
     loading: false,
@@ -24,6 +24,13 @@ export function cartReducer(state: ShoppingState = initialState, action: Product
             return {
                 ...state, 
                 list: action.payload, 
+                loading: false
+            }
+
+        case REMOVE_CARTITEMS:
+            return {
+                ...state,
+                list: state.list.filter(listItem => listItem.id !== action.payload.id),
                 loading: false
             }
         default: return state;

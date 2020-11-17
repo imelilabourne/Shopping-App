@@ -6,7 +6,7 @@ import { AppState } from 'src/app/app.state';
 import { Product } from 'src/app/shopping-app/model/products.interface';
 
 import * as fromServices from '../../../services';
-import { LoadCart} from 'src/app/store/actions/products.action';
+import { LoadCart, RemoveCartItem} from 'src/app/store/actions/products.action';
 
 @Component({
     selector:  `cart-component`,
@@ -115,13 +115,15 @@ export class CartComponent{
     }
 
     removeItem(event){
-        this.cartService.removeProduct(event).subscribe(() => {
-            this.cartItems = this.cartItems.filter(item =>{
-                    this.grandTotal -= item.price * item.qty; 
-                    return item != event;
-            });
-                this.accumulatedPrice();
-        });
+        // this.cartService.removeProduct(event).subscribe(() => {
+        //     this.cartItems = this.cartItems.filter(item =>{
+        //             this.grandTotal -= item.price * item.qty; 
+        //             return item != event;
+        //     });
+        //         this.accumulatedPrice();
+        // });
+
+        this.store.dispatch(new RemoveCartItem(event));
     }
 
     placeOrder(){

@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { CartItem } from "src/app/shopping-app/model/cart-item.interface";
 import { Product } from "src/app/shopping-app/model/products.interface";
 
 export const ADD = "[CART ADD]";
@@ -6,6 +7,7 @@ export const LOAD_PRODUCTS = "[Products LOAD]";
 export const LOAD_PRODUCTS_SUCCESS = "[Products LOAD_SUCCESS]";
 export const LOAD_CARTITEMS = "[Cart LOAD]";
 export const LOAD_CARTITEMS_SUCCESS = "[Cart LOAD_SUCCESS]";
+export const REMOVE_CARTITEMS = '[Cart Remove]';
 
 export class AddtoProducts implements Action{
     readonly type = ADD;
@@ -33,9 +35,15 @@ export class LoadCartSuccess implements Action{
     constructor(public payload){}
 }
 
+export class RemoveCartItem implements Action{
+    readonly type = REMOVE_CARTITEMS;
+    constructor(public payload: CartItem){}
+}
+
 export type ProductsActions = 
         AddtoProducts 
     |   LoadProducts 
     |   LoadProductsSuccess 
     |   LoadCart
-    |   LoadCartSuccess;
+    |   LoadCartSuccess
+    |   RemoveCartItem;
