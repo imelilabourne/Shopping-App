@@ -91,7 +91,7 @@ export class CartComponent{
     }
 
     getUserCartItems(){
-        const user = localStorage.getItem('user');
+        const user = localStorage.getItem('user')
         this.cartService.getCartItems()
         .subscribe(data => {
             data.map(item => {
