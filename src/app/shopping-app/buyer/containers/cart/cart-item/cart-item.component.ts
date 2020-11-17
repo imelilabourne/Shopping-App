@@ -42,17 +42,9 @@ export class CartItemComponent{
 
 
     products: Product[] = [];
-    constructor(
-        private productService: ProductService){}
+    constructor(){}
 
     ngOnInit(){
-        // this.productService.getProductlist().subscribe(data => {
-        //     data.map(product => {
-        //         this.products = data;
-        //         this.products = this.products.filter(prod => prod.stocks > 0 )
-        //         console.log(this.products);
-        //     })
-        // })
     }
     removeCart(item){
         return this.itemSelected.emit(item);
