@@ -14,7 +14,6 @@ import { LoadCart, RemoveCartItem} from 'src/app/store/actions/products.action';
     template: `
     <buyer-navbar></buyer-navbar>
     <div class="container main">
-    {{ cartItems$ | async | json}}
         <div *ngIf="cartItems.length === 0" style="z-index:0" class="alert alert-danger">Your cart is empty, <a routerLink="shop">show now</a></div>
         <br>
         <div *ngIf="cartItems.length > 0" >
