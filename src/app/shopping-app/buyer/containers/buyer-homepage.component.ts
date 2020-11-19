@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
+import { LoadUser } from 'src/app/store/actions/auth.action';
 import { LoadProducts, LoadProductsSuccess } from 'src/app/store/actions/products.action';
 import { ShoppingState } from 'src/app/store/reducers/products.reducer';
 import { Product } from '../../model/products.interface';
@@ -81,11 +82,11 @@ export class BuyerHomepage{
         private store: Store<AppState>){
     }
 
-    // inc(){
-    //     if(this.pageNumber < this.products.length){
-    //         this.pageNumber += 1;
-    //     }
-    // }
+    inc(){
+        if(this.pageNumber < 6){
+            this.pageNumber += 1;
+        }
+    }
 
     dec(){
         if(this.pageNumber > 1){
@@ -112,6 +113,9 @@ export class BuyerHomepage{
         this.loadWishlist();
         this.products = this.store.select(store => store.products.list);
         this.store.dispatch(new LoadProducts())
+
+        
+       
     }
 
     loadWishlist(){

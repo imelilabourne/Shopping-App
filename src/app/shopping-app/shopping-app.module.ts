@@ -27,6 +27,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from '../store/effects/products.effect';
 import { CartEffects } from '../store/effects/cart.effect';
 import { cartReducer } from '../store/reducers/cart.reducer';
+import { authReducer } from '../store/reducers/auth.reducer';
+import { AuthEffect } from '../store/effects/auth.effect';
 
 
 
@@ -53,9 +55,13 @@ import { cartReducer } from '../store/reducers/cart.reducer';
     AppRoutingModule,    
     DataTablesModule,
     NgxPaginationModule,
-    StoreModule.forRoot({products: reducer , carts: cartReducer}),
+    StoreModule.forRoot({
+      products: reducer , 
+      carts: cartReducer,
+      users: authReducer
+    }),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects, CartEffects])
+    EffectsModule.forRoot([ProductsEffects, CartEffects, AuthEffect])
   ],
   providers: [AuthGuard],
  

@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app.state';
 import { Product } from 'src/app/shopping-app/model/products.interface';
+import { User } from 'src/app/shopping-app/model/user.interface';
+import { LoadUser } from 'src/app/store/actions/auth.action';
 import * as fromServices from '../../../services';
 
 @Component({
@@ -54,14 +59,19 @@ export class ProductItemComponent{
     itemAdded: boolean = false;
     photoIsClicked:boolean = false;
     user = localStorage.getItem('user');
+    users$: Observable<User[]>;
     value = 1;
 
     constructor(private messengerService: fromServices.MessengerService, 
         private cartService: fromServices.CartService, 
         private wishlistService: fromServices.WishlistService, 
         private router: Router,
-        private userService: fromServices.UsersService,
-        private productService: fromServices.ProductService){
+        private store: Store<AppState>){
+    }
+
+    ngOnInit(){
+        this.users$ = this.store.select(store => store.users.list)
+        this.store.dispatch(new LoadUser())
     }
 
     writeValue(value){
@@ -93,10 +103,9 @@ export class ProductItemComponent{
 
     handleAddtoCart(){
         let userLocal = localStorage.getItem('user'); 
-            this.userService.getUsers()
-            .subscribe(users => users.forEach(user => {
-
-                if(userLocal === user.username){
+        this.users$.subscribe((user) => {
+            user.map(userr => {
+                if(userLocal === userr.username){
                     this.cartService.addProductToCart(this.productItem, localStorage.getItem('user'), this.value)
                     .subscribe(()=> {
                         this.messengerService.sendMsg(this.value);
@@ -106,7 +115,10 @@ export class ProductItemComponent{
                   else if( userLocal === null){
                     this.router.navigateByUrl("info");
                 }
-            }))
+    
+            })
+            
+        })
       
     }
 

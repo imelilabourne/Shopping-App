@@ -1,5 +1,3 @@
-import { filter } from 'rxjs/operators'
-
 import { CartItem } from "src/app/shopping-app/model/cart-item.interface";
 import { LOAD_CARTITEMS, LOAD_CARTITEMS_SUCCESS, ProductsActions, REMOVE_CARTITEMS } from "../actions/products.action";
 const initialState: ShoppingState = {

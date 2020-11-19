@@ -7,6 +7,7 @@ import { Product } from 'src/app/shopping-app/model/products.interface';
 
 import * as fromServices from '../../../services';
 import { LoadCart, RemoveCartItem} from 'src/app/store/actions/products.action';
+import { LoadUser, LoadUserSuccess } from 'src/app/store/actions/auth.action';
 
 @Component({
     selector:  `cart-component`,
@@ -73,8 +74,9 @@ export class CartComponent{
         //     })
         // });
 
-        this.cartItems$ = this.store.select(store => store.carts.list)
+        this.cartItems$ = this.store.select(store => store.carts.list);
         this.store.dispatch(new LoadCart());
+
       
 
     }
@@ -96,7 +98,6 @@ export class CartComponent{
             data.map(item => {
                if(item.customerName){
                    return this.cartItems = data.filter(each => user === each.customerName );
-
                }
             })
         });

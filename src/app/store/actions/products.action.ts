@@ -35,6 +35,11 @@ export class LoadCartSuccess implements Action{
     constructor(public payload){}
 }
 
+export class RemoveCart implements Action{
+    readonly type = LOAD_CARTITEMS;
+
+}
+
 export class RemoveCartItem implements Action{
     readonly type = REMOVE_CARTITEMS;
     constructor(public payload: CartItem){}
@@ -46,4 +51,5 @@ export type ProductsActions =
     |   LoadProductsSuccess 
     |   LoadCart
     |   LoadCartSuccess
+    |   RemoveCart
     |   RemoveCartItem;
