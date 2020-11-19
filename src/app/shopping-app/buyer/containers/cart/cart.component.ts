@@ -76,9 +76,6 @@ export class CartComponent{
 
         this.cartItems$ = this.store.select(store => store.carts.list);
         this.store.dispatch(new LoadCart());
-
-      
-
     }
 
   

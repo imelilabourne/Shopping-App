@@ -14,8 +14,6 @@ import { WishlistService } from '../../services/wishlist.service';
     styleUrls: ['buyer-homepage.component.css'],
     template: `
     <div class="container con">
-
-    {{ prod$ | async | json}}
         <button class="btn btn-outline-secondary clear " *ngIf="showClearBtn" (click)="clear()">All Products</button>
         <br>
         <div class="main-products row" >
@@ -75,6 +73,7 @@ export class BuyerHomepage{
     SortbyParam = "name";
     sortDirection = "asc";
     pageNumber: number = 3;
+    p;
     user = localStorage.getItem('user');
     // prod$ : Observable<Array<Product>>;
     constructor(
