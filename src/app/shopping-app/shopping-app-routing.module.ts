@@ -25,7 +25,6 @@ const routes: Routes = [
   {path:'updateproduct/:id',component: UpdateProductComponent},
   {path: 'transact' ,component:SellerTransactComponent},
   {path: '**', component: BuyerComponent},
- 
 
 ]
 @NgModule({
