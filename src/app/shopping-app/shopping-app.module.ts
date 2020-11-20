@@ -10,7 +10,7 @@ import * as fromComponents from '../../app/shopping-app/buyer/components'
 import * as fromContainers from '../shopping-app/buyer/containers';
 import * as fromSeller from '../shopping-app/seller';
 
-import { AppRoutingModule, routingComponents } from './shopping-app-routing.module';
+import { AppRoutingModule} from './shopping-app-routing.module';
 import { BaseComponent } from './containers/base.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { BuyerLoginComponent } from './containers/login/buyer-login.component';
@@ -29,9 +29,14 @@ import { CartEffects } from '../store/effects/cart.effect';
 import { cartReducer } from '../store/reducers/cart.reducer';
 import { authReducer } from '../store/reducers/auth.reducer';
 import { AuthEffect } from '../store/effects/auth.effect';
+import { Routes, RouterModule } from '@angular/router';
 
-
-
+const routes: Routes = [
+    {
+      path: '',
+      component: BuyerComponent
+    }
+]
 
 @NgModule({
   declarations: [
@@ -41,11 +46,11 @@ import { AuthEffect } from '../store/effects/auth.effect';
     fromComponents.components,
     fromContainers.containers,
     fromSeller.sellerComponents,
-    routingComponents,
     FilterPipe,
     SortPipe,
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     CommonModule,
     AppRoutingModule,

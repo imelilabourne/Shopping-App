@@ -15,7 +15,7 @@ import { SellerTransactComponent } from './seller/seller-transact/seller-transac
 
 const routes: Routes = [
   {path: '', redirectTo: 'shop', pathMatch: 'full'},
-  {path: 'shop', component: BuyerComponent},
+  // {path: 'shop', component: BuyerComponent},
   {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
   {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard]},
   {path: 'login', component: BuyerLoginComponent},
@@ -30,16 +30,7 @@ const routes: Routes = [
 ]
 @NgModule({
 
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [
-  BuyerComponent,
-  SellerComponent,
-  UpdateProductComponent,
-  ContactInformationComponent,
-  ConfirmationPageComponent,
-  WishlistComponent
-]
