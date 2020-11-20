@@ -1,3 +1,4 @@
+import { BuyerLoginComponent } from '../../containers/login/buyer-login.component';
 import { BuyerComponent } from '../buyer.component';
 import { BuyerHomepage } from './buyer-homepage.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
@@ -8,7 +9,8 @@ import { ProductItemComponent } from './product-items/product-item.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 export const containers:any[] = [ 
-    BuyerComponent, CartItemComponent, CartComponent,
+    BuyerLoginComponent,
+    CartItemComponent, CartComponent,
     ConfirmationPageComponent, ContactInformationComponent,
     ProductItemComponent, WishlistComponent, BuyerHomepage    
 ]

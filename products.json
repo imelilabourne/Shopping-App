@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": 2,
-      "productId": 2,
-      "name": "Sony Flash Drive",
-      "description": "Some stores may convert best with only bullet point descriptions. Others may need a long paragraph, or a mix of bullet points and a paragraph. And some websites may convert best with no copy at all. You can use A/B split tests tools like Google Optimize to determine what format works best for you.",
-      "price": 2993,
-      "imageUrl": "../../../assets/fd.png",
-      "stocks": 10
-    },
-    {
       "id": 3,
       "productId": 3,
       "name": "Headphone",
