@@ -129,7 +129,7 @@ export class CartComponent{
                 if(user.username === localStorage.getItem('user')){
                     this.transacService.postTransact(this.cartItems)
                     .subscribe(()=>{
-                        this.router.navigateByUrl('success')
+                        this.router.navigateByUrl('shop/success')
                 });
                 }
             });

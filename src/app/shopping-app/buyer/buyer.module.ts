@@ -10,6 +10,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SortPipe } from '../pipes/sort.pipe';
 import { BuyerLoginComponent } from '../containers/login/buyer-login.component';
+import { SharedModule } from '../shared/shrared.module';
 
 
 
@@ -20,6 +21,7 @@ import { BuyerLoginComponent } from '../containers/login/buyer-login.component';
     FormsModule, 
     ReactiveFormsModule,
     NgxPaginationModule,
+    SharedModule
   ],
   declarations: [
       BuyerHomepage,
@@ -34,13 +36,10 @@ import { BuyerLoginComponent } from '../containers/login/buyer-login.component';
       BuyerLoginComponent,
       ContactInformationComponent,
       ConfirmationPageComponent,
-      FilterPipe,
-      SortPipe
   ],
   exports: [
     BuyerComponent,
-    FilterPipe,
-    SortPipe
+
 ]
 })
 export class BuyerModule { }

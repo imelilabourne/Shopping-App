@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { SellerTransactComponent } from './seller-transact/seller-transact.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { SharedModule } from '../shared/shrared.module';
 
 @NgModule({
   imports: [
@@ -21,20 +22,19 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    SharedModule
   ],
   declarations: [SellerComponent, SellerNavbarComponent, SellerFooterComponent,
   SellerDashboardComponent,
-  FilterPipe,
-  SortPipe,
+
   SellerTransactComponent,
   SellerComponent,
   UpdateProductComponent
 
 ],
 exports: [
-  FilterPipe,
-  SortPipe
+
 ]
 })
 export class SellerModule { }

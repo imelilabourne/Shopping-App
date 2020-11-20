@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
         if(localStorage.getItem('user') === 'admin1' || localStorage.getItem('user') === 'admin2'){
             return true;
         }
-        this.router.navigateByUrl('login')
+        this.router.navigateByUrl('shop/login')
         return false;
 
   }

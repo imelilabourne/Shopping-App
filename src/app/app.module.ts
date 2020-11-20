@@ -20,12 +20,13 @@ import { ProductsEffects } from './store/effects/products.effect';
 import { CartEffects } from './store/effects/cart.effect';
 import { AuthEffect } from './store/effects/auth.effect';
 import { AuthGuard } from './shopping-app/auth.guard';
+import { SortPipe } from './shopping-app/pipes/sort.pipe';
+import { FilterPipe } from './shopping-app/pipes/filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-  
   ],
   imports: [
 
@@ -46,6 +47,9 @@ import { AuthGuard } from './shopping-app/auth.guard';
     EffectsModule.forRoot([ProductsEffects, CartEffects, AuthEffect]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     
+  ],
+  exports: [
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

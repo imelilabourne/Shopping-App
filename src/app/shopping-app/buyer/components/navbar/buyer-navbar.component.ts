@@ -20,16 +20,16 @@ import { UsersService } from 'src/app/shopping-app/services/users.service';
                 <a class="nav-link" href="#"><i class="fa fa-home"></i> <span class="hidden"> Home</span><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/cart"> <i class="fa fa-shopping-cart"> </i><span class="hidden"> Cart</span></a>
+                <a class="nav-link" routerLink="/shop/cart"> <i class="fa fa-shopping-cart"> </i><span class="hidden"> Cart</span></a>
             </li>  <li class="nav-item active">
-                <a class="nav-link" routerLink="/wishlist"> <i class="fa fa-heart"> </i> <span class="hidden"> Wishlist</span></a>
+                <a class="nav-link" routerLink="/shop/wishlist"> <i class="fa fa-heart"> </i> <span class="hidden"> Wishlist</span></a>
             </li>
             
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
             <h1 *ngIf="user" class="username">Welcome, {{ user }}</h1>
-            <button *ngIf="user === null" class="btn " routerLink="/login">Login</button>
+            <button *ngIf="user === null" class="btn " routerLink="/shop/login">Login</button>
             <button *ngIf="user !== null" class="btn " (click) = "logout()">Logout</button>
             </form>
         </div>

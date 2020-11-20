@@ -64,17 +64,20 @@ export class SellerTransactComponent implements OnInit {
   displayProductList() {
     this.dataservice.getHistory().subscribe(data =>
       {
+        data.map(item => {
+           this.finalOrder.push(item.transac)
+        })
         // as the Web Api doesn't sort the list of todos, we do here in the frontend
-        this.finalOrder = data.sort((a,b)=> {
-          if (a.id>b.id) return -1;
-          if (a.id<b.id) return 1;
-        });
-        console.log('Transaction', this.finalOrder);
+        // this.finalOrder = data.sort((a,b)=> {
+        //   if (a.id>b.id) return -1;
+        //   if (a.id<b.id) return 1;
+        // });
+        // console.log('Transaction', this.finalOrder);
         this.isSeller1 = true;
       });
 
     //this.productService.getProductlist().subscribe(data => this.upproducts = data);  
-    console.log('display Transaction', this.finalOrder);
+    // console.log('display Transaction', this.finalOrder);
     this.isSeller1=true;
     
   }

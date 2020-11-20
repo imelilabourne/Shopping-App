@@ -1,5 +1,4 @@
 
-import { User } from "./shopping-app/model/user.interface";
 import { UserState } from "./store/reducers/auth.reducer";
 import { ShoppingState } from "./store/reducers/products.reducer";
 

@@ -24,7 +24,7 @@ export class TransactService{
 
     getHistory(){
         //return this.http.get(historyUrl).pipe(map((res:any) =>  res ));
-        return this.http.get<CartItem[]>(historyUrl);
+        return this.http.get<CartItem[]>(historyUrl).pipe(map((res:any) =>  res ));
     }
 
     resetTransac(){

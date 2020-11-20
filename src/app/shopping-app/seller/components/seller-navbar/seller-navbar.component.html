@@ -6,24 +6,17 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"> 
-
-
-        
-          
+      <ul class="navbar-nav mr-auto">  
           <li class="nav-item active">
               <a class="nav-link" routerLink="/seller"><i class="fa fa-home"></i>  Inventory <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
               <a class="nav-link" routerLink="/seller/transact"> <i class="fa fa-bar-chart"> </i> Sales</a>
           </li> 
-          
-          
-
       </ul>
       <form class="form-inline my-2 my-lg-0">
       
-      <button *ngIf="user === null" class="btn btn-info" routerLink="/login">Login</button>
+      <button *ngIf="user === null" class="btn btn-info" routerLink="shop/login">Login</button>
       <button *ngIf="user !== null" class="btn btn-info" (click) = "logout()">Logout</button>
       </form>
   </div>
