@@ -44,7 +44,7 @@
         <td colspan="1">{{list.stocks}}
         </td>
         <td colspan="1" class="act">
-          <button class="btn btn-info btn-sm" [routerLink]="['/updateproduct',list.id]">Update</button>
+          <button class="btn btn-info btn-sm" [routerLink]="['seller/updateproduct',list.id]">Update</button>
           <button class="btn btn-danger btn-sm" (click)="onDelete(list.id)">Delete</button>
         </td>
       </tr>
